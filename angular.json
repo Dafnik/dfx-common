@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "pnpm"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -133,9 +133,7 @@
                 "input": "projects/dfx-bootstrap-table-demo/public"
               }
             ],
-            "styles": [
-              "projects/dfx-bootstrap-table-demo/src/styles.scss"
-            ],
+            "styles": ["projects/dfx-bootstrap-table-demo/src/styles.scss"],
             "server": "projects/dfx-bootstrap-table-demo/src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -201,9 +199,7 @@
                 "input": "projects/dfx-qrcode-demo/public"
               }
             ],
-            "styles": [
-              "projects/dfx-qrcode-demo/src/styles.css"
-            ],
+            "styles": ["projects/dfx-qrcode-demo/src/styles.css"],
             "server": "projects/dfx-qrcode-demo/src/main.server.ts",
             "outputMode": "server",
             "ssr": {

@@ -8,9 +8,8 @@ describe('DfxQrcode', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DfxQrcode]
-    })
-    .compileComponents();
+      imports: [DfxQrcode],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DfxQrcode);
     component = fixture.componentInstance;

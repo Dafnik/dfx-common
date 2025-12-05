@@ -4,18 +4,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "dfx-bootstrap-table": [
-        "./dist/dfx-bootstrap-table"
-      ],
-      "dfx-helper": [
-        "./dist/dfx-helper"
-      ],
-      "dfx-openapi": [
-        "./dist/dfx-openapi"
-      ],
-      "dfx-qrcode": [
-        "./dist/dfx-qrcode"
-      ]
+      "dfx-bootstrap-table": ["./dist/dfx-bootstrap-table"],
+      "dfx-helper": ["./dist/dfx-helper"],
+      "dfx-openapi": ["./dist/dfx-openapi"],
+      "dfx-qrcode": ["./dist/dfx-qrcode"]
     },
     "strict": true,
     "noImplicitOverride": true,

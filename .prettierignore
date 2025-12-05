@@ -1,0 +1,9 @@
+# Add files here to ignore them from prettier formatting
+
+/node_modules
+/dist
+/coverage
+.angular
+package.json
+pnpm-lock.yaml
+**/CHANGELOG.md

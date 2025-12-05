@@ -8,9 +8,8 @@ describe('DfxOpenapi', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DfxOpenapi]
-    })
-    .compileComponents();
+      imports: [DfxOpenapi],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DfxOpenapi);
     component = fixture.componentInstance;

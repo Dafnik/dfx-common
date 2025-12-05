@@ -8,9 +8,8 @@ describe('DfxBootstrapTable', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DfxBootstrapTable]
-    })
-    .compileComponents();
+      imports: [DfxBootstrapTable],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DfxBootstrapTable);
     component = fixture.componentInstance;

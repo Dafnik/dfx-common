@@ -8,9 +8,8 @@ describe('DfxHelper', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DfxHelper]
-    })
-    .compileComponents();
+      imports: [DfxHelper],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DfxHelper);
     component = fixture.componentInstance;
