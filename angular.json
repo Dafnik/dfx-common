@@ -1,51 +1,20 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
   "cli": {
     "packageManager": "pnpm"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "dfx-helper": {
-      "projectType": "library",
-      "root": "projects/dfx-helper",
-      "sourceRoot": "projects/dfx-helper/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/dfx-helper/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/dfx-helper/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": {
-            "tsConfig": "projects/dfx-helper/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "dfx-bootstrap-table": {
-      "projectType": "library",
-      "root": "projects/dfx-bootstrap-table",
-      "sourceRoot": "projects/dfx-bootstrap-table/src",
-      "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
-            "production": {
-              "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.prod.json"
-            },
             "development": {
               "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -56,22 +25,119 @@
             "tsConfig": "projects/dfx-bootstrap-table/tsconfig.spec.json"
           }
         }
-      }
-    },
-    "dfx-openapi": {
-      "projectType": "library",
-      "root": "projects/dfx-openapi",
-      "sourceRoot": "projects/dfx-openapi/src",
+      },
       "prefix": "lib",
+      "projectType": "library",
+      "root": "projects/dfx-bootstrap-table",
+      "sourceRoot": "projects/dfx-bootstrap-table/src"
+    },
+    "dfx-bootstrap-table-demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
+            },
+            "production": {
+              "budgets": [
+                {
+                  "maximumError": "1MB",
+                  "maximumWarning": "500kB",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "8kB",
+                  "maximumWarning": "4kB",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/dfx-bootstrap-table-demo/public"
+              }
+            ],
+            "browser": "projects/dfx-bootstrap-table-demo/src/main.ts",
+            "inlineStyleLanguage": "scss",
+            "outputMode": "server",
+            "server": "projects/dfx-bootstrap-table-demo/src/main.server.ts",
+            "ssr": {
+              "entry": "projects/dfx-bootstrap-table-demo/src/server.ts"
+            },
+            "styles": ["projects/dfx-bootstrap-table-demo/src/styles.scss"],
+            "tsConfig": "projects/dfx-bootstrap-table-demo/tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "dfx-bootstrap-table-demo:build:development"
+            },
+            "production": {
+              "buildTarget": "dfx-bootstrap-table-demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "projects/dfx-bootstrap-table-demo",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "sourceRoot": "projects/dfx-bootstrap-table-demo/src"
+    },
+    "dfx-helper": {
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
-            "production": {
-              "tsConfig": "projects/dfx-openapi/tsconfig.lib.prod.json"
+            "development": {
+              "tsConfig": "projects/dfx-helper/tsconfig.lib.json"
             },
+            "production": {
+              "tsConfig": "projects/dfx-helper/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/dfx-helper/tsconfig.spec.json"
+          }
+        }
+      },
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "projects/dfx-helper",
+      "sourceRoot": "projects/dfx-helper/src"
+    },
+    "dfx-openapi": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
             "development": {
               "tsConfig": "projects/dfx-openapi/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "projects/dfx-openapi/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -82,22 +148,22 @@
             "tsConfig": "projects/dfx-openapi/tsconfig.spec.json"
           }
         }
-      }
+      },
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "projects/dfx-openapi",
+      "sourceRoot": "projects/dfx-openapi/src"
     },
     "dfx-qrcode": {
-      "projectType": "library",
-      "root": "projects/dfx-qrcode",
-      "sourceRoot": "projects/dfx-qrcode/src",
-      "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
-            "production": {
-              "tsConfig": "projects/dfx-qrcode/tsconfig.lib.prod.json"
-            },
             "development": {
               "tsConfig": "projects/dfx-qrcode/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "projects/dfx-qrcode/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -108,132 +174,60 @@
             "tsConfig": "projects/dfx-qrcode/tsconfig.spec.json"
           }
         }
-      }
-    },
-    "dfx-bootstrap-table-demo": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
       },
-      "root": "projects/dfx-bootstrap-table-demo",
-      "sourceRoot": "projects/dfx-bootstrap-table-demo/src",
-      "prefix": "app",
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "projects/dfx-qrcode",
+      "sourceRoot": "projects/dfx-qrcode/src"
+    },
+    "dfx-qrcode-demo": {
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
-            "browser": "projects/dfx-bootstrap-table-demo/src/main.ts",
-            "tsConfig": "projects/dfx-bootstrap-table-demo/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/dfx-bootstrap-table-demo/public"
-              }
-            ],
-            "styles": ["projects/dfx-bootstrap-table-demo/src/styles.scss"],
-            "server": "projects/dfx-bootstrap-table-demo/src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "projects/dfx-bootstrap-table-demo/src/server.ts"
-            }
-          },
           "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
+            },
             "production": {
+              "baseHref": "/qrcode/",
               "budgets": [
                 {
-                  "type": "initial",
+                  "maximumError": "1MB",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "type": "initial"
                 },
                 {
-                  "type": "anyComponentStyle",
+                  "maximumError": "8kB",
                   "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "type": "anyComponentStyle"
                 }
               ],
               "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "dfx-bootstrap-table-demo:build:production"
-            },
-            "development": {
-              "buildTarget": "dfx-bootstrap-table-demo:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test"
-        }
-      }
-    },
-    "dfx-qrcode-demo": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "projects/dfx-qrcode-demo",
-      "sourceRoot": "projects/dfx-qrcode-demo/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
+          "defaultConfiguration": "production",
           "options": {
-            "browser": "projects/dfx-qrcode-demo/src/main.ts",
-            "tsConfig": "projects/dfx-qrcode-demo/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "projects/dfx-qrcode-demo/public"
               }
             ],
-            "styles": ["projects/dfx-qrcode-demo/src/styles.css"]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "baseHref": "/qrcode/",
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
+            "browser": "projects/dfx-qrcode-demo/src/main.ts",
+            "styles": ["projects/dfx-qrcode-demo/src/styles.css"],
+            "tsConfig": "projects/dfx-qrcode-demo/tsconfig.app.json"
+          }
         },
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "dfx-qrcode-demo:build:production"
-            },
             "development": {
               "buildTarget": "dfx-qrcode-demo:build:development"
+            },
+            "production": {
+              "buildTarget": "dfx-qrcode-demo:build:production"
             }
           },
           "defaultConfiguration": "development"
@@ -241,7 +235,13 @@
         "test": {
           "builder": "@angular/build:unit-test"
         }
-      }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "projects/dfx-qrcode-demo",
+      "schematics": {},
+      "sourceRoot": "projects/dfx-qrcode-demo/src"
     }
-  }
+  },
+  "version": 1
 }

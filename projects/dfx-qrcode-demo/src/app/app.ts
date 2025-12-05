@@ -89,19 +89,17 @@ export class App {
   });
 
   constructor() {
-    this.form.controls.accessibilityEnabled.valueChanges
-      .pipe(takeUntilDestroyed())
-      .subscribe((it) => {
-        if (it) {
-          this.form.controls.ariaLabel.enable();
-          this.form.controls.title.enable();
-          this.form.controls.alt.enable();
-        } else {
-          this.form.controls.ariaLabel.disable();
-          this.form.controls.title.disable();
-          this.form.controls.alt.disable();
-        }
-      });
+    this.form.controls.accessibilityEnabled.valueChanges.pipe(takeUntilDestroyed()).subscribe((it) => {
+      if (it) {
+        this.form.controls.ariaLabel.enable();
+        this.form.controls.title.enable();
+        this.form.controls.alt.enable();
+      } else {
+        this.form.controls.ariaLabel.disable();
+        this.form.controls.title.disable();
+        this.form.controls.alt.disable();
+      }
+    });
     this.form.controls.imageEnabled.valueChanges.pipe(takeUntilDestroyed()).subscribe((it) => {
       if (it) {
         this.form.controls.imageSrc.enable();

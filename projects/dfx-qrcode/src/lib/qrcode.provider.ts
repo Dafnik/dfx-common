@@ -76,9 +76,7 @@ export function withElementType(elementType: QRCodeElementType): QRCodeElementTy
   };
 }
 
-export function withErrorCorrectionLevel(
-  errorCorrectionLevel: QRCodeErrorCorrectionLevel,
-): QRCodeErrorCorrectionLevelFeature {
+export function withErrorCorrectionLevel(errorCorrectionLevel: QRCodeErrorCorrectionLevel): QRCodeErrorCorrectionLevelFeature {
   return {
     kind: QRCodeFeatureKind.ERROR_CORRECTION_LEVEL,
     providers: [

@@ -14,12 +14,7 @@ export class DfxImplodePipe implements PipeTransform {
     maxLength?: number | undefined | null,
     suffix?: string | undefined | null,
   ): string {
-    return s_imploder()
-      .source(strings)
-      .maxLength(maxLength)
-      .separator(separator)
-      .suffix(suffix)
-      .build();
+    return s_imploder().source(strings).maxLength(maxLength).separator(separator).suffix(suffix).build();
   }
 }
 
@@ -36,12 +31,7 @@ export class ImplodeMappedPipe implements PipeTransform {
     maxLength?: number | undefined | null,
     suffix?: string | undefined | null,
   ): string {
-    return s_imploder()
-      .source(strings, mapFn)
-      .maxLength(maxLength)
-      .separator(separator)
-      .suffix(suffix)
-      .build();
+    return s_imploder().source(strings, mapFn).maxLength(maxLength).separator(separator).suffix(suffix).build();
   }
 }
 

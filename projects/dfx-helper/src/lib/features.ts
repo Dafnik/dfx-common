@@ -15,10 +15,8 @@ export declare interface HelperFeature<KindT extends HelperFeatureKind> {
 
 export declare type MobileBreakpointFeature = HelperFeature<HelperFeatureKind.MOBILE_BREAKPOINT>;
 export declare type WindowFeature = HelperFeature<HelperFeatureKind.WINDOW>;
-export declare type BaseUrlInterceptorFeature =
-  HelperFeature<HelperFeatureKind.BASE_URL_INTERCEPTOR>;
-export declare type LoggingInterceptorFeature =
-  HelperFeature<HelperFeatureKind.LOGGING_INTERCEPTOR_IGNORE_PATHS>;
+export declare type BaseUrlInterceptorFeature = HelperFeature<HelperFeatureKind.BASE_URL_INTERCEPTOR>;
+export declare type LoggingInterceptorFeature = HelperFeature<HelperFeatureKind.LOGGING_INTERCEPTOR_IGNORE_PATHS>;
 export declare type PostPutJsonContentTypeInterceptorFeature =
   HelperFeature<HelperFeatureKind.POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR_IGNORE_PATHS>;
 export declare type HelperFeatures =

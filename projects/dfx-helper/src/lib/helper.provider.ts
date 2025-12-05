@@ -26,17 +26,11 @@ export function provideDfxHelper(...features: HelperFeatures[]): EnvironmentProv
 export function withMobileBreakpoint(mobileBreakpoint: number): MobileBreakpointFeature {
   return {
     kind: HelperFeatureKind.MOBILE_BREAKPOINT,
-    providers: [
-      { provide: HELPER_MOBILE_BREAKPOINT, useValue: mobileBreakpoint },
-      provideIsMobileService(),
-    ],
+    providers: [{ provide: HELPER_MOBILE_BREAKPOINT, useValue: mobileBreakpoint }, provideIsMobileService()],
   };
 }
 
-export function withBaseUrlInterceptor(
-  baseUrl: string,
-  paths: string[] = [],
-): BaseUrlInterceptorFeature {
+export function withBaseUrlInterceptor(baseUrl: string, paths: string[] = []): BaseUrlInterceptorFeature {
   return {
     kind: HelperFeatureKind.BASE_URL_INTERCEPTOR,
     providers: [
@@ -53,14 +47,10 @@ export function withLoggingInterceptor(paths: string[] = []): LoggingInterceptor
   };
 }
 
-export function withPostPutJsonContentTypeInterceptor(
-  paths: string[] = [],
-): PostPutJsonContentTypeInterceptorFeature {
+export function withPostPutJsonContentTypeInterceptor(paths: string[] = []): PostPutJsonContentTypeInterceptorFeature {
   return {
     kind: HelperFeatureKind.POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR_IGNORE_PATHS,
-    providers: [
-      { provide: HELPER_POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR_IGNORE_PATHS, useValue: paths },
-    ],
+    providers: [{ provide: HELPER_POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR_IGNORE_PATHS, useValue: paths }],
   };
 }
 export function withWindow(): WindowFeature {

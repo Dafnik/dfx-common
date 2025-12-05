@@ -1,10 +1,4 @@
-import {
-  HttpContextToken,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpContextToken, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -18,6 +12,5 @@ export abstract class AbstractIgnorableInterceptor implements HttpInterceptor {
 
   abstract intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>>;
 
-  shouldIntercept = (req: HttpRequest<unknown>): boolean =>
-    shouldIntercept(req, this.BY_PASS, this.ignorePaths);
+  shouldIntercept = (req: HttpRequest<unknown>): boolean => shouldIntercept(req, this.BY_PASS, this.ignorePaths);
 }

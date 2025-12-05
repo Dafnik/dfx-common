@@ -43,7 +43,9 @@ import {
   selector: 'qrcode',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  template: ` <div #qrcElement [class]="cssClass()"></div> `,
+  template: `
+    <div #qrcElement [class]="cssClass()"></div>
+  `,
 })
 export class QRCodeComponent {
   allowEmptyString = input(inject(QRCODE_ALLOW_EMPTY_STRING), { transform: booleanAttribute });
@@ -87,9 +89,7 @@ export class QRCodeComponent {
       let data = this.data();
       const validQrData = this.#isValidQrCodeText(data);
       if (!this.allowEmptyString() && !validQrData) {
-        console.error(
-          '[dfx-qrcode] Field `data` is empty, set \'allowEmptyString="true"\' to overwrite this behaviour.',
-        );
+        console.error('[dfx-qrcode] Field `data` is empty, set \'allowEmptyString="true"\' to overwrite this behaviour.');
         return;
       } else if (this.allowEmptyString() && !validQrData) {
         data = ' ';
@@ -113,33 +113,25 @@ export class QRCodeComponent {
             width: this.imageWidth(),
             height: this.imageHeight(),
           },
-        } as generateMatrixOptions &
-          generateOptions &
-          generateWithImageOptions &
-          generateWithAccessibleOptions;
+        } as generateMatrixOptions & generateOptions & generateWithImageOptions & generateWithAccessibleOptions;
 
         switch (this.elementType()) {
           case 'canvas': {
-            generateQrCodeCanvas$(data!, config, this.#renderer.createElement('canvas')).then(
-              (element) => {
-                this.#renderElement(viewChild, element);
-                this.qrCodeDataUrl.emit(element.toDataURL());
-              },
-            );
+            generateQrCodeCanvas$(data!, config, this.#renderer.createElement('canvas')).then((element) => {
+              this.#renderElement(viewChild, element);
+              this.qrCodeDataUrl.emit(element.toDataURL());
+            });
 
             break;
           }
 
           case 'img': {
-            generateQrCodeImage$(
-              data!,
-              config,
-              this.#renderer.createElement('canvas'),
-              this.#renderer.createElement('img'),
-            ).then(({ image, dataUrl }) => {
-              this.#renderElement(viewChild, image);
-              this.qrCodeDataUrl.emit(dataUrl);
-            });
+            generateQrCodeImage$(data!, config, this.#renderer.createElement('canvas'), this.#renderer.createElement('img')).then(
+              ({ image, dataUrl }) => {
+                this.#renderElement(viewChild, image);
+                this.qrCodeDataUrl.emit(dataUrl);
+              },
+            );
 
             break;
           }

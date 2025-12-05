@@ -15,7 +15,4 @@ export declare type QRCodeImageSrcFeature = QRCodeImageFeature<QRCodeImageFeatur
 export declare type QRCodeImageWidthFeature = QRCodeImageFeature<QRCodeImageFeatureKind.WIDTH>;
 export declare type QRCodeImageHeightFeature = QRCodeImageFeature<QRCodeImageFeatureKind.HEIGHT>;
 
-export declare type QRCodeImageFeatures =
-  | QRCodeImageSrcFeature
-  | QRCodeImageWidthFeature
-  | QRCodeImageHeightFeature;
+export declare type QRCodeImageFeatures = QRCodeImageSrcFeature | QRCodeImageWidthFeature | QRCodeImageHeightFeature;

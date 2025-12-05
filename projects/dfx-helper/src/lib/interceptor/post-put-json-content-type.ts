@@ -10,10 +10,7 @@ import { POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR } from './http-context-token';
 @Injectable()
 export class PostPutJsonContentTypeInterceptor extends AbstractIgnorableInterceptor {
   constructor() {
-    super(
-      POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR,
-      inject(HELPER_POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR_IGNORE_PATHS),
-    );
+    super(POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR, inject(HELPER_POST_PUT_JSON_CONTENT_TYPE_INTERCEPTOR_IGNORE_PATHS));
   }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -23,9 +20,7 @@ export class PostPutJsonContentTypeInterceptor extends AbstractIgnorableIntercep
 
     const method = req.method.toLowerCase();
     if (method.includes('post') || method.includes('put')) {
-      return next.handle(
-        req.clone({ headers: req.headers.set('Content-Type', 'application/json') }),
-      );
+      return next.handle(req.clone({ headers: req.headers.set('Content-Type', 'application/json') }));
     }
     return next.handle(req);
   }

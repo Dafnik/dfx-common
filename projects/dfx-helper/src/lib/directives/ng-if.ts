@@ -165,9 +165,7 @@ export class NgIf<T = unknown> {
   private _thenViewRef: EmbeddedViewRef<NgIfContext<T>> | null = null;
   private _elseViewRef: EmbeddedViewRef<NgIfContext<T>> | null = null;
 
-  private _thenTemplateRef: TemplateRef<NgIfContext<T>> | null = inject(
-    TemplateRef<NgIfContext<T>>,
-  );
+  private _thenTemplateRef: TemplateRef<NgIfContext<T>> | null = inject(TemplateRef<NgIfContext<T>>);
   private readonly _viewContainer = inject(ViewContainerRef);
 
   /**
@@ -207,10 +205,7 @@ export class NgIf<T = unknown> {
         this._viewContainer.clear();
         this._elseViewRef = null;
         if (this._thenTemplateRef) {
-          this._thenViewRef = this._viewContainer.createEmbeddedView(
-            this._thenTemplateRef,
-            this._context,
-          );
+          this._thenViewRef = this._viewContainer.createEmbeddedView(this._thenTemplateRef, this._context);
         }
       }
     } else {
@@ -218,10 +213,7 @@ export class NgIf<T = unknown> {
         this._viewContainer.clear();
         this._thenViewRef = null;
         if (this._elseTemplateRef) {
-          this._elseViewRef = this._viewContainer.createEmbeddedView(
-            this._elseTemplateRef,
-            this._context,
-          );
+          this._elseViewRef = this._viewContainer.createEmbeddedView(this._elseTemplateRef, this._context);
         }
       }
     }
@@ -246,10 +238,7 @@ export class NgIf<T = unknown> {
    * The presence of this method is a signal to the Ivy template type-check compiler that the
    * `NgIf` structural directive renders its template with a specific context type.
    */
-  static ngTemplateContextGuard<T>(
-    dir: NgIf<T>,
-    ctx: any,
-  ): ctx is NgIfContext<Exclude<T, false | 0 | '' | null | undefined>> {
+  static ngTemplateContextGuard<T>(dir: NgIf<T>, ctx: any): ctx is NgIfContext<Exclude<T, false | 0 | '' | null | undefined>> {
     return true;
   }
 }
@@ -262,14 +251,8 @@ export class NgIfContext<T = unknown> {
   public ngIf: T = null!;
 }
 
-function assertTemplate(
-  templateRef: TemplateRef<any> | null,
-  property: string | false | null,
-): void {
+function assertTemplate(templateRef: TemplateRef<any> | null, property: string | false | null): void {
   if (templateRef && !templateRef.createEmbeddedView) {
-    throw new RuntimeError(
-      2020,
-      `${property} must be a TemplateRef, but received '${stringify(templateRef)}'.`,
-    );
+    throw new RuntimeError(2020, `${property} must be a TemplateRef, but received '${stringify(templateRef)}'.`);
   }
 }

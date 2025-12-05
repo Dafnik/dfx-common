@@ -8,11 +8,7 @@ import { s_cut } from 'dfts-helper';
   pure: true,
 })
 export class DfxCutPipe implements PipeTransform {
-  transform(
-    text: string | undefined | null,
-    maxLength = 10,
-    suffix: string | undefined | null = '...',
-  ): string {
+  transform(text: string | undefined | null, maxLength = 10, suffix: string | undefined | null = '...'): string {
     return s_cut(text, maxLength, suffix);
   }
 }

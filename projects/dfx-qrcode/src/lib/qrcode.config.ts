@@ -24,12 +24,9 @@ export const QRCODE_ELEMENT_TYPE = new InjectionToken<QRCodeElementType>('QRCODE
   factory: () => 'img',
 });
 
-export const QRCODE_ERROR_CORRECTION_LEVEL = new InjectionToken<QRCodeErrorCorrectionLevel>(
-  'QRCODE_ERROR_CORRECTION_LEVEL',
-  {
-    factory: () => 'L',
-  },
-);
+export const QRCODE_ERROR_CORRECTION_LEVEL = new InjectionToken<QRCodeErrorCorrectionLevel>('QRCODE_ERROR_CORRECTION_LEVEL', {
+  factory: () => 'L',
+});
 
 export const QRCODE_MARGIN = new InjectionToken<number>('QRCODE_MARGIN', {
   factory: () => 4,
