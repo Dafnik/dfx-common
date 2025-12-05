@@ -1,0 +1,114 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "dfx-helper": {
+      "projectType": "library",
+      "root": "projects/dfx-helper",
+      "sourceRoot": "projects/dfx-helper/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dfx-helper/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dfx-helper/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/dfx-helper/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dfx-bootstrap-table": {
+      "projectType": "library",
+      "root": "projects/dfx-bootstrap-table",
+      "sourceRoot": "projects/dfx-bootstrap-table/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/dfx-bootstrap-table/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dfx-openapi": {
+      "projectType": "library",
+      "root": "projects/dfx-openapi",
+      "sourceRoot": "projects/dfx-openapi/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dfx-openapi/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dfx-openapi/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/dfx-openapi/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dfx-qrcode": {
+      "projectType": "library",
+      "root": "projects/dfx-qrcode",
+      "sourceRoot": "projects/dfx-qrcode/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dfx-qrcode/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dfx-qrcode/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/dfx-qrcode/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  }
+}

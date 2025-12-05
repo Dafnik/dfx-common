@@ -1,0 +1,65 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "paths": {
+      "dfx-bootstrap-table": [
+        "./dist/dfx-bootstrap-table"
+      ],
+      "dfx-helper": [
+        "./dist/dfx-helper"
+      ],
+      "dfx-openapi": [
+        "./dist/dfx-openapi"
+      ],
+      "dfx-qrcode": [
+        "./dist/dfx-qrcode"
+      ]
+    },
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/dfx-helper/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/dfx-helper/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dfx-bootstrap-table/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/dfx-bootstrap-table/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dfx-openapi/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/dfx-openapi/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dfx-qrcode/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/dfx-qrcode/tsconfig.spec.json"
+    }
+  ]
+}
