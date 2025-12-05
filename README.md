@@ -1,59 +1,54 @@
-# DfxCommon
+# dfx-common
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+[![combined downloads](https://img.shields.io/npm-stat/dw/dafnik?label=combined%20downloads&color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
 
-## Development server
+The collection of collections.
 
-To start a local development server, run:
+## Useful commands
 
-```bash
-ng serve
-```
+| Description  | Command              |
+| ------------ | -------------------- |
+| Prettify all | `pnpm format`        |
+| Test lib     | `ng test <LIBRARY>`  |
+| Build lib    | `ng build <LIBRARY>` |
+| Serve demo   | `ng serve <DEMO>`    |
+| Release lib  | `TODO`               |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Subprojects
 
-## Code scaffolding
+### dfx-helper
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Angular Library with tons of utility tools helping in all projects.
 
-```bash
-ng generate component component-name
-```
+[![npm version](https://img.shields.io/npm/v/dfx-helper?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-helper)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-helper?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-helper)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-helper?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-helper)
+[![npm license](https://img.shields.io/npm/l/dfx-helper?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### dfx-bootstrap-table
 
-```bash
-ng generate --help
-```
+Angular table CDK implementation for Bootstrap with filtering, sorting and pagination.
 
-## Building
+[![npm version](https://img.shields.io/npm/v/dfx-bootstrap-table?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-bootstrap-table)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-bootstrap-table?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-bootstrap-table)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-bootstrap-table?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-bootstrap-table)
+[![npm license](https://img.shields.io/npm/l/dfx-bootstrap-table?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)
 
-To build the project run:
+### dfx-qrcode
 
-```bash
-ng build
-```
+`dfx-qrcode` is a tiny and simple-to-use Angular QrCode generator library.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+[![npm version](https://img.shields.io/npm/v/dfx-qrcode?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-qrcode?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-qrcode)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-qrcode?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
+[![npm license](https://img.shields.io/npm/l/dfx-qrcode?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)
 
-## Running unit tests
+### dfx-openapi
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+`dfx-openapi` is a type-safe Angular HttpClient that pulls in your OpenAPI schema.
+It has virtually zero runtime and is fully compatible with Http Interceptors.
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[![npm version](https://img.shields.io/npm/v/dfx-openapi?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-openapi?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-openapi)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
+[![npm license](https://img.shields.io/npm/l/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)

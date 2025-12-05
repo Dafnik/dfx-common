@@ -1,64 +1,64 @@
-# DfxHelper
+# dfx-helper
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+Angular Library with tons of utility tools helping in all projects.
 
-## Code scaffolding
+[![npm version](https://img.shields.io/npm/v/dfx-helper?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-helper)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-helper?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-helper)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-helper?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-helper)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Version compatibility
 
-```bash
-ng generate component component-name
+| Angular | dfx-helper |
+| ------- | ---------- |
+| 20.x.x  | 20.x.x     |
+| 20.x.x  | 10.x.x     |
+| 19.x.x  | 9.x.x      |
+| 18.x.x  | 8.x.x      |
+| 17.x.x  | 7.x.x      |
+| 16.x.x  | 6.1.x      |
+| 15.x.x  | 6.0.x      |
+
+## Usage
+
+```shell
+npm install dfx-helper
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+_If you have not already installed [@angular/cdk](https://material.angular.io/cdk)_
 
-```bash
-ng generate --help
+```shell
+npm install @angular/cdk
 ```
 
-## Building
+### Useful classes:
 
-To build the library, run:
+- **Directives**
+  - `autofocus`
+  - `back`
+  - `hideIfOnline` & `hideIfOffline`
+  - `stop-propagation`
+- **Interceptors**
+  - `BaseUrlInterceptor`
+  - `LoggingInterceptor`
+  - `PostPutJsonContentTypeInterceptor`
+- **Pipes**
+  - `currency`
+  - `implode` & `implodeMapped`
+  - `pluck`
+  - `timeleft`
+  - `timespan`
+  - `cut`
+  - `is-email`
+  - `is-url`
+  - `lower-case-expect-first-letters`
+  - `strip-whitepsace`
+  - `truncate`
+  - `upper-case-first-letter`
+- **Services**
+  - `IsMobileService`
+- **Strategies**
+  - `DfxPreloadStrategy`
+- **Providers**
+  - `WindowProvider`
 
-```bash
-ng build dfx-helper
-```
-
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/dfx-helper
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+By [Dafnik](https://dafnik.me)
