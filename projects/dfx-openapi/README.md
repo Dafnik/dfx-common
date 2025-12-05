@@ -1,64 +1,168 @@
-# DfxOpenapi
+# dfx-openapi
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+[![npm version](https://img.shields.io/npm/v/dfx-openapi?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-openapi?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-openapi)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
 
-## Code scaffolding
+`dfx-openapi` is a type-safe Angular HttpClient that pulls in your OpenAPI schema.
+It has virtually zero runtime and is fully compatible with Http interceptors.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The syntax is inspired by openapi-fetch.
 
-```bash
-ng generate component component-name
+```typescript
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+
+import { createOpenAPIHttpClient } from 'dfx-openapi';
+
+import type { paths } from './my-openapi-3-schema';
+
+export function injectAPI() {
+  const httpClient = inject(HttpClient);
+
+  return createOpenAPIHttpClient<paths>(httpClient, { baseUrl: 'https://myapi.dev/v1/' });
+}
+
+@Injectable()
+export class YourService {
+  private api = injectAPI();
+
+  // Return type (Oberservable<ItemResponse>) gets inferred
+  getItem(itemId: string) {
+    return this.api.get('/items/{item_id}', {
+      params: {
+        path: {
+          item_id: '1234',
+        },
+      },
+    });
+  }
+
+  // Return type (Oberservable<ItemResponse>) gets inferred
+  updateItem(id: string, name: string) {
+    return this.api.put('/items', {
+      body: {
+        // Body is type-safe
+        id,
+        name,
+      },
+    });
+  }
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+`get()`, `put()`, `post()`, etc. are thin wrappers around the [Angular HttpClient](https://angular.dev/guide/http/setup#).
 
-```bash
-ng generate --help
+Notice there are no generics, and no manual typing.
+Your endpoint’s request and response were inferred automatically.
+This is a huge improvement in the type safety of your endpoints because every manual assertion could lead to a bug!
+This eliminates all of the following:
+
+- ✅ No typos in URLs or params
+- ✅ All parameters, request bodies, and responses are type-checked and 100% match your schema
+- ✅ No manual typing of your API
+- ✅ Eliminates any types that hide bugs
+- ✅ Also eliminates as type overrides that can also hide bugs
+
+### Version compatibility
+
+| Angular | dfx-openapi | openapi-typescript-helpers |
+| ------- | ----------- | -------------------------- |
+| 20.x.x  | 20.x.x      | \>=0.0.15                  |
+| 20.x.x  | 1.x.x       | \>=0.0.15                  |
+| 19.x.x  | 0.1.0       | \>=0.0.15                  |
+| 18.x.x  | 0.0.3       | \>=0.0.15                  |
+| 18.x.x  | 0.0.2       | 0.0.13                     |
+
+## Setup
+
+Install this library along with [openapi-typescript](https://openapi-ts.dev/introduction):
+
+```shell
+npm i dfx-openapi
+npm i -D openapi-typescript
 ```
 
-## Building
+> **Highly recommended**
+>
+> Enable [noUncheckedIndexedAccess](https://www.typescriptlang.org/tsconfig/#noUncheckedIndexedAccess) in your `tsconfig.json` ([docs](https://openapi-ts.dev/advanced#enable-nouncheckedindexedaccess-in-tsconfig))
 
-To build the library, run:
+Next, generate TypeScript types from your OpenAPI schema using [openapi-typescript](https://openapi-ts.dev/):
 
-```bash
-ng build dfx-openapi
+```shell
+npx openapi-typescript ./path/to/api/v1.yaml -o ./src/app/api/v1.d.ts
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Basic usage
 
-### Publishing the Library
+The best part about using `dfx-openapi` over oldschool codegen is no documentation needed.
+`dfx-openapi` encourages using your existing OpenAPI documentation rather than trying to find what function to import, or what parameters that function wants:
 
-Once the project is built, you can publish your library by following these steps:
+```typescript
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 
-1. Navigate to the `dist` directory:
+import { createOpenAPIHttpClient } from 'dfx-openapi';
 
-   ```bash
-   cd dist/dfx-openapi
-   ```
+import type { paths } from './my-openapi-3-schema';
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+export function injectAPI() {
+  const httpClient = inject(HttpClient);
 
-## Running unit tests
+  return createOpenAPIHttpClient<paths>(httpClient, { baseUrl: 'https://myapi.dev/v1/' });
+}
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+@Injectable()
+export class YourService {
+  private api = injectAPI();
 
-```bash
-ng test
+  // Return type (Oberservable<ItemResponse>) gets inferred
+  getItem(itemId: string) {
+    return this.api.get('/items/{item_id}', {
+      params: {
+        path: {
+          item_id: '1234',
+        },
+      },
+    });
+  }
+
+  // Return type (Oberservable<ItemResponse>) gets inferred
+  updateItem(id: string, name: string) {
+    return this.api.put('/items', {
+      body: {
+        // Body is type-safe
+        id,
+        name,
+      },
+    });
+  }
+}
 ```
 
-## Running end-to-end tests
+1. The HTTP method is pulled directly from `createOpenAPIHttpClient()`
+2. You pass in your desired path to `get()`, `put()`, etc.
+3. TypeScript takes over the rest and returns helpful errors for anything missing or invalid
 
-For end-to-end (e2e) testing, run:
+## Pathname
 
-```bash
-ng e2e
-```
+The pathname of `get()`, `put()`, `post()`, etc. must match your schema literally.
+Note in the example, the URL is `/items/{item_id}`.
+This library will quickly replace all `path` params for you (so they can be typechecked).
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+> **TIP**
+>
+> dfx-openapi infers types from the URL.
+> Prefer static string values over dynamic runtime values, e.g.:
+>
+> - ✅ `"/items/{item_id}"`
+> - ❌ `[...pathParts].join("/") + "{item_id}"`
 
-## Additional Resources
+This library also supports the label and matrix serialization styles as well ([docs](https://swagger.io/docs/specification/v3_0/serialization/#path)) automatically.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Request
+
+The `get()` request shown needed the `params` object that groups [parameters by type](https://spec.openapis.org/oas/latest.html#parameter-object) (`path` or `query`).
+If a required param is missing, or the wrong type, a type error will be thrown.
+
+The `post()` and `put()` request required a `body` object that provided all necessary requestBody data.

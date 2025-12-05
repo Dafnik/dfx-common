@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QRCodeComponent } from './qrcode.component';
 import { provideQRCode, withAllowEmptyString } from './qrcode.provider';
@@ -7,12 +7,12 @@ describe('dfx-qrcode', () => {
   let component: QRCodeComponent;
   let fixture: ComponentFixture<QRCodeComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [QRCodeComponent],
       providers: [provideQRCode(withAllowEmptyString(true))],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QRCodeComponent);

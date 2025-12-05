@@ -1,5 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "assets": ["./*.md", "./LICENSE"],
   "dest": "../../dist/dfx-openapi",
   "lib": {
     "entryFile": "src/public-api.ts"
