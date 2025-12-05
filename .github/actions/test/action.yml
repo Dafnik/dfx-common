@@ -1,0 +1,26 @@
+name: 'Tests Angular package'
+description: 'Tests Angular package'
+
+inputs:
+  library:
+    required: true
+    description: Library
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v5
+
+    - name: setup node and pnpm
+      uses: dafnik/setup-node-pnpm@v4
+      with:
+        install-ignore-scripts: true
+
+    - name: test ${{ inputs.library }}
+      shell: bash
+      run: ng test ${{ inputs.library }} --coverage --coverage-reporters=cobertura
+
+    - name: setup coverage report
+      uses: ./.github/actions/setup-coverage-report
+      with:
+        path: coverage/${{ inputs.library }}/cobertura-coverage.xml

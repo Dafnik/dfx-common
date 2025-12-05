@@ -199,12 +199,7 @@
                 "input": "projects/dfx-qrcode-demo/public"
               }
             ],
-            "styles": ["projects/dfx-qrcode-demo/src/styles.css"],
-            "server": "projects/dfx-qrcode-demo/src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "projects/dfx-qrcode-demo/src/server.ts"
-            }
+            "styles": ["projects/dfx-qrcode-demo/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -220,6 +215,7 @@
                   "maximumError": "8kB"
                 }
               ],
+              "baseHref": "/qrcode/",
               "outputHashing": "all"
             },
             "development": {
