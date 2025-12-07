@@ -39,7 +39,7 @@ jobs:
           zip -r "dfx-openapi.zip" ./dfx-openapi
           cd -
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         name: create dfx-openapi artifact
         with:
           name: dfx-openapi
@@ -55,7 +55,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: dfx-openapi
           path: ./dist
@@ -101,7 +101,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           node-version: '24'
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: dfx-openapi
           path: ./dist
