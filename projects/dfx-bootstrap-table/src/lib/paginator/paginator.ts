@@ -29,7 +29,7 @@ const DEFAULT_PAGE_SIZE = 50;
  * Change event object that is emitted when the user selects a
  * different page size or navigates to another page.
  */
-export type PageEvent = {
+export interface PageEvent {
   /** The current page index. */
   pageIndex: number;
 
@@ -41,7 +41,7 @@ export type PageEvent = {
 
   /** The current total number of items being paged. */
   length: number;
-};
+}
 
 /** Object that can be used to configure the default options for the paginator module. */
 export interface NgbPaginatorDefaultOptions {

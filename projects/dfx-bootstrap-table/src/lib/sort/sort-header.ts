@@ -26,6 +26,7 @@ import {
 
 import { Subscription, merge } from 'rxjs';
 
+import { ngbSortHeaderColumnDef } from '../table/cell';
 import { NGB_SORT_DEFAULT_OPTIONS, NgbSort, NgbSortDefaultOptions, NgbSortable, SortHeaderArrowPosition } from './sort';
 import { SortDirection } from './sort-direction';
 import { getSortHeaderNotContainedWithinSortError } from './sort-errors';
@@ -62,7 +63,7 @@ interface NgbSortHeaderColumnDef {
 })
 export class NgbSortHeader implements NgbSortable, OnDestroy, OnInit, AfterViewInit {
   _sort = inject(NgbSort, { optional: true })!;
-  _columnDef = inject<NgbSortHeaderColumnDef>('NGB_SORT_HEADER_COLUMN_DEF' as any, {
+  _columnDef = inject<NgbSortHeaderColumnDef>(ngbSortHeaderColumnDef, {
     optional: true,
   });
   private _changeDetectorRef = inject(ChangeDetectorRef);

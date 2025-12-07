@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 describe('test-api-path placeholder', () => {
   it('placeholder', () => {
     expect(true).toBeTruthy();

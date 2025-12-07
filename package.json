@@ -7,7 +7,8 @@
     "build:playground": "pnpm -C projects/playground build",
     "preview:playground": "pnpm -C projects/playground preview",
     "format:check": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --check .",
-    "format": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --write ."
+    "format": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --write .",
+    "lint": "ng lint dfx-bootstrap-table && ng lint dfx-helper && ng lint dfx-openapi && ng lint dfx-qrcode"
   },
   "private": true,
   "dependencies": {
@@ -30,14 +31,18 @@
   },
   "packageManager": "pnpm@10.24.0",
   "devDependencies": {
+    "@angular-eslint/builder": "21.0.1",
     "@angular/build": "21.0.2",
     "@angular/cli": "21.0.2",
     "@angular/compiler-cli": "21.0.3",
+    "@eslint/js": "9.39.1",
     "@tailwindcss/postcss": "4.1.17",
     "@trivago/prettier-plugin-sort-imports": "6.0.0",
     "@types/express": "5.0.6",
     "@types/node": "24.10.1",
     "@vitest/coverage-v8": "4.0.15",
+    "angular-eslint": "21.0.1",
+    "eslint": "9.39.1",
     "jsdom": "27.2.0",
     "ng-packagr": "21.0.0",
     "postcss": "8.5.6",
@@ -47,6 +52,7 @@
     "prettier-plugin-tailwindcss": "0.7.2",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
+    "typescript-eslint": "8.46.4",
     "vitest": "4.0.15",
     "vitest-canvas-mock": "1.1.3"
   }

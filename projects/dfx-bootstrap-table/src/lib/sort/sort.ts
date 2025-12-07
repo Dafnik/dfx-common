@@ -9,15 +9,14 @@
 import {
   Directive,
   EventEmitter,
-  Inject,
   InjectionToken,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  Optional,
   Output,
   booleanAttribute,
+  inject,
 } from '@angular/core';
 
 import { Observable, ReplaySubject, Subject } from 'rxjs';
@@ -80,7 +79,7 @@ export class NgbSort implements OnChanges, OnDestroy, OnInit {
 
   /**
    * The direction to set when an NgbSortable is initially sorted.
-   * May be overriden by the NgbSortable's sort start.
+   * May be overridden by the NgbSortable's sort start.
    */
   @Input('ngbSortStart') start: SortDirection = 'asc';
 
@@ -99,7 +98,7 @@ export class NgbSort implements OnChanges, OnDestroy, OnInit {
 
   /**
    * Whether to disable the user from clearing the sort by finishing the sort direction cycle.
-   * May be overriden by the NgbSortable's disable clear input.
+   * May be overridden by the NgbSortable's disable clear input.
    */
   @Input({ alias: 'ngbSortDisableClear', transform: booleanAttribute })
   disableClear = false;
@@ -114,11 +113,7 @@ export class NgbSort implements OnChanges, OnDestroy, OnInit {
   /** Emits when the paginator is initialized. */
   initialized: Observable<void> = this._initializedStream;
 
-  constructor(
-    @Optional()
-    @Inject(NGB_SORT_DEFAULT_OPTIONS)
-    private _defaultOptions?: NgbSortDefaultOptions,
-  ) {}
+  private _defaultOptions: NgbSortDefaultOptions | null = inject(NGB_SORT_DEFAULT_OPTIONS, { optional: true });
 
   /**
    * Register function to be used by the contained NgbSortables. Adds the NgbSortable to the

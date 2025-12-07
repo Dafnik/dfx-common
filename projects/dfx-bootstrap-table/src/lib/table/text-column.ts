@@ -38,7 +38,6 @@ import { NgbCell, NgbCellDef, NgbColumnDef, NgbHeaderCell, NgbHeaderCellDef } fr
   // the bindings in this template will be evaluated _after_ the table's view is evaluated, which
   // mean's the template in the table's view will not have the updated value (and in fact will cause
   // an ExpressionChangedAfterItHasBeenCheckedError).
-  // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   imports: [NgbColumnDef, NgbHeaderCellDef, NgbHeaderCell, NgbCellDef, NgbCell],
 })

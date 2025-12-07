@@ -8,7 +8,7 @@
  *   the resource re-fetches.
  * - Supports per-resource httpResource options via `http` field.
  */
-import { HttpClient, HttpResourceOptions, HttpResourceRef, HttpResourceRequest, httpResource } from '@angular/common/http';
+import { HttpResourceOptions, HttpResourceRef, HttpResourceRequest, httpResource } from '@angular/common/http';
 import { Injector, inject } from '@angular/core';
 
 import type { FilterKeys, HttpMethod, MediaType, PathsWithMethod, RequiredKeysOf } from 'openapi-typescript-helpers';

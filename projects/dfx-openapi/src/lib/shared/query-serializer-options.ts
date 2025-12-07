@@ -1,5 +1,5 @@
 /** @see https://swagger.io/docs/specification/serialization/#query */
-export type QuerySerializerOptions = {
+export interface QuerySerializerOptions {
   /** Set serialization for arrays. @see https://swagger.io/docs/specification/serialization/#query */
   array?: {
     /** default: "form" */
@@ -22,4 +22,4 @@ export type QuerySerializerOptions = {
    * @see https://swagger.io/docs/specification/serialization/#query
    */
   allowReserved?: boolean;
-};
+}

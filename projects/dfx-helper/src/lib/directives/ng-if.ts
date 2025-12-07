@@ -238,6 +238,7 @@ export class NgIf<T = unknown> {
    * The presence of this method is a signal to the Ivy template type-check compiler that the
    * `NgIf` structural directive renders its template with a specific context type.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static ngTemplateContextGuard<T>(dir: NgIf<T>, ctx: any): ctx is NgIfContext<Exclude<T, false | 0 | '' | null | undefined>> {
     return true;
   }
@@ -251,6 +252,7 @@ export class NgIfContext<T = unknown> {
   public ngIf: T = null!;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assertTemplate(templateRef: TemplateRef<any> | null, property: string | false | null): void {
   if (templateRef && !templateRef.createEmbeddedView) {
     throw new RuntimeError(2020, `${property} must be a TemplateRef, but received '${stringify(templateRef)}'.`);

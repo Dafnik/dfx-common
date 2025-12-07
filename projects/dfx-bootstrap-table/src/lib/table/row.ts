@@ -75,7 +75,6 @@ export class NgbRowDef<T> extends CdkRowDef<T> {}
     role: 'row',
   },
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbHeaderRow',
@@ -92,7 +91,6 @@ export class NgbHeaderRow extends CdkHeaderRow {}
     role: 'row',
   },
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbFooterRow',
@@ -109,7 +107,6 @@ export class NgbFooterRow extends CdkFooterRow {}
     role: 'row',
   },
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbRow',

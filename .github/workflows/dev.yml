@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
 
       - uses: dafnik/setup-node-pnpm@v4
         with:
@@ -26,6 +24,18 @@ jobs:
 
       - name: Style check
         run: pnpm format:check
+
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: dafnik/setup-node-pnpm@v4
+        with:
+          install-ignore-scripts: true
+
+      - name: Style check
+        run: pnpm lint
 
   commitlint:
     name: Commitlint Check

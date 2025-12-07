@@ -16,7 +16,7 @@ import {
   CdkHeaderCellDef,
   CdkTable,
 } from '@angular/cdk/table';
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, HostBinding, InjectionToken, Input } from '@angular/core';
 
 /**
  * Cell definition for the ngb-table.
@@ -67,6 +67,8 @@ export class NgbFooterCellDef extends CdkFooterCellDef {
   whiteSpace = 'nowrap';
 }
 
+export const ngbSortHeaderColumnDef = new InjectionToken('NGB_SORT_HEADER_COLUMN_DEF');
+
 /**
  * Column definition for the ngb-table.
  * Defines a set of cells available for a table column.
@@ -75,7 +77,7 @@ export class NgbFooterCellDef extends CdkFooterCellDef {
   selector: '[ngbColumnDef]',
   providers: [
     { provide: CdkColumnDef, useExisting: NgbColumnDef },
-    { provide: 'NGB_SORT_HEADER_COLUMN_DEF', useExisting: NgbColumnDef },
+    { provide: ngbSortHeaderColumnDef, useExisting: NgbColumnDef },
   ],
   standalone: true,
 })

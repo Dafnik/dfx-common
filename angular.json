@@ -19,6 +19,13 @@
           },
           "defaultConfiguration": "production"
         },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "projects/dfx-bootstrap-table/eslint.config.js",
+            "lintFilePatterns": ["projects/dfx-bootstrap-table/**/*.ts", "projects/dfx-bootstrap-table/**/*.html"]
+          }
+        },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
@@ -116,6 +123,13 @@
           },
           "defaultConfiguration": "production"
         },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "projects/dfx-helper/eslint.config.js",
+            "lintFilePatterns": ["projects/dfx-helper/**/*.ts", "projects/dfx-helper/**/*.html"]
+          }
+        },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
@@ -142,6 +156,13 @@
           },
           "defaultConfiguration": "production"
         },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "projects/dfx-openapi/eslint.config.js",
+            "lintFilePatterns": ["projects/dfx-openapi/**/*.ts", "projects/dfx-openapi/**/*.html"]
+          }
+        },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
@@ -167,6 +188,13 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "projects/dfx-qrcode/eslint.config.js",
+            "lintFilePatterns": ["projects/dfx-qrcode/**/*.ts", "projects/dfx-qrcode/**/*.html"]
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test",
