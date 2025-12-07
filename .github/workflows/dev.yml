@@ -34,7 +34,7 @@ jobs:
         with:
           install-ignore-scripts: true
 
-      - name: Style check
+      - name: ESLint
         run: pnpm lint
 
   commitlint:
@@ -47,7 +47,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run commitlint
+      - name: Commit lint
         uses: dafnik/commitlint@v1
 
   # JOB to run change detection
