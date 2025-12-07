@@ -39,7 +39,7 @@ jobs:
           zip -r "dfx-bootstrap-table.zip" ./dfx-bootstrap-table
           cd -
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         name: create dfx-bootstrap-table artifact
         with:
           name: dfx-bootstrap-table
@@ -55,7 +55,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: dfx-bootstrap-table
           path: ./dist
@@ -101,7 +101,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           node-version: '24'
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: dfx-bootstrap-table
           path: ./dist
