@@ -76,8 +76,8 @@ jobs:
               - '{package,nx,migrations,tsconfig.base}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
-            dfx-bootstrap-icons:
-              - 'libs/dfx-bootstrap-icons/**'
+            dfx-bootstrap-table:
+              - 'libs/dfx-bootstrap-table/**'
               - '{package,nx,migrations,tsconfig.base}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
