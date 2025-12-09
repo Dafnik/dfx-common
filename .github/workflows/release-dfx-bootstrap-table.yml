@@ -14,6 +14,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v6
       - name: test
         uses: ./.github/actions/test
         with:
@@ -31,7 +32,7 @@ jobs:
           install: true
 
       - name: build dfx-bootstrap-table
-        run: nx build dfx-bootstrap-table
+        run: pnpm ng build dfx-bootstrap-table
 
       - name: zip dfx-bootstrap-table
         run: |

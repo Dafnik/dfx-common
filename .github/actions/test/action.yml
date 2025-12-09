@@ -18,7 +18,7 @@ runs:
 
     - name: test ${{ inputs.library }}
       shell: bash
-      run: ng test ${{ inputs.library }} --coverage --coverage-reporters=cobertura
+      run: pnpm ng test ${{ inputs.library }} --coverage --coverage-reporters=cobertura
 
     - name: setup coverage report
       uses: ./.github/actions/setup-coverage-report

@@ -97,6 +97,7 @@ jobs:
       matrix:
         lib: ${{ fromJSON(needs.changes.outputs.libs) }}
     steps:
+      - uses: actions/checkout@v6
       - name: test
         uses: ./.github/actions/test
         with:
@@ -119,7 +120,7 @@ jobs:
           install-ignore-scripts: true
 
       - name: build ${{ matrix.lib }}
-        run: ng build ${{ matrix.lib }}
+        run: pnpm ng build ${{ matrix.lib }}
 
       - uses: actions/upload-artifact@v5
         name: create ${{ matrix.lib }} artifact
