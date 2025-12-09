@@ -121,17 +121,11 @@ jobs:
       - name: build ${{ matrix.lib }}
         run: ng build ${{ matrix.lib }}
 
-      - name: zip ${{ matrix.lib }}
-        run: |
-          cd ./dist/
-          zip -r "${{ matrix.lib }}.zip" ./${{ matrix.lib }}
-          cd -
-
       - uses: actions/upload-artifact@v5
         name: create ${{ matrix.lib }} artifact
         with:
           name: ${{ matrix.lib }}
-          path: ./dist/libs/${{ matrix.lib }}.zip
+          path: ./dist/libs/${{ matrix.lib }}/
           retention-days: 1
 
   build-playground:
