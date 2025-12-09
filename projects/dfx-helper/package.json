@@ -1,12 +1,54 @@
 {
   "name": "dfx-helper",
-  "version": "0.0.1",
+  "version": "20.1.0",
+  "description": "Web-development / Typescript / Angular Library with tons of utility tools helping in all projects",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/dafnik/dfx-common",
+  "keywords": [
+    "angular2",
+    "angular",
+    "typescript",
+    "helper",
+    "tools"
+  ],
+  "author": {
+    "name": "Dafnik",
+    "email": "contact@dafnik.me",
+    "url": "https://dafnik.me"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Dafnik"
+    },
+    {
+      "type": "liberapay",
+      "url": "https://liberapay.com/Dafnik"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Dafnik/dfx-common/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Dafnik/dfx-common.git",
+    "directory": "projects/dfx-helper"
+  },
   "peerDependencies": {
-    "@angular/common": "^21.0.0",
-    "@angular/core": "^21.0.0"
+    "@angular/common": "21",
+    "@angular/core": "21",
+    "@angular/cdk": "21",
+    "@angular/router": "21",
+    "@angular/platform-browser": "21",
+    "rxjs": "7",
+    "dfts-helper": "2"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2"
   },
-  "sideEffects": false
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
 }
