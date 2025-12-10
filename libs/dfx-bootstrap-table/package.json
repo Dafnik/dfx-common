@@ -1,22 +1,30 @@
 {
-  "name": "dfx-openapi",
+  "name": "dfx-bootstrap-table",
   "version": "20.1.0",
-  "description": "dfx-openapi is a type-safe Angular HttpClient that pulls in your OpenAPI schema. It has virtually zero runtime and is fully compatible with Http Interceptors.",
+  "description": "Angular table CDK implementation for Bootstrap with filtering, sorting and pagination.",
   "private": false,
-  "license": "MIT",
-  "homepage": "https://github.com/dafnik/dfx-common",
   "sideEffects": false,
+  "license": "MIT",
+  "homepage": "https://playground.dafnik.me/bootstrap-table/all",
   "keywords": [
+    "table",
+    "angular",
+    "bootstrap",
+    "angular2",
+    "typescript",
     "ng",
     "ngx",
-    "angular2",
-    "angular",
-    "typescript",
-    "openapi",
-    "api",
-    "codegen",
-    "nocodegen",
-    "typesafe"
+    "ng-bootstrap",
+    "ngx-bootstrap",
+    "ng-bootstrap-table",
+    "ngx-bootstrap-table",
+    "cdk",
+    "filter",
+    "filtering",
+    "ordering",
+    "order",
+    "pagination",
+    "paginator"
   ],
   "author": {
     "name": "Dafnik",
@@ -39,12 +47,18 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:Dafnik/dfx-common.git",
-    "directory": "projects/dfx-openapi"
+    "directory": "libs/dfx-boostrap-table"
   },
   "peerDependencies": {
     "@angular/common": "21",
-    "rxjs": "7",
-    "openapi-typescript-helpers": ">=0.0.15"
+    "@angular/core": "21",
+    "@angular/cdk": "21",
+    "@angular/forms": "21",
+    "bootstrap": "5",
+    "rxjs": "7"
+  },
+  "dependencies": {
+    "tslib": "^2"
   },
   "publishConfig": {
     "access": "public",

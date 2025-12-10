@@ -33,7 +33,7 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:Dafnik/dfx-common.git",
-    "directory": "projects/dfx-helper"
+    "directory": "libs/dfx-helper"
   },
   "peerDependencies": {
     "@angular/common": "21",

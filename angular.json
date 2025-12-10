@@ -3,7 +3,7 @@
   "cli": {
     "packageManager": "pnpm"
   },
-  "newProjectRoot": "projects",
+  "newProjectRoot": "libs",
   "projects": {
     "dfx-bootstrap-table": {
       "architect": {
@@ -11,10 +11,10 @@
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "development": {
-              "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.json"
+              "tsConfig": "libs/dfx-bootstrap-table/tsconfig.lib.json"
             },
             "production": {
-              "tsConfig": "projects/dfx-bootstrap-table/tsconfig.lib.prod.json"
+              "tsConfig": "libs/dfx-bootstrap-table/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -22,21 +22,21 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "eslintConfig": "projects/dfx-bootstrap-table/eslint.config.js",
-            "lintFilePatterns": ["projects/dfx-bootstrap-table/**/*.ts", "projects/dfx-bootstrap-table/**/*.html"]
+            "eslintConfig": "libs/dfx-bootstrap-table/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-bootstrap-table/**/*.ts", "libs/dfx-bootstrap-table/**/*.html"]
           }
         },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/dfx-bootstrap-table/tsconfig.spec.json"
+            "tsConfig": "libs/dfx-bootstrap-table/tsconfig.spec.json"
           }
         }
       },
       "prefix": "lib",
       "projectType": "library",
-      "root": "projects/dfx-bootstrap-table",
-      "sourceRoot": "projects/dfx-bootstrap-table/src"
+      "root": "libs/dfx-bootstrap-table",
+      "sourceRoot": "libs/dfx-bootstrap-table/src"
     },
     "dfx-bootstrap-table-demo": {
       "architect": {
@@ -69,18 +69,18 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/dfx-bootstrap-table-demo/public"
+                "input": "libs/dfx-bootstrap-table-demo/public"
               }
             ],
-            "browser": "projects/dfx-bootstrap-table-demo/src/main.ts",
+            "browser": "libs/dfx-bootstrap-table-demo/src/main.ts",
             "inlineStyleLanguage": "scss",
             "outputMode": "server",
-            "server": "projects/dfx-bootstrap-table-demo/src/main.server.ts",
+            "server": "libs/dfx-bootstrap-table-demo/src/main.server.ts",
             "ssr": {
-              "entry": "projects/dfx-bootstrap-table-demo/src/server.ts"
+              "entry": "libs/dfx-bootstrap-table-demo/src/server.ts"
             },
-            "styles": ["projects/dfx-bootstrap-table-demo/src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
-            "tsConfig": "projects/dfx-bootstrap-table-demo/tsconfig.app.json"
+            "styles": ["libs/dfx-bootstrap-table-demo/src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
+            "tsConfig": "libs/dfx-bootstrap-table-demo/tsconfig.app.json"
           }
         },
         "serve": {
@@ -101,13 +101,13 @@
       },
       "prefix": "app",
       "projectType": "application",
-      "root": "projects/dfx-bootstrap-table-demo",
+      "root": "libs/dfx-bootstrap-table-demo",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "sourceRoot": "projects/dfx-bootstrap-table-demo/src"
+      "sourceRoot": "libs/dfx-bootstrap-table-demo/src"
     },
     "dfx-helper": {
       "architect": {
@@ -115,10 +115,10 @@
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "development": {
-              "tsConfig": "projects/dfx-helper/tsconfig.lib.json"
+              "tsConfig": "libs/dfx-helper/tsconfig.lib.json"
             },
             "production": {
-              "tsConfig": "projects/dfx-helper/tsconfig.lib.prod.json"
+              "tsConfig": "libs/dfx-helper/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -126,21 +126,21 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "eslintConfig": "projects/dfx-helper/eslint.config.js",
-            "lintFilePatterns": ["projects/dfx-helper/**/*.ts", "projects/dfx-helper/**/*.html"]
+            "eslintConfig": "libs/dfx-helper/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-helper/**/*.ts", "libs/dfx-helper/**/*.html"]
           }
         },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/dfx-helper/tsconfig.spec.json"
+            "tsConfig": "libs/dfx-helper/tsconfig.spec.json"
           }
         }
       },
       "prefix": "lib",
       "projectType": "library",
-      "root": "projects/dfx-helper",
-      "sourceRoot": "projects/dfx-helper/src"
+      "root": "libs/dfx-helper",
+      "sourceRoot": "libs/dfx-helper/src"
     },
     "dfx-openapi": {
       "architect": {
@@ -148,10 +148,10 @@
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "development": {
-              "tsConfig": "projects/dfx-openapi/tsconfig.lib.json"
+              "tsConfig": "libs/dfx-openapi/tsconfig.lib.json"
             },
             "production": {
-              "tsConfig": "projects/dfx-openapi/tsconfig.lib.prod.json"
+              "tsConfig": "libs/dfx-openapi/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -159,21 +159,21 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "eslintConfig": "projects/dfx-openapi/eslint.config.js",
-            "lintFilePatterns": ["projects/dfx-openapi/**/*.ts", "projects/dfx-openapi/**/*.html"]
+            "eslintConfig": "libs/dfx-openapi/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-openapi/**/*.ts", "libs/dfx-openapi/**/*.html"]
           }
         },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/dfx-openapi/tsconfig.spec.json"
+            "tsConfig": "libs/dfx-openapi/tsconfig.spec.json"
           }
         }
       },
       "prefix": "lib",
       "projectType": "library",
-      "root": "projects/dfx-openapi",
-      "sourceRoot": "projects/dfx-openapi/src"
+      "root": "libs/dfx-openapi",
+      "sourceRoot": "libs/dfx-openapi/src"
     },
     "dfx-qrcode": {
       "architect": {
@@ -181,10 +181,10 @@
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "development": {
-              "tsConfig": "projects/dfx-qrcode/tsconfig.lib.json"
+              "tsConfig": "libs/dfx-qrcode/tsconfig.lib.json"
             },
             "production": {
-              "tsConfig": "projects/dfx-qrcode/tsconfig.lib.prod.json"
+              "tsConfig": "libs/dfx-qrcode/tsconfig.lib.prod.json"
             }
           },
           "defaultConfiguration": "production"
@@ -192,22 +192,22 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "eslintConfig": "projects/dfx-qrcode/eslint.config.js",
-            "lintFilePatterns": ["projects/dfx-qrcode/**/*.ts", "projects/dfx-qrcode/**/*.html"]
+            "eslintConfig": "libs/dfx-qrcode/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-qrcode/**/*.ts", "libs/dfx-qrcode/**/*.html"]
           }
         },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "runnerConfig": "projects/dfx-qrcode/vitest.config.ts",
-            "tsConfig": "projects/dfx-qrcode/tsconfig.spec.json"
+            "runnerConfig": "libs/dfx-qrcode/vitest.config.ts",
+            "tsConfig": "libs/dfx-qrcode/tsconfig.spec.json"
           }
         }
       },
       "prefix": "lib",
       "projectType": "library",
-      "root": "projects/dfx-qrcode",
-      "sourceRoot": "projects/dfx-qrcode/src"
+      "root": "libs/dfx-qrcode",
+      "sourceRoot": "libs/dfx-qrcode/src"
     },
     "dfx-qrcode-demo": {
       "architect": {
@@ -241,12 +241,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/dfx-qrcode-demo/public"
+                "input": "libs/dfx-qrcode-demo/public"
               }
             ],
-            "browser": "projects/dfx-qrcode-demo/src/main.ts",
-            "styles": ["projects/dfx-qrcode-demo/src/styles.css"],
-            "tsConfig": "projects/dfx-qrcode-demo/tsconfig.app.json"
+            "browser": "libs/dfx-qrcode-demo/src/main.ts",
+            "styles": ["libs/dfx-qrcode-demo/src/styles.css"],
+            "tsConfig": "libs/dfx-qrcode-demo/tsconfig.app.json"
           }
         },
         "serve": {
@@ -267,9 +267,9 @@
       },
       "prefix": "app",
       "projectType": "application",
-      "root": "projects/dfx-qrcode-demo",
+      "root": "libs/dfx-qrcode-demo",
       "schematics": {},
-      "sourceRoot": "projects/dfx-qrcode-demo/src"
+      "sourceRoot": "libs/dfx-qrcode-demo/src"
     }
   },
   "version": 1

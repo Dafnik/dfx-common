@@ -64,7 +64,7 @@ jobs:
       - name: get dfx-helper version
         id: get-version
         shell: bash
-        run: echo "VERSION=$(node -p "require('./projects/dfx-helper/package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(node -p "require('./libs/dfx-helper/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: set to versioned zip dfx-helper-v${{ steps.get-version.outputs.VERSION }}.zip
         shell: bash

@@ -64,7 +64,7 @@ jobs:
       - name: get dfx-qrcode version
         id: get-version
         shell: bash
-        run: echo "VERSION=$(node -p "require('./projects/dfx-qrcode/package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(node -p "require('./libs/dfx-qrcode/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: set to versioned zip dfx-qrcode-v${{ steps.get-version.outputs.VERSION }}.zip
         shell: bash
@@ -81,7 +81,7 @@ jobs:
 
       - name: get only latest changelog
         run: |
-          ./tools/scripts/extractLatestVersionChangelog.sh ./projects/dfx-qrcode/CHANGELOG.md
+          ./tools/scripts/extractLatestVersionChangelog.sh ./libs/dfx-qrcode/CHANGELOG.md
           cat RELEASE_CHANGELOG.md
 
       - name: create dfx-qrcode-v${{ steps.get-version.outputs.VERSION }} release

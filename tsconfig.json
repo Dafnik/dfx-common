@@ -18,10 +18,10 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "dfx-bootstrap-table": ["./projects/dfx-bootstrap-table/src/public-api.ts"],
-      "dfx-helper": ["./projects/dfx-helper/src/public-api.ts"],
-      "dfx-openapi": ["./projects/dfx-openapi/src/public-api.ts"],
-      "dfx-qrcode": ["./projects/dfx-qrcode/src/public-api.ts"]
+      "dfx-bootstrap-table": ["./libs/dfx-bootstrap-table/src/public-api.ts"],
+      "dfx-helper": ["./libs/dfx-helper/src/public-api.ts"],
+      "dfx-openapi": ["./libs/dfx-openapi/src/public-api.ts"],
+      "dfx-qrcode": ["./libs/dfx-qrcode/src/public-api.ts"]
     },
     "skipLibCheck": true,
     "strict": true,
@@ -30,40 +30,40 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/dfx-helper/tsconfig.lib.json"
+      "path": "./libs/dfx-helper/tsconfig.lib.json"
     },
     {
-      "path": "./projects/dfx-helper/tsconfig.spec.json"
+      "path": "./libs/dfx-helper/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dfx-bootstrap-table/tsconfig.lib.json"
+      "path": "./libs/dfx-bootstrap-table/tsconfig.lib.json"
     },
     {
-      "path": "./projects/dfx-bootstrap-table/tsconfig.spec.json"
+      "path": "./libs/dfx-bootstrap-table/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dfx-openapi/tsconfig.lib.json"
+      "path": "./libs/dfx-openapi/tsconfig.lib.json"
     },
     {
-      "path": "./projects/dfx-openapi/tsconfig.spec.json"
+      "path": "./libs/dfx-openapi/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dfx-qrcode/tsconfig.lib.json"
+      "path": "./libs/dfx-qrcode/tsconfig.lib.json"
     },
     {
-      "path": "./projects/dfx-qrcode/tsconfig.spec.json"
+      "path": "./libs/dfx-qrcode/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dfx-bootstrap-table-demo/tsconfig.app.json"
+      "path": "./libs/dfx-bootstrap-table-demo/tsconfig.app.json"
     },
     {
-      "path": "./projects/dfx-bootstrap-table-demo/tsconfig.spec.json"
+      "path": "./libs/dfx-bootstrap-table-demo/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dfx-qrcode-demo/tsconfig.app.json"
+      "path": "./libs/dfx-qrcode-demo/tsconfig.app.json"
     },
     {
-      "path": "./projects/dfx-qrcode-demo/tsconfig.spec.json"
+      "path": "./libs/dfx-qrcode-demo/tsconfig.spec.json"
     }
   ]
 }

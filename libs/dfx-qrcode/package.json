@@ -48,7 +48,7 @@
     "@angular/core": "21"
   },
   "dependencies": {
-    "dfts-qrcode": "1.1.0",
+    "dfts-qrcode": "1.1.1",
     "tslib": "^2"
   },
   "publishConfig": {

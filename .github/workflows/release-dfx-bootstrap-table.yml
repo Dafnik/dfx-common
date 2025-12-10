@@ -64,7 +64,7 @@ jobs:
       - name: get dfx-bootstrap-table version
         id: get-version
         shell: bash
-        run: echo "VERSION=$(node -p "require('./projects/dfx-bootstrap-table/package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(node -p "require('./libs/dfx-bootstrap-table/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: set to versioned zip dfx-bootstrap-table-v${{ steps.get-version.outputs.VERSION }}.zip
         shell: bash
