@@ -146,7 +146,7 @@ jobs:
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./libs/playground/dist/
+          path: ./apps/playground/dist/
           retention-days: 1
 
   deploy-playground:

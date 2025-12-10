@@ -1,0 +1,15 @@
+{
+  "name": "playground",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "serve": "node_modules/.bin/astro dev --port 4200",
+    "build": "node_modules/.bin/astro build && ng build dfx-bootstrap-table-demo && ng build dfx-qrcode-demo && mkdir dist/bootstrap-table/ && mkdir dist/qrcode/ && cp -r ../../dist/dfx-bootstrap-table-demo/browser/* dist/bootstrap-table/ && cp -r ../../dist/dfx-qrcode-demo/browser/* dist/qrcode/",
+    "preview": "node_modules/.bin/astro preview",
+    "astro": "node_modules/.bin/astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "astro": "5.16.2"
+  }
+}

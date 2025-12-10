@@ -6,8 +6,8 @@
     "ng": "ng",
     "build": "ng build dfx-bootstrap-table && ng build dfx-bootstrap-table-demo && ng build dfx-helper && ng build dfx-openapi && ng build dfx-qrcode && ng build dfx-qrcode-demo",
     "test": "ng test dfx-bootstrap-table --watch false && ng test dfx-helper --watch false && ng test dfx-openapi --watch false && ng build dfx-qrcode --watch false",
-    "build:playground": "pnpm -C libs/playground build",
-    "preview:playground": "pnpm -C libs/playground preview",
+    "build:playground": "pnpm -C apps/playground build",
+    "preview:playground": "pnpm -C apps/playground preview",
     "format:check": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --check .",
     "format": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --write .",
     "lint": "ng lint dfx-bootstrap-table && ng lint dfx-helper && ng lint dfx-openapi && ng lint dfx-qrcode"

@@ -54,16 +54,16 @@
       "path": "./libs/dfx-qrcode/tsconfig.spec.json"
     },
     {
-      "path": "./libs/dfx-bootstrap-table-demo/tsconfig.app.json"
+      "path": "./apps/dfx-bootstrap-table-demo/tsconfig.app.json"
     },
     {
-      "path": "./libs/dfx-bootstrap-table-demo/tsconfig.spec.json"
+      "path": "./apps/dfx-bootstrap-table-demo/tsconfig.spec.json"
     },
     {
-      "path": "./libs/dfx-qrcode-demo/tsconfig.app.json"
+      "path": "./apps/dfx-qrcode-demo/tsconfig.app.json"
     },
     {
-      "path": "./libs/dfx-qrcode-demo/tsconfig.spec.json"
+      "path": "./apps/dfx-qrcode-demo/tsconfig.spec.json"
     }
   ]
 }

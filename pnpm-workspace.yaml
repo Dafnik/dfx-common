@@ -5,4 +5,4 @@ ignoredBuiltDependencies:
 onlyBuiltDependencies:
   - esbuild
 packages:
-  - 'libs/playground'
+  - 'apps/playground'

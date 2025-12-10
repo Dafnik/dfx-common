@@ -69,18 +69,18 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "libs/dfx-bootstrap-table-demo/public"
+                "input": "apps/dfx-bootstrap-table-demo/public"
               }
             ],
-            "browser": "libs/dfx-bootstrap-table-demo/src/main.ts",
+            "browser": "apps/dfx-bootstrap-table-demo/src/main.ts",
             "inlineStyleLanguage": "scss",
             "outputMode": "server",
-            "server": "libs/dfx-bootstrap-table-demo/src/main.server.ts",
+            "server": "apps/dfx-bootstrap-table-demo/src/main.server.ts",
             "ssr": {
-              "entry": "libs/dfx-bootstrap-table-demo/src/server.ts"
+              "entry": "apps/dfx-bootstrap-table-demo/src/server.ts"
             },
-            "styles": ["libs/dfx-bootstrap-table-demo/src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
-            "tsConfig": "libs/dfx-bootstrap-table-demo/tsconfig.app.json"
+            "styles": ["apps/dfx-bootstrap-table-demo/src/styles.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
+            "tsConfig": "apps/dfx-bootstrap-table-demo/tsconfig.app.json"
           }
         },
         "serve": {
@@ -101,13 +101,13 @@
       },
       "prefix": "app",
       "projectType": "application",
-      "root": "libs/dfx-bootstrap-table-demo",
+      "root": "apps/dfx-bootstrap-table-demo",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "sourceRoot": "libs/dfx-bootstrap-table-demo/src"
+      "sourceRoot": "apps/dfx-bootstrap-table-demo/src"
     },
     "dfx-helper": {
       "architect": {
@@ -241,12 +241,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "libs/dfx-qrcode-demo/public"
+                "input": "apps/dfx-qrcode-demo/public"
               }
             ],
-            "browser": "libs/dfx-qrcode-demo/src/main.ts",
-            "styles": ["libs/dfx-qrcode-demo/src/styles.css"],
-            "tsConfig": "libs/dfx-qrcode-demo/tsconfig.app.json"
+            "browser": "apps/dfx-qrcode-demo/src/main.ts",
+            "styles": ["apps/dfx-qrcode-demo/src/styles.css"],
+            "tsConfig": "apps/dfx-qrcode-demo/tsconfig.app.json"
           }
         },
         "serve": {
@@ -267,9 +267,9 @@
       },
       "prefix": "app",
       "projectType": "application",
-      "root": "libs/dfx-qrcode-demo",
+      "root": "apps/dfx-qrcode-demo",
       "schematics": {},
-      "sourceRoot": "libs/dfx-qrcode-demo/src"
+      "sourceRoot": "apps/dfx-qrcode-demo/src"
     }
   },
   "version": 1

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import '../../../../node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.d.mts';
 
 :root {
   --gradient-primary: linear-gradient(135deg, #dacefb, #966ff3);
