@@ -81,7 +81,7 @@ jobs:
 
       - name: get only latest changelog
         run: |
-          ./tools/scripts/extractLatestVersionChangelog.sh ./libs/dfx-qrcode/CHANGELOG.md
+          ./tools/extractLatestVersionChangelog.sh ./libs/dfx-qrcode/CHANGELOG.md
           cat RELEASE_CHANGELOG.md
 
       - name: create dfx-qrcode-v${{ steps.get-version.outputs.VERSION }} release
