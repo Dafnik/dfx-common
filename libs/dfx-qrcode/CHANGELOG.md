@@ -1,3 +1,12 @@
+# Changelog
+
+## dfx-qrcode-21.0.0 - 2025-12-12
+
+* Angular 21
+
+
+[**Full Changelog**](https://github.com/poweruptime/poweruptime/compare/dfx-helper-21.0.0...dfx-qrcode-21.0.0)
+
  
 # [20.0.0](https://github.com/Dafnik/dfts-common/compare/dfx-qrcode-5.0.0...dfx-qrcode-20.0.0) (2025-06-10)
 
