@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // noinspection JSUnusedLocalSymbols
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { OpenAPIHttpClient, createOpenAPIHttpClient } from './http-client';
@@ -10,7 +11,7 @@ describe('OpenAPIHttpClient type tests', () => {
   let api: OpenAPIHttpClient<paths>;
   beforeEach(() => {
     void TestBed.configureTestingModule({
-      providers: [provideHttpClient()],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
 
     api = createOpenAPIHttpClient<paths>(TestBed.inject(HttpClient), {
