@@ -44,7 +44,7 @@ jobs:
         name: create dfx-qrcode artifact
         with:
           name: dfx-qrcode
-          path: ./dist/libs/dfx-qrcode.zip
+          path: ./dist/dfx-qrcode.zip
           retention-days: 1
 
   release-github:

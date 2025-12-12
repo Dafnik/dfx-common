@@ -81,7 +81,7 @@ jobs:
 
       - name: get only latest changelog
         run: |
-          ./tools/extractLatestVersionChangelog.sh ./dfx-bootstrap-table/CHANGELOG.md
+          ./tools/extractLatestVersionChangelog.sh ./libs/dfx-bootstrap-table/CHANGELOG.md
           cat RELEASE_CHANGELOG.md
 
       - name: create dfx-bootstrap-table-v${{ steps.get-version.outputs.VERSION }} release
