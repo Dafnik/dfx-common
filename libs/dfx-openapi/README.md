@@ -68,6 +68,7 @@ This eliminates all of the following:
 
 | Angular | dfx-openapi | openapi-typescript-helpers |
 | ------- | ----------- | -------------------------- |
+| 21.x.x  | 21.x.x      | \>=0.0.15                  |
 | 20.x.x  | 20.x.x      | \>=0.0.15                  |
 | 20.x.x  | 1.x.x       | \>=0.0.15                  |
 | 19.x.x  | 0.1.0       | \>=0.0.15                  |
