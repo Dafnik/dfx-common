@@ -126,7 +126,7 @@ jobs:
         name: create ${{ matrix.lib }} artifact
         with:
           name: ${{ matrix.lib }}
-          path: ./dist/libs/${{ matrix.lib }}/
+          path: ./dist/${{ matrix.lib }}/
           retention-days: 1
 
   build-playground:
