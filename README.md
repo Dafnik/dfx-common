@@ -6,13 +6,13 @@ The collection of collections.
 
 ## Useful commands
 
-| Description  | Command              |
-| ------------ | -------------------- |
-| Prettify all | `pnpm format`        |
-| Test lib     | `ng test <LIBRARY>`  |
-| Build lib    | `ng build <LIBRARY>` |
-| Serve demo   | `ng serve <DEMO>`    |
-| Release lib  | `TODO`               |
+| Description  | Command                                         |
+| ------------ | ----------------------------------------------- |
+| Prettify all | `pnpm format`                                   |
+| Test         | `ng test <LIBRARY>`                             |
+| Build        | `ng build <LIBRARY>`                            |
+| Serve demo   | `ng serve <DEMO>`                               |
+| Release      | `node tools/release.js <prod\|beta> <VERSION?>` |
 
 ## Subprojects
 
