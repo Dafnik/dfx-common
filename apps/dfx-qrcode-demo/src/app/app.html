@@ -26,23 +26,25 @@
         <h4 class="mb-4 text-lg font-semibold">QR-Code Preview</h4>
 
         <div class="mb-6 flex flex-col items-center gap-3 rounded-lg border border-gray-700 bg-gray-800 p-4 shadow-md">
-          <qrcode
-            [data]="formValues().data!"
-            [allowEmptyString]="formValues().allowEmptyString!"
-            [elementType]="formValues().elementType!"
-            [errorCorrectionLevel]="formValues().errorCorrectionLevel!"
-            [ariaLabel]="formValues().accessibilityEnabled ? formValues().ariaLabel : undefined"
-            [title]="formValues().accessibilityEnabled ? formValues().title : undefined"
-            [alt]="formValues().accessibilityEnabled ? formValues().alt : undefined"
-            [cssClass]="formValues().cssClass!"
-            [colorDark]="$any(formValues().colorDark!)"
-            [colorLight]="$any(formValues().colorLight!)"
-            [margin]="formValues().margin!"
-            [size]="formValues().size!"
-            [imageSrc]="formValues().imageEnabled ? formValues().imageSrc : undefined"
-            [imageWidth]="formValues().imageEnabled ? formValues().imageWidth : undefined"
-            [imageHeight]="formValues().imageEnabled ? formValues().imageHeight : undefined"
-            (qrCodeDataUrl)="setDataURL($event)"></qrcode>
+          <div class="rounded-md p-3" [style.background-color]="$any(formValues().colorLight!)">
+            <qrcode
+              [data]="formValues().data!"
+              [allowEmptyString]="formValues().allowEmptyString!"
+              [elementType]="formValues().elementType!"
+              [errorCorrectionLevel]="formValues().errorCorrectionLevel!"
+              [ariaLabel]="formValues().accessibilityEnabled ? formValues().ariaLabel : undefined"
+              [title]="formValues().accessibilityEnabled ? formValues().title : undefined"
+              [alt]="formValues().accessibilityEnabled ? formValues().alt : undefined"
+              [cssClass]="formValues().cssClass!"
+              [colorDark]="$any(formValues().colorDark!)"
+              [colorLight]="$any(formValues().colorLight!)"
+              [margin]="formValues().margin!"
+              [size]="formValues().size!"
+              [imageSrc]="formValues().imageEnabled ? formValues().imageSrc : undefined"
+              [imageWidth]="formValues().imageEnabled ? formValues().imageWidth : undefined"
+              [imageHeight]="formValues().imageEnabled ? formValues().imageHeight : undefined"
+              (qrCodeDataUrl)="setDataURL($event)"></qrcode>
+          </div>
 
           <button
             class="border-info-400 text-info-400 hover:bg-info-900/30 rounded border px-4 py-2 transition active:scale-95"
@@ -183,9 +185,9 @@
             <div>
               <label class="block text-sm font-medium text-gray-300" for="colorDark">Dark QR-Code Color</label>
               <input
-                class="focus:border-primary-500 focus:ring-primary-500 mt-1 block w-full rounded-md border border-gray-700 bg-gray-900 px-3 py-2 text-sm text-gray-100 placeholder-gray-500 shadow-sm focus:ring-1"
+                class="focus:border-primary-500 focus:ring-primary-500 mt-1 block w-full rounded-md border border-gray-700 bg-gray-900 text-gray-100 placeholder-gray-500 shadow-sm focus:ring-1"
                 id="colorDark"
-                type="text"
+                type="color"
                 formControlName="colorDark"
                 placeholder="#000000" />
             </div>
@@ -194,9 +196,9 @@
             <div>
               <label class="block text-sm font-medium text-gray-300" for="colorLight">Light QR-Code Color</label>
               <input
-                class="focus:border-primary-500 focus:ring-primary-500 mt-1 block w-full rounded-md border border-gray-700 bg-gray-900 px-3 py-2 text-sm text-gray-100 placeholder-gray-500 shadow-sm focus:ring-1"
+                class="focus:border-primary-500 focus:ring-primary-500 mt-1 block w-full rounded-md border border-gray-700 bg-gray-900 text-gray-100 placeholder-gray-500 shadow-sm focus:ring-1"
                 id="colorLight"
-                type="text"
+                type="color"
                 formControlName="colorLight"
                 placeholder="#FFFFFF" />
             </div>
