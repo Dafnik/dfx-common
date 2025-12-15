@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "serve": "astro dev --port 4200",
-    "build": "astro build && ng build dfx-bootstrap-table-demo && ng build dfx-qrcode-demo && mkdir dist/bootstrap-table/ && mkdir dist/qrcode/ && cp -r ../../dist/dfx-bootstrap-table-demo/browser/* dist/bootstrap-table/ && cp -r ../../dist/dfx-qrcode-demo/browser/* dist/qrcode/",
+    "build": "astro build && cd ../../ && ng build dfx-bootstrap-table-demo && ng build dfx-qrcode-demo && mkdir apps/playground/dist/bootstrap-table/ && mkdir apps/playground/dist/qrcode/ && cp -r dist/dfx-bootstrap-table-demo/browser/* apps/playground/dist/bootstrap-table/ && cp -r dist/dfx-qrcode-demo/browser/* apps/playground/dist/qrcode/",
     "preview": "astro preview",
     "astro": "astro"
   },

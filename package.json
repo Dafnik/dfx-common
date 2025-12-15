@@ -10,7 +10,10 @@
     "preview:playground": "pnpm -C apps/playground preview",
     "format:check": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --check .",
     "format": "PRETTIER_EXPERIMENTAL_CLI=1 prettier --write .",
-    "lint": "ng lint dfx-bootstrap-table && ng lint dfx-helper && ng lint dfx-openapi && ng lint dfx-qrcode"
+    "lint": "ng lint dfx-bootstrap-table && ng lint dfx-helper && ng lint dfx-openapi && ng lint dfx-qrcode",
+    "http:dfx-qrcode-demo": "ng build dfx-qrcode-demo && angular-http-server --path ./dist/dfx-qrcode-demo/browser --baseHref qrcode",
+    "http:dfx-bootstrap-table-demo": "ng build dfx-bootstrap-table-demo && angular-http-server --path ./dist/dfx-bootstrap-table-demo/browser --baseHref bootstrap-table",
+    "http:playground": "pnpm build:playground && http-server ./apps/playground/dist/"
   },
   "private": true,
   "dependencies": {
@@ -44,8 +47,10 @@
     "@types/node": "24.10.3",
     "@vitest/coverage-v8": "4.0.15",
     "angular-eslint": "21.1.0",
+    "angular-http-server": "1.12.0",
     "eslint": "9.39.1",
     "git-cliff": "2.10.1",
+    "http-server": "14.1.1",
     "jsdom": "27.3.0",
     "ng-packagr": "21.0.0",
     "postcss": "8.5.6",
