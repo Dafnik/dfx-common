@@ -49,6 +49,7 @@
               "sourceMap": true
             },
             "production": {
+              "baseHref": "/bootstrap-table/",
               "budgets": [
                 {
                   "maximumError": "1MB",
