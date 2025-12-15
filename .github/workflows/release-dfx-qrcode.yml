@@ -40,7 +40,7 @@ jobs:
           zip -r "dfx-qrcode.zip" ./dfx-qrcode
           cd -
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         name: create dfx-qrcode artifact
         with:
           name: dfx-qrcode
@@ -56,7 +56,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           name: dfx-qrcode
           path: ./dist
@@ -102,7 +102,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           node-version: '24'
 
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           name: dfx-qrcode
           path: ./dist
