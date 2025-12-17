@@ -1,0 +1,57 @@
+{
+  "name": "dfx-transloco-markup",
+  "version": "0.0.0",
+  "description": "A translation component to render translations with markup",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/Dafnik/dfx-common",
+  "sideEffects": false,
+  "keywords": [
+    "ng",
+    "ngx",
+    "angular2",
+    "angular",
+    "transloco",
+    "markup",
+    "plugin",
+    "translation",
+    "translate",
+    "i18n"
+  ],
+  "author": {
+    "name": "Dafnik",
+    "email": "contact@dafnik.me",
+    "url": "https://dafnik.me"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Dafnik"
+    },
+    {
+      "type": "liberapay",
+      "url": "https://liberapay.com/Dafnik"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Dafnik/dfx-common/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Dafnik/dfx-common.git",
+    "directory": "libs/dfx-transloco-markup"
+  },
+  "dependencies": {
+    "tslib": "2"
+  },
+  "peerDependencies": {
+    "@angular/common": "21",
+    "@jsverse/transloco": "8",
+    "@jsverse/utils": "1",
+    "rxjs": "7"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

@@ -1,0 +1,129 @@
+import { Injectable, InjectionToken, inject } from '@angular/core';
+
+import { TRANSLOCO_TRANSPILER } from '@jsverse/transloco';
+
+import { TranslationMarkupRendererFactory } from '../translation-markup-renderer-factory';
+import {
+  TokenizeResult,
+  TranslationMarkupTranspiler,
+  TranslationMarkupTranspilerContext,
+  TranspileResult,
+} from '../translation-markup-transpiler.model';
+
+/**
+ * Interface for objects that can detect interpolation expressions.
+ */
+export interface InterpolationExpressionMatcher {
+  /**
+   * Checks whether an interpolation expression is found in the given string at the specified offset.
+   *
+   * @param   source String where the interpolation expression might be found.
+   * @param   offset Position within the string which should be checked for the presence of an interpolation expression.
+   * @returns        Length of the interpolation expression in number of characters or `undefined` if no expression was found.
+   */
+  matchExpression(source: string, offset: number): number | undefined;
+}
+
+/**
+ * Interpolation expression matcher for the default syntax of Transloco interpolation expressions: `{{...}}`.
+ *
+ * @param   translationValue String where the interpolation expression might be found.
+ * @param   offset           Position within the string which should be checked for the presence of an interpolation expression.
+ * @returns                  The length of the interpolation expression in number of characters or `undefined` if none was found.
+ */
+export function defaultTranslationInterpolationExpressionMatcher(translationValue: string, offset: number): number | undefined {
+  if (!translationValue.startsWith('{{', offset)) {
+    return undefined;
+  }
+
+  const expressionEnd = translationValue.indexOf('}}', offset);
+
+  return expressionEnd >= 2 ? expressionEnd + 2 - offset : undefined;
+}
+
+/**
+ * Factory function for the `defaultTranslationInterpolationExpressionMatcher`. Used for the `TRANSLATION_INTERPOLATION_EXPRESSION_MATCHER`
+ * injection token.
+ */
+export function defaultTranslationInterpolationExpressionMatcherFactory(): InterpolationExpressionMatcher {
+  return { matchExpression: defaultTranslationInterpolationExpressionMatcher };
+}
+
+/**
+ * Injection token that is used for defining the provider for the `InterpolationExpressionMatcher`, which is needed by the
+ * `StringInterpolationTranspiler`.
+ */
+export const TRANSLATION_INTERPOLATION_EXPRESSION_MATCHER = new InjectionToken<InterpolationExpressionMatcher>(
+  'TRANSLATION_INTERPOLATION_EXPRESSION_MATCHER',
+  {
+    providedIn: 'root',
+    factory: defaultTranslationInterpolationExpressionMatcherFactory,
+  },
+);
+
+/**
+ * Markup transpiler that supports interpolation expressions, and which creates a renderer that expands the expression to string using the
+ * `TranslocoTranspiler`. Since the `TranslocoTranspiler` can be overridden with a custom implementation that uses a different syntax this
+ * class uses a (configurable) `InterpolationExpressionMatcher`. This expression matcher can be overridden with a different implementation
+ * that supports the syntax of a custom `TranslocoTranspiler`.
+ */
+@Injectable({ providedIn: 'root' })
+export class StringInterpolationTranspiler implements TranslationMarkupTranspiler {
+  /** Renderer factory which will be used for rendering the text nodes containing the result of interpolation expressions. */
+  private readonly rendererFactory = inject(TranslationMarkupRendererFactory);
+
+  /** The Transloco transpiler that will be used for evaluating interpolation expressions. */
+  private readonly translocoTranspiler = inject(TRANSLOCO_TRANSPILER);
+
+  /** Matcher that can find interpolation expressions in a translation value which are supported by the Transloco transpiler. */
+  private readonly expressionMatcher = inject(TRANSLATION_INTERPOLATION_EXPRESSION_MATCHER);
+
+  /** @inheritdoc */
+  public tokenize(translation: string, offset: number): TokenizeResult | undefined {
+    const expressionLength = this.expressionMatcher.matchExpression(translation, offset);
+
+    if (!expressionLength) {
+      return undefined;
+    }
+
+    return {
+      nextOffset: offset + expressionLength,
+      token: new StringInterpolationSegment(translation.substring(offset, offset + expressionLength)),
+    };
+  }
+
+  /** @inheritdoc */
+  public transpile(offset: number, { tokens, translation }: TranslationMarkupTranspilerContext): TranspileResult | undefined {
+    const nextToken = tokens[offset];
+
+    if (!(nextToken instanceof StringInterpolationSegment)) {
+      return undefined;
+    }
+
+    const { interpolationExpression } = nextToken;
+
+    return {
+      nextOffset: offset + 1,
+      renderer: this.rendererFactory.createTextRenderer((translationParameters) =>
+        String(
+          this.translocoTranspiler.transpile({
+            value: interpolationExpression,
+            params: translationParameters,
+            translation,
+            key: '???',
+          }),
+        ),
+      ),
+    };
+  }
+}
+
+/**
+ * Token class for interpolation expressions.
+ */
+export class StringInterpolationSegment {
+  /**
+   *  Creates a new `StringInterpolationSegment` for the specified expression.
+   */
+  constructor(public readonly interpolationExpression: string) {}
+}

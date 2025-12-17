@@ -1,0 +1,26 @@
+import { Injectable, inject } from '@angular/core';
+
+import { TranslationMarkupRendererFactory } from '../translation-markup-renderer-factory';
+import { TranslationMarkupRenderer } from '../translation-markup-renderer.model';
+import { BlockTranspiler } from './block-transpiler';
+
+/**
+ * Transpiler that parses bold tags (`[b]...[/b]`) and creates a renderer that wraps the content in an HTML bold element (`<b>...</b>`).
+ */
+@Injectable()
+export class BoldTextTranspiler extends BlockTranspiler {
+  /** Renderer factory which will be used for creating the HTML bold element renderer. */
+  private readonly rendererFactory = inject(TranslationMarkupRendererFactory);
+
+  /**
+   * Creates a `BoldTextTranspiler` instance that uses the specified renderer factory.
+   */
+  constructor() {
+    super('[b]', '[/b]');
+  }
+
+  /** @inheritdoc */
+  protected createRenderer(childRenderers: TranslationMarkupRenderer[]): TranslationMarkupRenderer {
+    return this.rendererFactory.createElementRenderer('b', childRenderers);
+  }
+}

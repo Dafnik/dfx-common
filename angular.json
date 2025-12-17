@@ -271,6 +271,101 @@
       "root": "apps/dfx-qrcode-demo",
       "schematics": {},
       "sourceRoot": "apps/dfx-qrcode-demo/src"
+    },
+    "dfx-transloco-markup": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "development": {
+              "tsConfig": "libs/dfx-transloco-markup/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "libs/dfx-transloco-markup/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "libs/dfx-transloco-markup/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-transloco-markup/**/*.ts", "libs/dfx-transloco-markup/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/dfx-transloco-markup/tsconfig.spec.json"
+          }
+        }
+      },
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "libs/dfx-transloco-markup",
+      "sourceRoot": "libs/dfx-transloco-markup/src"
+    },
+    "dfx-transloco-markup-demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
+            },
+            "production": {
+              "baseHref": "/transloco-markup/",
+              "budgets": [
+                {
+                  "maximumError": "1MB",
+                  "maximumWarning": "500kB",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "8kB",
+                  "maximumWarning": "4kB",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/dfx-transloco-markup-demo/public"
+              }
+            ],
+            "browser": "apps/dfx-transloco-markup-demo/src/main.ts",
+            "styles": ["apps/dfx-transloco-markup-demo/src/styles.css"],
+            "tsConfig": "apps/dfx-transloco-markup-demo/tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "dfx-transloco-markup-demo:build:development"
+            },
+            "production": {
+              "buildTarget": "dfx-transloco-markup-demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "apps/dfx-transloco-markup-demo",
+      "schematics": {},
+      "sourceRoot": "apps/dfx-transloco-markup-demo/src"
     }
   },
   "version": 1
