@@ -1,5 +1,12 @@
 # Changelog
 
+## dfx-transloco-markup-0.0.2 - 2025-12-18
+
+- Fix @jsverse/utils peer dependency issue
+
+
+[**Full Changelog**](https://github.com/poweruptime/poweruptime/compare/dfx-transloco-markup-0.0.1...dfx-transloco-markup-0.0.2)
+
 ## dfx-transloco-markup-0.0.1 - 2025-12-18
 
 ### <!-- 0 -->🚀 Features
