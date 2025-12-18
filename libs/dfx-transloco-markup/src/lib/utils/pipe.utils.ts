@@ -1,5 +1,3 @@
-import { isString } from '@jsverse/utils';
-
 /**
  * @example
  *
@@ -8,7 +6,7 @@ import { isString } from '@jsverse/utils';
  * getPipeValue('en', 'static') [false, 'en']
  */
 export function getPipeValue(str: string | undefined, value: string, char = '|'): [boolean, string] {
-  if (isString(str)) {
+  if (typeof str === 'string') {
     const splitted = str.split(char);
     const lastItem = splitted.pop()!;
 
