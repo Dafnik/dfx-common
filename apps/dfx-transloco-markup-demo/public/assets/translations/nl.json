@@ -1,0 +1,11 @@
+{
+  "BASIC": {
+    "GREETING": "Hoi [b]{{ name }}[/b], welkom bij [i]TRANSLOCO [b]<MARKUP>[/b][/i]",
+    "NAME": "Naam",
+    "TITLE": "Basis voorbeeld"
+  },
+  "CUSTOM_TRANSPILERS": {
+    "MESSAGE": "Dit is een voorbeeldbericht dat gebruik maakt van [b][c:dodgerblue]speciale ([i]niet standaard[/i])[/c] [c:deepskyblue]transpilers[/c][/b] :)",
+    "TITLE": "Speciale transpilers"
+  }
+}

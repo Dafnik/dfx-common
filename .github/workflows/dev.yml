@@ -89,6 +89,11 @@ jobs:
               - '{package,nx,migrations,tsconfig.base}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
+            dfx-transloco-markup:
+              - 'libs/dfx-transloco-markup/**'
+              - '{package,nx,migrations,tsconfig.base}.json'
+              - 'pnpm-lock.yaml'
+              - '.github/**'
 
   test:
     name: Test ${{ matrix.lib }}
