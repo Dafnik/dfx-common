@@ -22,6 +22,7 @@
       "dfx-helper": ["./libs/dfx-helper/src/public-api.ts"],
       "dfx-openapi": ["./libs/dfx-openapi/src/public-api.ts"],
       "dfx-qrcode": ["./libs/dfx-qrcode/src/public-api.ts"],
+      "dfx-theme": ["./libs/dfx-theme/src/public-api.ts"],
       "dfx-transloco-markup": ["./libs/dfx-transloco-markup/src/public-api.ts"]
     },
     "skipLibCheck": true,
@@ -77,6 +78,18 @@
     },
     {
       "path": "./apps/dfx-transloco-markup-demo/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/dfx-theme/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/dfx-theme/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/dfx-theme-demo/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/dfx-theme-demo/tsconfig.spec.json"
     }
   ]
 }

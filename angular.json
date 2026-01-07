@@ -272,6 +272,100 @@
       "schematics": {},
       "sourceRoot": "apps/dfx-qrcode-demo/src"
     },
+    "dfx-theme": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "development": {
+              "tsConfig": "libs/dfx-theme/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "libs/dfx-theme/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "runnerConfig": "libs/dfx-theme/vitest.config.ts",
+            "tsConfig": "libs/dfx-theme/tsconfig.spec.json"
+          }
+        }
+      },
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "libs/dfx-theme",
+      "sourceRoot": "libs/dfx-theme/src"
+    },
+    "dfx-theme-demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
+            },
+            "production": {
+              "baseHref": "/theme/",
+              "budgets": [
+                {
+                  "maximumError": "1MB",
+                  "maximumWarning": "500kB",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "8kB",
+                  "maximumWarning": "4kB",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/dfx-theme-demo/public"
+              }
+            ],
+            "browser": "apps/dfx-theme-demo/src/main.ts",
+            "outputMode": "server",
+            "server": "apps/dfx-theme-demo/src/main.server.ts",
+            "ssr": {
+              "entry": "apps/dfx-theme-demo/src/server.ts"
+            },
+            "styles": ["apps/dfx-theme-demo/src/styles.css"],
+            "tsConfig": "apps/dfx-theme-demo/tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "dfx-theme-demo:build:development"
+            },
+            "production": {
+              "buildTarget": "dfx-theme-demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "apps/dfx-theme-demo",
+      "schematics": {},
+      "sourceRoot": "apps/dfx-theme-demo/src"
+    },
     "dfx-transloco-markup": {
       "architect": {
         "build": {

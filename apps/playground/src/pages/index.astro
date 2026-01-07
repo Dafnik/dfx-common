@@ -17,6 +17,11 @@ const projects = [
     text: 'A translation component to render translations with markup',
     href: 'transloco-markup'
   },
+  {
+    title: 'dfx-theme',
+    text: 'Tiny and simple-to-use Angular Theme management library.',
+    href: 'theme'
+  },
 ];
 
 ---
@@ -36,7 +41,7 @@ const projects = [
     <h1>playground</h1>
   </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 card-grid">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 card-grid">
     {
       projects.map((p) =>
         <div class="col">
@@ -169,6 +174,10 @@ const projects = [
 
   .grid > .col:nth-child(3) .card-title {
     background-image: var(--gradient-tertiary);
+  }
+
+  .grid > .col:nth-child(4) .card-title {
+    background-image: var(--gradient-4);
   }
 
   .hover-card:hover .card-title {

@@ -1,0 +1,130 @@
+name: release dfx-theme
+
+on:
+  push:
+    tags:
+      - 'dfx-theme*'
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: write # Required for GitHub release action
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: test
+        uses: ./.github/actions/test
+        with:
+          library: dfx-theme
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: setup node and pnpm
+        uses: dafnik/setup-node-pnpm@v5
+        with:
+          install: true
+
+      - name: build dfx-theme
+        run: pnpm ng build dfx-theme
+
+      - name: zip dfx-theme
+        run: |
+          cd ./dist/
+          zip -r "dfx-theme.zip" ./dfx-theme
+          cd -
+
+      - uses: actions/upload-artifact@v6
+        name: create dfx-theme artifact
+        with:
+          name: dfx-theme
+          path: ./dist/dfx-theme.zip
+          retention-days: 1
+
+  release-github:
+    name: Release zip to github releases
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: dfx-theme
+          path: ./dist
+
+      - name: get dfx-theme version
+        id: get-version
+        shell: bash
+        run: echo "VERSION=$(node -p "require('./libs/dfx-theme/package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: set to versioned zip dfx-theme-v${{ steps.get-version.outputs.VERSION }}.zip
+        shell: bash
+        run: |
+          mkdir releases
+          cp "./dist/dfx-theme.zip" "./releases/dfx-theme-v${{ steps.get-version.outputs.VERSION }}.zip"
+
+      - name: releases lookup
+        run: |
+          cd releases
+          ls -la
+          du -hs
+          cd -
+
+      - name: get only latest changelog
+        run: |
+          ./tools/extractLatestVersionChangelog.sh ./libs/dfx-theme/CHANGELOG.md
+          cat RELEASE_CHANGELOG.md
+
+      - name: create dfx-theme-v${{ steps.get-version.outputs.VERSION }} release
+        uses: softprops/action-gh-release@v2.5.0
+        with:
+          body_path: ./RELEASE_CHANGELOG.md
+          files: ./releases/dfx-theme-v${{ steps.get-version.outputs.VERSION }}.zip
+
+  release-npm:
+    name: Release to npm registry
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          node-version: '24'
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: dfx-theme
+          path: ./dist
+
+      - name: unzip
+        shell: bash
+        run: |
+          cd dist
+          unzip dfx-theme.zip
+          cd -
+
+      - name: dist lookup
+        shell: bash
+        run: |
+          cd dist/dfx-theme
+          ls -la
+          du -hs
+          cd -
+
+      - name: publish to npm registry
+        env:
+          NPM_CONFIG_PROVENANCE: true
+        run: |
+          cd dist/dfx-theme/
+          npm publish

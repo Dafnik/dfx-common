@@ -52,3 +52,21 @@ It has virtually zero runtime and is fully compatible with Http Interceptors.
 [![npm downloads per week](https://img.shields.io/npm/dw/dfx-openapi?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-openapi)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
 [![npm license](https://img.shields.io/npm/l/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)
+
+### dfx-transloco-markup
+
+A translation component to render translations with markup
+
+[![npm version](https://img.shields.io/npm/v/dfx-transloco-markup?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-transloco-markup?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-transloco-markup)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-transloco-markup?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
+[![npm license](https://img.shields.io/npm/l/dfx-transloco-markup?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)
+
+### dfx-theme
+
+`dfx-theme` is a tiny and simple-to-use Angular Theme management library.
+
+[![npm version](https://img.shields.io/npm/v/dfx-theme?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-theme)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-theme?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-theme)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-theme?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-theme)
+[![npm license](https://img.shields.io/npm/l/dfx-theme?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfts-common)

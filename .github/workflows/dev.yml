@@ -71,27 +71,32 @@ jobs:
           filters: |
             dfx-helper:
               - 'libs/dfx-helper/**'
-              - '{package,nx,migrations,tsconfig.base}.json'
+              - '{package,tsconfig}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
             dfx-qrcode:
               - 'libs/dfx-qrcode/**'
-              - '{package,nx,migrations,tsconfig.base}.json'
+              - '{package,tsconfig}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
             dfx-bootstrap-table:
               - 'libs/dfx-bootstrap-table/**'
-              - '{package,nx,migrations,tsconfig.base}.json'
+              - '{package,tsconfig}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
             dfx-openapi:
               - 'libs/dfx-openapi/**'
-              - '{package,nx,migrations,tsconfig.base}.json'
+              - '{package,tsconfig}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
             dfx-transloco-markup:
               - 'libs/dfx-transloco-markup/**'
-              - '{package,nx,migrations,tsconfig.base}.json'
+              - '{package,tsconfig}.json'
+              - 'pnpm-lock.yaml'
+              - '.github/**'
+            dfx-theme:
+              - 'libs/dfx-theme/**'
+              - '{package,tsconfig}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
 
