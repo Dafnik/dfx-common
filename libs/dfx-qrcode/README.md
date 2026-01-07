@@ -6,7 +6,19 @@
 [![npm downloads per week](https://img.shields.io/npm/dw/dfx-qrcode?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-qrcode)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-qrcode?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
 
-- [Demo](https://playground.dafnik.me/qrcode/)
+**[Live Demo](https://playground.dafnik.me/qrcode/)**
+
+## Features
+
+- ES-module based
+- Tiny (~10.2kB minified + gzipped)
+- Accessible
+- Supports Standalone Component API
+- Supports Canvas, PNG, and SVG
+- Works with zone-less applications
+
+#### Table of Contents
+
 - [Installation](#installation)
 - [Version compatibility](#version-compatibility)
 - [Usage](#usage)
@@ -18,15 +30,6 @@
   - [Component parameters](#parameters)
 - [Error Correction Level](#error-correction-level)
 - [QR Code capacity](#qr-code-capacity)
-
-## Features
-
-- ES-module based
-- Tiny (~10.2kB minified + gzipped)
-- Accessible
-- Supports Standalone Component API
-- Supports Canvas, PNG, and SVG
-- Works with zone-less applications
 
 ## Version compatibility
 
