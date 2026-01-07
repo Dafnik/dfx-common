@@ -1,4 +1,12 @@
-# dfx-transloco-markup: Markup support for Transloco
+# dfx-transloco-markup
+
+A translation component to render translations with markup
+
+[![npm version](https://img.shields.io/npm/v/dfx-transloco-markup?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
+[![npm downloads per week](https://img.shields.io/npm/dw/dfx-transloco-markup?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-transloco-markup)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-transloco-markup?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
+
+**[Live Demo](https://playground.dafnik.me/transloco-markup/)**
 
 Fork of [ngx-transloco-markup](https://github.com/dscheerens/ngx-transloco-markup).
 
