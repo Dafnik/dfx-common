@@ -17,19 +17,17 @@ export const CUSTOM_TRANSPILERS_TRANSLATION_KEYS = defineTranslationKeys((t) => 
 
 @Component({
   template: `
-    <div class="rounded-lg border border-gray-200 bg-white shadow-sm">
+    <div class="rounded-lg border border-gray-200 shadow-sm">
       <!-- Card Header -->
       <div class="border-b border-gray-200 px-6 py-4">
-        <h2 class="text-xl font-semibold text-gray-900">
+        <h2 class="text-xl font-semibold">
           {{ TRANSLATIONS.TITLE | transloco }}
         </h2>
       </div>
 
       <!-- Card Content -->
       <div class="px-6 py-4">
-        <div class="text-gray-700">
-          <transloco [key]="TRANSLATIONS.MESSAGE"></transloco>
-        </div>
+        <transloco [key]="TRANSLATIONS.MESSAGE"></transloco>
       </div>
     </div>
   `,
@@ -38,7 +36,7 @@ export const CUSTOM_TRANSPILERS_TRANSLATION_KEYS = defineTranslationKeys((t) => 
       display: block;
     }
   `,
-  selector: 'app-custom-transpilers-feature',
+  selector: 'custom-transpiler-feature',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [TranslocoModule, TranslocoMarkupComponent, FormsModule],
