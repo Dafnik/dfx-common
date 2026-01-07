@@ -4,7 +4,7 @@ import { Injectable, OnDestroy, PLATFORM_ID, computed, effect, inject, signal } 
 import { SystemThemeManager } from './system-theme-manager';
 import { applyTheme } from './theme-dom';
 import { THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from './theme.config';
-import { Theme, ThemeConfig } from './theme.types';
+import { Theme } from './theme.types';
 
 @Injectable({
   providedIn: 'root',

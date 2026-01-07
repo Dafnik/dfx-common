@@ -286,6 +286,13 @@
           },
           "defaultConfiguration": "production"
         },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "libs/dfx-theme/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-theme/**/*.ts", "libs/dfx-theme/**/*.html"]
+          }
+        },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
