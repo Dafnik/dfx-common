@@ -57,7 +57,7 @@
     "git-cliff": "2.11.0",
     "http-server": "14.1.1",
     "jsdom": "27.4.0",
-    "ng-packagr": "21.0.1",
+    "ng-packagr": "21.1.0",
     "postcss": "8.5.6",
     "prettier": "3.7.4",
     "prettier-plugin-organize-attributes": "1.0.0",
