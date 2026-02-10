@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Injectable, OnDestroy, PLATFORM_ID, computed, effect, inject, signal } from '@angular/core';
+import { Injectable, Injector, OnDestroy, PLATFORM_ID, computed, effect, inject, signal } from '@angular/core';
 
 import { SystemThemeManager } from './system-theme-manager';
 import { applyTheme } from './theme-dom';
@@ -11,6 +11,7 @@ import { Theme } from './theme.types';
 })
 export class ThemeService implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly injector = inject(Injector);
   private readonly config = inject(THEME_CONFIG);
   private readonly themeStrategies = inject(THEME_STRATEGIES);
 
@@ -19,6 +20,7 @@ export class ThemeService implements OnDestroy {
 
   // Managers
   private readonly mediaManager = new SystemThemeManager();
+  private readonly systemThemeChangeListener = this.handleSystemThemeChange.bind(this);
 
   // Private state
   private isInitialized = false;
@@ -26,24 +28,27 @@ export class ThemeService implements OnDestroy {
   private lastAppliedTheme: 'light' | 'dark' | null = null;
 
   // Signals
-  private readonly themeSignal = signal<Theme>('system');
+  private readonly themeSignal = signal<Theme>(this.config.defaultTheme);
   private readonly systemThemeSignal = signal<'light' | 'dark'>('light');
 
   // Public readonly signals
   readonly theme = this.themeSignal.asReadonly();
   readonly systemTheme = this.systemThemeSignal.asReadonly();
   readonly resolvedTheme = computed(() => {
-    // During SSR, always return a safe default
-    if (!isPlatformBrowser(this.platformId)) {
-      return 'light';
-    }
-
     if (this.config.forcedTheme && this.config.forcedTheme !== 'system') {
       return this.config.forcedTheme;
     }
 
     const theme = this.themeSignal();
-    return theme === 'system' && this.config.enableSystem ? this.systemThemeSignal() : theme === 'system' ? 'light' : theme;
+    if (theme === 'system') {
+      if (isPlatformBrowser(this.platformId) && this.config.enableSystem) {
+        return this.systemThemeSignal();
+      }
+
+      return 'light';
+    }
+
+    return theme;
   });
 
   // Getters
@@ -137,7 +142,7 @@ export class ThemeService implements OnDestroy {
 
   cleanup(): void {
     try {
-      this.mediaManager.removeChangeListener(this.handleSystemThemeChange.bind(this));
+      this.mediaManager.removeChangeListener(this.systemThemeChangeListener);
       this.mediaManager.cleanup();
     } catch (error) {
       console.warn('Error during ThemeService cleanup:', error);
@@ -148,7 +153,7 @@ export class ThemeService implements OnDestroy {
   private setupManagers(): void {
     this.storageManager?.setup();
     this.mediaManager.setup(this.config);
-    this.mediaManager.addChangeListener(this.handleSystemThemeChange.bind(this));
+    this.mediaManager.addChangeListener(this.systemThemeChangeListener);
   }
 
   private loadInitialTheme(): void {
@@ -177,19 +182,25 @@ export class ThemeService implements OnDestroy {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
-    effect(() => {
-      const resolvedTheme = this.resolvedTheme();
-      if (resolvedTheme !== this.lastAppliedTheme) {
-        applyTheme(resolvedTheme, this.themeStrategies);
-        this.lastAppliedTheme = resolvedTheme;
-      }
-    });
+    effect(
+      () => {
+        const resolvedTheme = this.resolvedTheme();
+        if (resolvedTheme !== this.lastAppliedTheme) {
+          applyTheme(resolvedTheme, this.themeStrategies);
+          this.lastAppliedTheme = resolvedTheme;
+        }
+      },
+      { injector: this.injector },
+    );
 
-    effect(() => {
-      const theme = this.themeSignal();
-      if (!this.config.forcedTheme && !this.isDestroyed) {
-        this.storageManager?.saveTheme(this.storageKey, theme);
-      }
-    });
+    effect(
+      () => {
+        const theme = this.themeSignal();
+        if (!this.config.forcedTheme && !this.isDestroyed) {
+          this.storageManager?.saveTheme(this.storageKey, theme);
+        }
+      },
+      { injector: this.injector },
+    );
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "dfx-theme",
   "version": "0.0.1",
-  "description": "tiny and simple-to-use Angular QR-Code generator library",
+  "description": "tiny and simple-to-use Angular theme management library",
   "private": false,
   "license": "MIT",
   "homepage": "https://playground.dafnik.me/theme",

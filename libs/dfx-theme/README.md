@@ -281,16 +281,16 @@ provideTheme(
 ### LocalStorage support
 
 ```typescript
-import { LocalStorageManager, provideTheme, withThemeStorage } from 'dfx-theme';
+import { ThemeLocalStorageManager, provideTheme, withThemeStorage } from 'dfx-theme';
 
 provideTheme(withThemeStorage());
 
-// OR to cutomize
+// OR to customize
 
 provideTheme(
   withThemeStorage({
     key: 'custom-theme-key', // Default is 'theme'
-    storageManager: new LocalStorageManager(), // Default is LocalStorageManager
+    manager: new ThemeLocalStorageManager(), // Default is ThemeLocalStorageManager
   }),
 );
 ```
@@ -300,21 +300,25 @@ provideTheme(
 #### Disable System Detection
 
 ```typescript
-import { provideTheme } from 'dfx-theme';
+import { provideTheme, withThemeConfig } from 'dfx-theme';
 
-provideTheme({
-  enableSystem: false,
-});
+provideTheme(
+  withThemeConfig({
+    enableSystem: false,
+  }),
+);
 ```
 
 #### Forced Theme (for demos)
 
 ```typescript
-import { provideTheme } from 'dfx-theme';
+import { provideTheme, withThemeConfig } from 'dfx-theme';
 
-provideTheme({
-  forcedTheme: 'dark',
-});
+provideTheme(
+  withThemeConfig({
+    forcedTheme: 'dark',
+  }),
+);
 ```
 
 ## API Reference
@@ -336,7 +340,6 @@ provideTheme({
 - `isDark()` - Check if current theme is dark
 - `isLight()` - Check if current theme is light
 - `isSystem()` - Check if using system theme
-- `getConfig()` - Get current configuration
 - `cleanup()` - Manual cleanup (automatically called on destroy)
 
 ### Example Usage
@@ -405,11 +408,13 @@ export class ExampleComponent implements OnDestroy {
 ### Manual Initialization
 
 ```typescript
-import { ThemeService, provideTheme } from 'dfx-theme';
+import { ThemeService, provideTheme, withThemeConfig } from 'dfx-theme';
 
-provideTheme({
-  enableAutoInit: false,
-});
+provideTheme(
+  withThemeConfig({
+    enableAutoInit: false,
+  }),
+);
 
 // In your component
 export class AppComponent implements OnInit {
@@ -425,11 +430,11 @@ export class AppComponent implements OnInit {
 ### Conditional Initialization
 
 ```typescript
-import { provideTheme, ThemeService } from 'dfx-theme';
+import { provideTheme, ThemeService, withThemeConfig } from 'dfx-theme';
 
-provideTheme({
+provideTheme(withThemeConfig({
   enableAutoInit: false
-})
+}));
 
 // Initialize based on conditions
 ngOnInit() {
