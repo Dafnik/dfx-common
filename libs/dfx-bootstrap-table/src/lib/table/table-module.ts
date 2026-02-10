@@ -11,13 +11,12 @@ import { NgModule } from '@angular/core';
 
 import { NgbCell, NgbCellDef, NgbColumnDef, NgbFooterCell, NgbFooterCellDef, NgbHeaderCell, NgbHeaderCellDef } from './cell';
 import { NgbFooterRow, NgbFooterRowDef, NgbHeaderRow, NgbHeaderRowDef, NgbNoDataRow, NgbRow, NgbRowDef } from './row';
-import { NgbRecycleRows, NgbTable } from './table';
+import { NgbTable } from './table';
 import { NgbTextColumn } from './text-column';
 
 const EXPORTED_DECLARATIONS = [
   // Table
   NgbTable,
-  NgbRecycleRows,
 
   // Template defs
   NgbHeaderCellDef,

@@ -6,7 +6,6 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { _DisposeViewRepeaterStrategy, _RecycleViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY } from '@angular/cdk/collections';
 import {
   CDK_TABLE,
   CdkTable,
@@ -16,17 +15,7 @@ import {
   NoDataRowOutlet,
   STICKY_POSITIONING_LISTENER,
 } from '@angular/cdk/table';
-import { ChangeDetectionStrategy, Component, Directive, HostBinding, Input, ViewEncapsulation, booleanAttribute } from '@angular/core';
-
-/**
- * Enables the recycle view repeater strategy, which reduces rendering latency. Not compatible with
- * tables that animate rows.
- */
-@Directive({
-  selector: 'ngb-table[recycleRows], table[ngb-table][recycleRows]',
-  providers: [{ provide: _VIEW_REPEATER_STRATEGY, useClass: _RecycleViewRepeaterStrategy }],
-})
-export class NgbRecycleRows {}
+import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation, booleanAttribute } from '@angular/core';
 
 /**
  * Wrapper for the CdkTable with Bootstrap styles.
@@ -70,7 +59,6 @@ export class NgbRecycleRows {}
   providers: [
     { provide: CdkTable, useExisting: NgbTable },
     { provide: CDK_TABLE, useExisting: NgbTable },
-    { provide: _VIEW_REPEATER_STRATEGY, useClass: _DisposeViewRepeaterStrategy },
     // Prevent nested tables from seeing this table's StickyPositioningListener.
     { provide: STICKY_POSITIONING_LISTENER, useValue: null },
   ],
