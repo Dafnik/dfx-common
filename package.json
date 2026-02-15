@@ -35,7 +35,7 @@
     "dfts-helper": "2.1.0",
     "dfts-qrcode": "1.1.1",
     "express": "5.2.1",
-    "openapi-typescript-helpers": "0.0.15",
+    "openapi-typescript-helpers": "0.1.0",
     "rxjs": "7.8.2",
     "tslib": "2.8.1"
   },
