@@ -135,7 +135,7 @@ jobs:
       - name: build ${{ matrix.lib }}
         run: pnpm ng build ${{ matrix.lib }}
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         name: create ${{ matrix.lib }} artifact
         with:
           name: ${{ matrix.lib }}
