@@ -41,7 +41,7 @@
   },
   "packageManager": "pnpm@10.32.1",
   "devDependencies": {
-    "@angular-eslint/builder": "21.3.0",
+    "@angular-eslint/builder": "21.3.1",
     "@angular/build": "21.2.5",
     "@angular/cli": "21.2.5",
     "@angular/compiler-cli": "21.2.6",
@@ -51,7 +51,7 @@
     "@types/express": "^5.0.1",
     "@types/node": "^24.0.0",
     "@vitest/coverage-v8": "4.1.0",
-    "angular-eslint": "21.3.0",
+    "angular-eslint": "21.3.1",
     "angular-http-server": "1.12.0",
     "eslint": "9.39.4",
     "git-cliff": "2.12.0",
