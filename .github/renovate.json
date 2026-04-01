@@ -2,14 +2,7 @@
   "assignees": ["Dafnik"],
   "baseBranchPatterns": ["main"],
   "commitBody": "See associated pull request for more information.",
-  "customManagers": [
-    {
-      "customType": "regex",
-      "datasourceTemplate": "docker",
-      "managerFilePatterns": ["infrastructure/versions.env"],
-      "matchStrings": ["IMAGE=\"(?<depName>.+?):(?<currentValue>.+)\" # renovate"]
-    }
-  ],
+  "enabledManagers": ["npm", "github-actions"],
   "extends": [
     "config:recommended",
     ":pinVersions",
@@ -18,6 +11,7 @@
     ":rebaseStalePrs",
     ":semanticCommitTypeAll(chore)"
   ],
+  "ignorePaths": ["**/libs/**"],
   "labels": ["dependencies"],
   "lockFileMaintenance": {
     "automerge": true,
@@ -32,6 +26,10 @@
       "matchPackageNames": ["/^@types/i"]
     },
     {
+      "groupName": "eslint dependencies",
+      "matchPackageNames": ["eslint", "@typescript-eslint/{/,}**"]
+    },
+    {
       "groupName": "typescript dependencies",
       "matchPackageNames": ["typescript", "tslib"]
     },
@@ -42,9 +40,17 @@
     {
       "extends": ["monorepo:angular-cli"],
       "groupName": "angular monorepo"
+    },
+    {
+      "groupName": "minor-updates",
+      "matchPackageNames": ["*", "!typescript", "!tslib", "!eslint", "!/@typescript-eslint//", "!/@types//"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    },
+    {
+      "groupName": "major-update",
+      "matchUpdateTypes": ["major"]
     }
   ],
-  "prHourlyLimit": 5,
   "schedule": ["* * 1,15 * *"],
   "semanticCommitScope": "",
   "semanticCommitType": "build",
