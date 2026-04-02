@@ -143,6 +143,108 @@
       "root": "libs/dfx-helper",
       "sourceRoot": "libs/dfx-helper/src"
     },
+    "dfx-opa": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "development": {
+              "tsConfig": "libs/dfx-opa/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "libs/dfx-opa/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "libs/dfx-opa/eslint.config.js",
+            "lintFilePatterns": ["libs/dfx-opa/**/*.ts", "libs/dfx-opa/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/dfx-opa/tsconfig.spec.json"
+          }
+        }
+      },
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "libs/dfx-opa",
+      "sourceRoot": "libs/dfx-opa/src"
+    },
+    "dfx-opa-demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
+            },
+            "production": {
+              "budgets": [
+                {
+                  "maximumError": "1MB",
+                  "maximumWarning": "500kB",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "8kB",
+                  "maximumWarning": "4kB",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/dfx-opa-demo/public"
+              }
+            ],
+            "browser": "apps/dfx-opa-demo/src/main.ts",
+            "outputMode": "server",
+            "security": {
+              "allowedHosts": []
+            },
+            "server": "apps/dfx-opa-demo/src/main.server.ts",
+            "ssr": {
+              "entry": "apps/dfx-opa-demo/src/server.ts"
+            },
+            "styles": ["apps/dfx-opa-demo/src/styles.css"],
+            "tsConfig": "apps/dfx-opa-demo/tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "dfx-opa-demo:build:development"
+            },
+            "production": {
+              "buildTarget": "dfx-opa-demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "apps/dfx-opa-demo",
+      "schematics": {},
+      "sourceRoot": "apps/dfx-opa-demo/src"
+    },
     "dfx-openapi": {
       "architect": {
         "build": {

@@ -1,0 +1,55 @@
+{
+  "name": "dfx-opa",
+  "version": "0.0.1",
+  "description": "Angular services and directives for frontend authorization based on @open-policy-agent/opa",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/dafnik/dfx-common",
+  "sideEffects": false,
+  "keywords": [
+    "ng",
+    "ngx",
+    "angular2",
+    "angular",
+    "typescript",
+    "OPA",
+    "Open Policy Agent",
+    "authorization",
+    "policy",
+    "permissions",
+    "rbac",
+    "role based access control"
+  ],
+  "author": {
+    "name": "Dafnik",
+    "email": "contact@dafnik.me",
+    "url": "https://dafnik.me"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Dafnik"
+    },
+    {
+      "type": "liberapay",
+      "url": "https://liberapay.com/Dafnik"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Dafnik/dfx-common/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Dafnik/dfx-common.git",
+    "directory": "libs/dfx-openapi"
+  },
+  "peerDependencies": {
+    "@angular/common": "21",
+    "rxjs": "7",
+    "@open-policy-agent/opa": "2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

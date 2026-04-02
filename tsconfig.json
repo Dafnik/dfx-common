@@ -20,6 +20,7 @@
     "paths": {
       "dfx-bootstrap-table": ["./libs/dfx-bootstrap-table/src/public-api.ts"],
       "dfx-helper": ["./libs/dfx-helper/src/public-api.ts"],
+      "dfx-opa": ["./dist/dfx-opa"],
       "dfx-openapi": ["./libs/dfx-openapi/src/public-api.ts"],
       "dfx-qrcode": ["./libs/dfx-qrcode/src/public-api.ts"],
       "dfx-theme": ["./libs/dfx-theme/src/public-api.ts"],
@@ -90,6 +91,18 @@
     },
     {
       "path": "./apps/dfx-theme-demo/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/dfx-opa/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/dfx-opa/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/dfx-opa-demo/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/dfx-opa-demo/tsconfig.spec.json"
     }
   ]
 }
