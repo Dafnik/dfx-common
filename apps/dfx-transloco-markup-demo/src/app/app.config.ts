@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { ApplicationConfig, Injectable, inject, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { ApplicationConfig, Injectable, inject } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
 import { Translation, TranslocoLoader, provideTransloco, translocoConfig } from '@jsverse/transloco';
 import { defaultTranslocoMarkupTranspilers } from 'dfx-transloco-markup';
+import { PLAYGROUND_PROVIDERS } from 'playground-lib';
 
 @Injectable({ providedIn: 'root' })
 export class TranslocoHttpLoader implements TranslocoLoader {
@@ -18,8 +18,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay()),
+    ...PLAYGROUND_PROVIDERS,
     provideTransloco({
       config: translocoConfig({
         availableLangs: ['en', 'nl'],

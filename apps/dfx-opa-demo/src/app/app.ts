@@ -2,14 +2,14 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AuthzDirective, useAuthz } from 'dfx-opa';
+import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
 
 import { DemoTokenService } from './demo-token.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  styleUrl: './app.css',
-  imports: [AuthzDirective, FormsModule],
+  imports: [AuthzDirective, FormsModule, Layout, GithubButton, NpmButton, ThemeSwitch],
 })
 export class App {
   globalToken = inject(DemoTokenService).token;
