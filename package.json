@@ -15,7 +15,7 @@
     "http:dfx-bootstrap-table-demo": "ng build dfx-bootstrap-table-demo && angular-http-server --path ./dist/dfx-bootstrap-table-demo/browser --baseHref bootstrap-table",
     "http:dfx-transloco-markup-demo": "ng build dfx-transloco-markup-demo && angular-http-server --path ./dist/dfx-transloco-markup-demo/browser --baseHref transloco-markup",
     "http:dfx-theme-demo": "ng build dfx-theme-demo && angular-http-server --path ./dist/dfx-theme-demo/browser --baseHref theme",
-    "http:dfx-opa-demo": "ng build dfx-opa-demo && angular-http-server --path ./dist/dfx-opa-demo/browser --baseHref theme",
+    "http:dfx-opa-demo": "ng build dfx-opa-demo && angular-http-server --path ./dist/dfx-opa-demo/browser --baseHref opa",
     "http:playground": "pnpm build:playground && http-server ./apps/playground/dist/",
     "serve:ssr:dfx-transloco-markup-demo": "node dist/dfx-transloco-markup-demo/server/server.mjs",
     "serve:ssr:dfx-theme-demo": "node dist/dfx-theme-demo/server/server.mjs",

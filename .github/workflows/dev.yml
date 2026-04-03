@@ -99,6 +99,11 @@ jobs:
               - '{package,tsconfig}.json'
               - 'pnpm-lock.yaml'
               - '.github/**'
+            dfx-opa:
+              - 'libs/dfx-opa/**'
+              - '{package,tsconfig}.json'
+              - 'pnpm-lock.yaml'
+              - '.github/**'
 
   test:
     name: Test ${{ matrix.lib }}

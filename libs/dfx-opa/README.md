@@ -53,7 +53,7 @@ export const appConfig: ApplicationConfig = {
     provideAuthz(() => {
       // other initialization logic
       return {
-        opaClient: new OPAClient(opaClientUrl),
+        opaClient: new OPAClient(serverURL),
       };
     }),
   ],
@@ -102,7 +102,7 @@ provideAuthz(() => {
 
 The `*authz` directive provides a high-level approach to letting your UI react to policy evaluation results.
 
-For example, to disable a button based on the outcome of a policy evaluation of `data.things.allow` with input `{"action": "delete", "resource": "thing"}`, you would add this to your JSX:
+For example, to disable a button based on the outcome of a policy evaluation of `data.things.allow` with input `{"action": "delete", "resource": "thing"}`, you would add this to your template:
 
 ```angular2html
 <button *authz="'things/allow'; input: { action: 'delete', resouce: 'thing'}; else #fallback">

@@ -1,6 +1,6 @@
 import { Injectable, Signal, inject, isSignal, signal } from '@angular/core';
 
-import { Observable, from } from 'rxjs';
+import { Observable, defer, from } from 'rxjs';
 
 import { Input, OPAClient, RequestOptions, ToInput } from '@open-policy-agent/opa';
 
@@ -21,6 +21,6 @@ export class Authz {
   }
 
   evaluate<Res>(path: string, input?: Input | ToInput, opts?: RequestOptions<Res>): Observable<Res> {
-    return from(this.opaClient().evaluate(path, input, opts));
+    return defer(() => from(this.opaClient().evaluate(path, input, opts)));
   }
 }
