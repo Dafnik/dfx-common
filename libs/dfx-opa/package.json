@@ -4,7 +4,7 @@
   "description": "Angular services and directives for frontend authorization based on @open-policy-agent/opa",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/dafnik/dfx-common",
+  "homepage": "https://playground.dafnik.me/opa/",
   "sideEffects": false,
   "keywords": [
     "ng",

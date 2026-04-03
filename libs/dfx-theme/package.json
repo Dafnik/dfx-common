@@ -4,7 +4,7 @@
   "description": "tiny and simple-to-use Angular theme management library",
   "private": false,
   "license": "MIT",
-  "homepage": "https://playground.dafnik.me/theme",
+  "homepage": "https://playground.dafnik.me/theme/",
   "sideEffects": false,
   "keywords": [
     "ng",
