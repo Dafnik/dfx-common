@@ -20,7 +20,7 @@
     "paths": {
       "dfx-bootstrap-table": ["./libs/dfx-bootstrap-table/src/public-api.ts"],
       "dfx-helper": ["./libs/dfx-helper/src/public-api.ts"],
-      "dfx-opa": ["./dist/dfx-opa"],
+      "dfx-opa": ["./libs/dfx-opa/src/public-api.ts"],
       "dfx-openapi": ["./libs/dfx-openapi/src/public-api.ts"],
       "dfx-qrcode": ["./libs/dfx-qrcode/src/public-api.ts"],
       "dfx-theme": ["./libs/dfx-theme/src/public-api.ts"],

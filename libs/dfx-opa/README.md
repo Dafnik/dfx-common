@@ -80,7 +80,7 @@ provideAuthz(() => {
 To provide a user-specific header, let's say from your frontend's authentication machinery, you could do this:
 
 ```ts
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
 
 provideAuthz(() => {
   const authService = inject(AuthService); // assuming there's some service for authentication
