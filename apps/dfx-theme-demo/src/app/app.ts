@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { ThemeService } from 'dfx-theme';
+import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [GithubButton, Layout, NpmButton, ThemeSwitch],
 })
 export class App {
   private themeService = inject(ThemeService);

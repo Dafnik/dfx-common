@@ -24,7 +24,8 @@
       "dfx-openapi": ["./libs/dfx-openapi/src/public-api.ts"],
       "dfx-qrcode": ["./libs/dfx-qrcode/src/public-api.ts"],
       "dfx-theme": ["./libs/dfx-theme/src/public-api.ts"],
-      "dfx-transloco-markup": ["./libs/dfx-transloco-markup/src/public-api.ts"]
+      "dfx-transloco-markup": ["./libs/dfx-transloco-markup/src/public-api.ts"],
+      "playground-lib": ["./libs/playground-lib/src/public-api.ts"]
     },
     "skipLibCheck": true,
     "strict": true,
@@ -103,6 +104,12 @@
     },
     {
       "path": "./apps/dfx-opa-demo/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/playground-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/playground-lib/tsconfig.spec.json"
     }
   ]
 }
