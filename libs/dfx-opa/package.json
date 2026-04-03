@@ -1,10 +1,10 @@
 {
-  "name": "dfx-theme",
+  "name": "dfx-opa",
   "version": "0.0.1",
-  "description": "tiny and simple-to-use Angular theme management library",
+  "description": "Angular services and directives for frontend authorization based on @open-policy-agent/opa",
   "private": false,
   "license": "MIT",
-  "homepage": "https://playground.dafnik.me/theme/",
+  "homepage": "https://playground.dafnik.me/opa/",
   "sideEffects": false,
   "keywords": [
     "ng",
@@ -12,23 +12,13 @@
     "angular2",
     "angular",
     "typescript",
-    "angular",
-    "theme",
-    "dark-mode",
-    "light-mode",
-    "angular-theme",
-    "angular theme library",
-    "angular dark mode",
-    "angular light mode",
-    "angular theme management",
-    "angular theming",
-    "angular css variables",
-    "angular signals",
-    "angular ssr",
-    "ui",
-    "frontend",
-    "css-variables",
-    "theme-toggle"
+    "OPA",
+    "Open Policy Agent",
+    "authorization",
+    "policy",
+    "permissions",
+    "rbac",
+    "role based access control"
   ],
   "author": {
     "name": "Dafnik",
@@ -51,14 +41,12 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:Dafnik/dfx-common.git",
-    "directory": "libs/dfx-theme"
+    "directory": "libs/dfx-opa"
   },
   "peerDependencies": {
     "@angular/common": "21",
-    "@angular/core": "21"
-  },
-  "dependencies": {
-    "tslib": "^2"
+    "rxjs": "7",
+    "@open-policy-agent/opa": "2"
   },
   "publishConfig": {
     "access": "public",

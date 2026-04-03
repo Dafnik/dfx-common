@@ -4,7 +4,7 @@
   "description": "A translation component to render translations with markup",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/Dafnik/dfx-common",
+  "homepage": "https://playground.dafnik.me/transloco-markup/",
   "sideEffects": false,
   "keywords": [
     "ng",
