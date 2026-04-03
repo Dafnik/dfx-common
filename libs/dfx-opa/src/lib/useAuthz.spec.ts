@@ -1,7 +1,7 @@
 import { Injector, ResourceRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { Input, Result } from '@open-policy-agent/opa';
+import { Result } from '@open-policy-agent/opa';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { Authz } from './authz';
