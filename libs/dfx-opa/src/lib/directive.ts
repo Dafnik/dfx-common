@@ -37,12 +37,12 @@ export class AuthzDirective {
 
   constructor() {
     effect(() => {
-      const authzResult = this.authzResult();
+      const isLoading = this.authzResult.isLoading();
 
-      this.ngIfDirective.opaIfLoadingState = authzResult.isLoading;
+      this.ngIfDirective.opaIfLoadingState = isLoading;
 
-      if (!authzResult.isLoading) {
-        this.ngIfDirective.opaIf = authzResult.result;
+      if (!isLoading) {
+        this.ngIfDirective.opaIf = this.authzResult.hasValue() ? this.authzResult.value() : undefined;
       }
     });
   }
