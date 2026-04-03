@@ -2,7 +2,7 @@ import { Directive, effect, inject, input } from '@angular/core';
 
 import { Input } from '@open-policy-agent/opa';
 
-import { AUTHZ_OPTIONS, AuthzOptions } from './config';
+import { AuthzOptions } from './config';
 import { OpaIf } from './opa-if';
 import { useAuthz } from './useAuthz';
 
@@ -16,8 +16,7 @@ import { useAuthz } from './useAuthz';
   ],
 })
 export class AuthzDirective {
-  private readonly ngIfDirective = inject(OpaIf);
-  private readonly authzOptions = inject(AUTHZ_OPTIONS);
+  private readonly opaIf = inject(OpaIf);
 
   public readonly path = input<string>(undefined, {
     alias: 'authz',
@@ -25,7 +24,7 @@ export class AuthzDirective {
   public readonly input = input<Input>(undefined, {
     alias: 'authzInput',
   });
-  public readonly fromResult = input<AuthzOptions['defaultFromResult']>(this.authzOptions.defaultFromResult, {
+  public readonly fromResult = input<AuthzOptions['defaultFromResult']>(undefined, {
     alias: 'authzFromResult',
   });
 
@@ -39,10 +38,10 @@ export class AuthzDirective {
     effect(() => {
       const isLoading = this.authzResult.isLoading();
 
-      this.ngIfDirective.opaIfLoadingState = isLoading;
+      this.opaIf.opaIfLoadingState = isLoading;
 
       if (!isLoading) {
-        this.ngIfDirective.opaIf = this.authzResult.hasValue() ? this.authzResult.value() : undefined;
+        this.opaIf.opaIf = this.authzResult.hasValue() ? this.authzResult.value() : undefined;
       }
     });
   }

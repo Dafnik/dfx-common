@@ -46,7 +46,7 @@ const projects = [
     <h1>playground</h1>
   </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 card-grid">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 card-grid">
     {
       projects.map((p) =>
         <div class="col">
@@ -183,6 +183,10 @@ const projects = [
 
   .grid > .col:nth-child(4) .card-title {
     background-image: var(--gradient-4);
+  }
+
+  .grid > .col:nth-child(5) .card-title {
+    background-image: var(--gradient-5);
   }
 
   .hover-card:hover .card-title {
