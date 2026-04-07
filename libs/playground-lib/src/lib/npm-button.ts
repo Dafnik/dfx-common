@@ -6,7 +6,7 @@ import { Layout } from './layout';
   template: `
     <a
       class="btn-outline border-gray-900"
-      href="https://npmjs.com/{{ project() }}"
+      href="https://npmjs.com/package/{{ project() }}"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="View {{ project() }} on npm">
