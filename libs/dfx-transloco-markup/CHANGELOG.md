@@ -1,5 +1,12 @@
 # Changelog
 
+## dfx-transloco-markup-21.0.0 - 2026-04-07
+
+Prod release
+
+
+[**Full Changelog**](https://github.com/poweruptime/poweruptime/compare/dfx-theme-21.0.0...dfx-transloco-markup-21.0.0)
+
 ## dfx-transloco-markup-0.0.2 - 2025-12-18
 
 - Fix @jsverse/utils peer dependency issue
