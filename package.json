@@ -19,7 +19,9 @@
     "http:playground": "pnpm build:playground && http-server ./apps/playground/dist/",
     "serve:ssr:dfx-transloco-markup-demo": "node dist/dfx-transloco-markup-demo/server/server.mjs",
     "serve:ssr:dfx-theme-demo": "node dist/dfx-theme-demo/server/server.mjs",
-    "serve:ssr:dfx-opa-demo": "node dist/dfx-opa-demo/server/server.mjs"
+    "serve:ssr:dfx-opa-demo": "node dist/dfx-opa-demo/server/server.mjs",
+    "serve:opa-server": "opa run --server ./apps/dfx-opa-demo/demo.rego",
+    "serve:opa-demo": "ng serve dfx-opa-demo --configuration=opa-server & pnpm serve:opa-server"
   },
   "private": true,
   "dependencies": {

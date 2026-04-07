@@ -4,10 +4,7 @@ import { Input, OPAClient } from '@open-policy-agent/opa';
 import { Result } from '@open-policy-agent/opa';
 
 import { AUTHZ_OPTIONS } from './config';
-
-function resolveValue<T>(value: T | Signal<T>): T {
-  return isSignal(value) ? value() : value;
-}
+import { resolveValue } from './util';
 
 interface AuthzParams<T> {
   opaClient: OPAClient;

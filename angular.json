@@ -183,6 +183,17 @@
               "optimization": false,
               "sourceMap": true
             },
+            "opa-server": {
+              "extractLicenses": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/dfx-opa-demo/src/environments/environment.ts",
+                  "with": "apps/dfx-opa-demo/src/environments/environment.opa-server.ts"
+                }
+              ],
+              "optimization": false,
+              "sourceMap": true
+            },
             "production": {
               "baseHref": "/opa/",
               "budgets": [
@@ -227,11 +238,17 @@
             "development": {
               "buildTarget": "dfx-opa-demo:build:development"
             },
+            "opa-server": {
+              "buildTarget": "dfx-opa-demo:build:opa-server"
+            },
             "production": {
               "buildTarget": "dfx-opa-demo:build:production"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "apps/dfx-opa-demo/proxy.conf.json"
+          }
         }
       },
       "prefix": "app",
