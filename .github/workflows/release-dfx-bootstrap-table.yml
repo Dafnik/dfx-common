@@ -3,7 +3,7 @@ name: release dfx-bootstrap-table
 on:
   push:
     tags:
-      - 'dfx-bootstrap-table*'
+      - 'dfx-bootstrap-table**'
 
 permissions:
   id-token: write # Required for OIDC

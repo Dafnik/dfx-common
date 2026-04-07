@@ -3,7 +3,7 @@ name: release dfx-opa
 on:
   push:
     tags:
-      - 'dfx-opa*'
+      - 'dfx-opa**'
 
 permissions:
   id-token: write # Required for OIDC

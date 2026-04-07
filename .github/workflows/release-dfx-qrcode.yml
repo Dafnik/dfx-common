@@ -3,7 +3,7 @@ name: release dfx-qrcode
 on:
   push:
     tags:
-      - 'dfx-qrcode*'
+      - 'dfx-qrcode**'
 
 permissions:
   id-token: write # Required for OIDC

@@ -3,7 +3,7 @@ name: release dfx-openapi
 on:
   push:
     tags:
-      - 'dfx-openapi*'
+      - 'dfx-openapi**'
 
 permissions:
   id-token: write # Required for OIDC

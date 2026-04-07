@@ -3,7 +3,7 @@ name: release dfx-transloco-markup
 on:
   push:
     tags:
-      - 'dfx-transloco-markup*'
+      - 'dfx-transloco-markup**'
 
 permissions:
   id-token: write # Required for OIDC

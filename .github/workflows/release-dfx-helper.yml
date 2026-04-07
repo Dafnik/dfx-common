@@ -3,7 +3,7 @@ name: release dfx-helper
 on:
   push:
     tags:
-      - 'dfx-helper*'
+      - 'dfx-helper**'
 
 permissions:
   id-token: write # Required for OIDC
