@@ -4,19 +4,18 @@ import { Input, OPAClient, Result } from '@open-policy-agent/opa';
 
 import { AuthzCacheOptions } from './config';
 
-const DEFAULT_TTL_MS = 60_000;
+const DEFAULT_TTL_MS = 30_000;
 const DEFAULT_MAX_ENTRIES = 200;
+const EXPIRED_ENTRY_CLEANUP_INTERVAL = 32;
 
 interface PendingCacheEntry {
   kind: 'pending';
-  lastAccessedAt: number;
   promise: Promise<Result>;
 }
 
 interface ResolvedCacheEntry {
   expiresAt: number;
   kind: 'resolved';
-  lastAccessedAt: number;
   value: Result;
 }
 
@@ -30,6 +29,7 @@ interface NormalizedAuthzCacheOptions {
 @Injectable({ providedIn: 'root' })
 export class AuthzCache {
   private readonly cache = new WeakMap<OPAClient, Map<string, CacheEntry>>();
+  private evaluationCount = 0;
 
   async evaluate(
     opaClient: OPAClient,
@@ -41,8 +41,9 @@ export class AuthzCache {
     const options = normalizeCacheOptions(cacheOptions);
     const bucket = this.getBucket(opaClient);
     const key = createCacheKey(path, input);
+    const now = Date.now();
 
-    this.removeExpiredEntries(bucket);
+    this.maybeRemoveExpiredEntries(bucket, options);
 
     const cachedEntry = bucket.get(key);
 
@@ -52,7 +53,9 @@ export class AuthzCache {
         return cachedEntry.promise;
       }
 
-      if (!forceRefresh) {
+      if (cachedEntry.expiresAt <= now) {
+        bucket.delete(key);
+      } else if (!forceRefresh) {
         this.touchEntry(bucket, key, cachedEntry);
         return cachedEntry.value;
       }
@@ -61,7 +64,6 @@ export class AuthzCache {
     const promise = opaClient.evaluate<Input, Result>(path, input);
     const pendingEntry: PendingCacheEntry = {
       kind: 'pending',
-      lastAccessedAt: Date.now(),
       promise,
     };
 
@@ -69,10 +71,10 @@ export class AuthzCache {
 
     try {
       const value = await promise;
+      const resolvedAt = Date.now();
       const resolvedEntry: ResolvedCacheEntry = {
-        expiresAt: Date.now() + options.ttlMs,
+        expiresAt: resolvedAt + options.ttlMs,
         kind: 'resolved',
-        lastAccessedAt: Date.now(),
         value,
       };
 
@@ -87,6 +89,14 @@ export class AuthzCache {
       }
 
       throw error;
+    }
+  }
+
+  private maybeRemoveExpiredEntries(bucket: Map<string, CacheEntry>, options: NormalizedAuthzCacheOptions): void {
+    this.evaluationCount += 1;
+
+    if (bucket.size > options.maxEntries || this.evaluationCount % EXPIRED_ENTRY_CLEANUP_INTERVAL === 0) {
+      this.removeExpiredEntries(bucket);
     }
   }
 
@@ -130,7 +140,6 @@ export class AuthzCache {
   }
 
   private touchEntry(bucket: Map<string, CacheEntry>, key: string, entry: CacheEntry): void {
-    entry.lastAccessedAt = Date.now();
     bucket.delete(key);
     bucket.set(key, entry);
   }
@@ -147,7 +156,7 @@ function createCacheKey(path: string, input: Input | undefined): string {
   return `${path}:${stableSerialize(input)}`;
 }
 
-function stableSerialize(value: Input | undefined): string {
+function stableSerialize(value: Input | undefined, seen = new Set<object>()): string {
   if (value === undefined) {
     return 'undefined';
   }
@@ -156,12 +165,22 @@ function stableSerialize(value: Input | undefined): string {
     return JSON.stringify(value);
   }
 
-  if (Array.isArray(value)) {
-    return `[${value.map((item) => stableSerialize(item)).join(',')}]`;
+  if (seen.has(value)) {
+    return JSON.stringify('[Circular]');
   }
 
-  return `{${Object.entries(value)
-    .sort(([left], [right]) => left.localeCompare(right))
-    .map(([key, entryValue]) => `${JSON.stringify(key)}:${stableSerialize(entryValue as Input)}`)
-    .join(',')}}`;
+  seen.add(value);
+
+  try {
+    if (Array.isArray(value)) {
+      return `[${value.map((item) => stableSerialize(item, seen)).join(',')}]`;
+    }
+
+    return `{${Object.entries(value)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, entryValue]) => `${JSON.stringify(key)}:${stableSerialize(entryValue as Input, seen)}`)
+      .join(',')}}`;
+  } finally {
+    seen.delete(value);
+  }
 }

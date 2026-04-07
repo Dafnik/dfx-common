@@ -75,7 +75,9 @@ provideAuthz(() => ({
 }));
 ```
 
-When enabled, matching authz evaluations share cached results until their TTL expires. Entries are evicted with an LRU policy once `maxEntries` is reached.
+Passing no `cache` key, or `cache: undefined`, disables caching entirely.
+Passing `cache: {}` enables caching with the runtime defaults used by `provideAuthz`: `ttlMs = 30_000`, `maxEntries = 200`, and LRU eviction.
+When enabled, matching authz evaluations created from the same `OPAClient` configuration share cached results until their `ttlMs` expires. Entries are evicted with an LRU policy once `maxEntries` is reached.
 
 If your OPA instance is reverse-proxied with a prefix of `/opa/` instead, you can use `window.location` to configure the `OPAClient`:
 

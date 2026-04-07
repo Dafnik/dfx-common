@@ -1,7 +1,7 @@
 import { Signal, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { OPAClient, RequestOptions, Result } from '@open-policy-agent/opa';
+import { Input, OPAClient, RequestOptions, Result } from '@open-policy-agent/opa';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { Authz } from './authz';
@@ -111,6 +111,27 @@ describe('Authz', () => {
 
     const first = service.evaluate('tickets/allow', { user: 'alice', tenant: 'acme' });
     const second = service.evaluate('tickets/allow', { tenant: 'acme', user: 'alice' });
+
+    await vi.waitFor(() => expect(first.status()).toBe('resolved'));
+    await vi.waitFor(() => expect(second.status()).toBe('resolved'));
+    expect(evaluate).toHaveBeenCalledTimes(1);
+  });
+
+  it('should serialize circular inputs without overflowing the stack', async () => {
+    const evaluate = vi.fn().mockResolvedValue({ allowed: true });
+    const service = setup({
+      authzOptions: {
+        cache: {},
+      },
+      opaClient: {
+        evaluate,
+      } as unknown as OPAClient,
+    });
+    const input = { tenant: 'acme' } as Record<string, unknown>;
+    input['self'] = input;
+
+    const first = service.evaluate('tickets/allow', input as unknown as Input);
+    const second = service.evaluate('tickets/allow', input as unknown as Input);
 
     await vi.waitFor(() => expect(first.status()).toBe('resolved'));
     await vi.waitFor(() => expect(second.status()).toBe('resolved'));
