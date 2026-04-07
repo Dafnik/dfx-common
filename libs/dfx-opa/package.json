@@ -45,6 +45,7 @@
   },
   "peerDependencies": {
     "@angular/common": "21",
+    "@angular/core": "21",
     "rxjs": "7",
     "@open-policy-agent/opa": "2"
   },
