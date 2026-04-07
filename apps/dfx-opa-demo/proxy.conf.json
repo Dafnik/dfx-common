@@ -1,0 +1,10 @@
+{
+  "/opa": {
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/opa": ""
+    },
+    "secure": false,
+    "target": "http://localhost:8181"
+  }
+}

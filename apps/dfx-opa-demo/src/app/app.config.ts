@@ -4,9 +4,9 @@ import { provideRouter } from '@angular/router';
 import { provideAuthz } from 'dfx-opa';
 import { PLAYGROUND_PROVIDERS } from 'playground-lib';
 
+import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { DemoTokenService } from './demo-token.service';
-import { MockOpaClient } from './mock-opa.client';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,8 +15,9 @@ export const appConfig: ApplicationConfig = {
     provideAuthz(() => {
       const token = inject(DemoTokenService).token;
       return {
-        opaClient: new MockOpaClient('https://localhost'),
+        opaClient: environment.opaClient,
         defaultInput: computed(() => ({ token: token() })),
+        cache: {},
       };
     }),
   ],
