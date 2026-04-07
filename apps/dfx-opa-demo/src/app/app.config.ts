@@ -17,6 +17,7 @@ export const appConfig: ApplicationConfig = {
       return {
         opaClient: environment.opaClient,
         defaultInput: computed(() => ({ token: token() })),
+        cache: {},
       };
     }),
   ],

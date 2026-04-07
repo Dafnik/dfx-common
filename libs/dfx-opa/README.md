@@ -63,6 +63,20 @@ export const appConfig: ApplicationConfig = {
 > [!NOTE]
 > Only `opaClient` is mandatory.
 
+Caching is optional and can be enabled globally via `provideAuthz`:
+
+```ts
+provideAuthz(() => ({
+  opaClient: new OPAClient(serverURL),
+  cache: {
+    ttlMs: 30_000,
+    maxEntries: 200,
+  },
+}));
+```
+
+When enabled, matching authz evaluations share cached results until their TTL expires. Entries are evicted with an LRU policy once `maxEntries` is reached.
+
 If your OPA instance is reverse-proxied with a prefix of `/opa/` instead, you can use `window.location` to configure the `OPAClient`:
 
 ```ts

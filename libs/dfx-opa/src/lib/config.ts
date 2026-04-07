@@ -2,7 +2,13 @@ import { InjectionToken, Provider, Signal } from '@angular/core';
 
 import { Input, OPAClient, Result } from '@open-policy-agent/opa';
 
+export interface AuthzCacheOptions {
+  maxEntries?: number;
+  ttlMs?: number;
+}
+
 export interface AuthzOptions {
+  cache?: AuthzCacheOptions;
   defaultFromResult?: (_?: Result) => boolean;
   defaultInput?: Input | Signal<Input>;
   defaultPath?: string | Signal<string>;
