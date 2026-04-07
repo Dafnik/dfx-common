@@ -1,4 +1,4 @@
-import { Injectable, Injector, ResourceRef, Signal, inject, isSignal, resource, runInInjectionContext } from '@angular/core';
+import { Injectable, Injector, ResourceRef, Signal, inject, resource, runInInjectionContext } from '@angular/core';
 
 import { Input, OPAClient } from '@open-policy-agent/opa';
 import { Result } from '@open-policy-agent/opa';
