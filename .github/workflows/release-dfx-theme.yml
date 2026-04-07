@@ -3,7 +3,7 @@ name: release dfx-theme
 on:
   push:
     tags:
-      - 'dfx-theme*'
+      - 'dfx-theme**'
 
 permissions:
   id-token: write # Required for OIDC
