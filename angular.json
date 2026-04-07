@@ -184,6 +184,7 @@
               "sourceMap": true
             },
             "production": {
+              "baseHref": "/opa/",
               "budgets": [
                 {
                   "maximumError": "1MB",
@@ -216,7 +217,7 @@
             "ssr": {
               "entry": "apps/dfx-opa-demo/src/server.ts"
             },
-            "styles": ["apps/dfx-opa-demo/src/styles.css"],
+            "styles": ["apps/dfx-opa-demo/src/styles.css", "libs/playground-lib/styles/lib.css"],
             "tsConfig": "apps/dfx-opa-demo/tsconfig.app.json"
           }
         },
@@ -440,7 +441,7 @@
             "ssr": {
               "entry": "apps/dfx-theme-demo/src/server.ts"
             },
-            "styles": ["apps/dfx-theme-demo/src/styles.css"],
+            "styles": ["apps/dfx-theme-demo/src/styles.css", "libs/playground-lib/styles/lib.css"],
             "tsConfig": "apps/dfx-theme-demo/tsconfig.app.json"
           }
         },
@@ -532,7 +533,7 @@
               }
             ],
             "browser": "apps/dfx-transloco-markup-demo/src/main.ts",
-            "styles": ["apps/dfx-transloco-markup-demo/src/styles.css"],
+            "styles": ["apps/dfx-transloco-markup-demo/src/styles.css", "libs/playground-lib/styles/lib.css"],
             "tsConfig": "apps/dfx-transloco-markup-demo/tsconfig.app.json"
           }
         },
@@ -554,6 +555,32 @@
       "root": "apps/dfx-transloco-markup-demo",
       "schematics": {},
       "sourceRoot": "apps/dfx-transloco-markup-demo/src"
+    },
+    "playground-lib": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "development": {
+              "tsConfig": "libs/playground-lib/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "libs/playground-lib/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/playground-lib/tsconfig.spec.json"
+          }
+        }
+      },
+      "prefix": "lib",
+      "projectType": "library",
+      "root": "libs/playground-lib",
+      "sourceRoot": "libs/playground-lib/src"
     }
   },
   "version": 1
