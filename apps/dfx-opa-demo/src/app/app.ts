@@ -64,7 +64,7 @@ import { DemoTokenService } from './demo-token.service';
         </div>
       </section>
 
-      <section class="mt-8" hlmCard>
+      <section class="mt-8 text-center" hlmCard>
         <div hlmCardContent>
           <router-outlet />
         </div>

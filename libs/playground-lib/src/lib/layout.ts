@@ -24,7 +24,7 @@ import { Component, HostListener, input, signal } from '@angular/core';
       <!-- Main Content -->
       <main class="flex-1" role="main">
         <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div class="mx-auto mt-4 mb-20 max-w-2xl text-center">
+          <div class="mx-auto mt-4 mb-20 max-w-2xl">
             <ng-content />
           </div>
         </section>

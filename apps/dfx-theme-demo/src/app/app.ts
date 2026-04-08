@@ -18,7 +18,7 @@ import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
       </nav>
 
       <section hlmCard>
-        <div hlmCardContent>
+        <div class="text-center" hlmCardContent>
           <h3 class="mb-6 text-xl font-semibold">Try Theme Switching</h3>
 
           <div class="space-y-6">

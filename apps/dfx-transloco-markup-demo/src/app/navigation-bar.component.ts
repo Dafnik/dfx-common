@@ -1,7 +1,10 @@
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { TranslocoService } from '@jsverse/transloco';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmToggleGroupImports } from '@spartan-ng/helm/toggle-group';
 
 interface LanguageOption {
   languageId: string;
@@ -16,16 +19,9 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
 
 @Component({
   template: `
-    <div class="flex gap-2">
+    <hlm-toggle-group [value]="activeLanguage()" (valueChange)="setActiveLanguage($any($event))" variant="outline" type="single">
       @for (languageOption of languageOptions; track $index) {
-        <button
-          class="rounded-full p-2 transition-colors hover:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
-          [class.ring-2]="(activeLanguage$ | async) === languageOption.languageId"
-          [class.ring-blue-500]="(activeLanguage$ | async) === languageOption.languageId"
-          [attr.aria-label]="languageOption.name"
-          [attr.aria-pressed]="(activeLanguage$ | async) === languageOption.languageId"
-          (click)="setActiveLanguage(languageOption.languageId)"
-          type="button">
+        <button [value]="languageOption.languageId" [attr.aria-label]="languageOption.name" hlmToggleGroupItem>
           <img
             class="icon"
             [ngSrc]="'assets/images/country-flags/' + languageOption.icon"
@@ -34,7 +30,7 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
             height="24" />
         </button>
       }
-    </div>
+    </hlm-toggle-group>
   `,
   selector: 'language-switcher',
   styles: `
@@ -48,14 +44,13 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, NgOptimizedImage],
+  imports: [NgOptimizedImage, HlmToggleGroupImports],
 })
 export class NavigationBarComponent {
   private readonly translocoService = inject(TranslocoService);
 
-  protected activeLanguage$ = this.translocoService.langChanges$;
-
-  public readonly languageOptions = LANGUAGE_OPTIONS;
+  protected readonly activeLanguage = toSignal(this.translocoService.langChanges$, { requireSync: true });
+  protected readonly languageOptions = LANGUAGE_OPTIONS;
 
   public setActiveLanguage(language: string): void {
     this.translocoService.setActiveLang(language);
