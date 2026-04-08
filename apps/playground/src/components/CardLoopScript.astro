@@ -1,0 +1,72 @@
+---
+type Props = {
+  selector?: string;
+  activeClass?: string;
+  interval?: number;
+};
+
+const {
+  selector = '[data-loop-card]',
+  activeClass = 'is-active',
+  interval = 2200,
+} = Astro.props as Props;
+---
+
+<script define:vars={{ selector, activeClass, interval }}>
+  const cards = Array.from(document.querySelectorAll(selector));
+
+  if (cards.length > 0) {
+    let index = 0;
+    let intervalId = 0;
+
+    const clearActive = () => {
+      cards.forEach((card) => card.classList.remove(activeClass));
+    };
+
+    const activate = (card) => {
+      clearActive();
+      card.classList.add(activeClass);
+    };
+
+    const startLoop = () =>
+      window.setInterval(() => {
+        activate(cards[index]);
+        index = (index + 1) % cards.length;
+      }, interval);
+
+    const stopLoop = () => {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = 0;
+      }
+    };
+
+    activate(cards[0]);
+    index = cards.length > 1 ? 1 : 0;
+    intervalId = cards.length > 1 ? startLoop() : 0;
+
+    cards.forEach((card) => {
+      card.addEventListener('mouseenter', () => {
+        stopLoop();
+        activate(card);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (!intervalId && cards.length > 1) {
+          intervalId = startLoop();
+        }
+      });
+
+      card.addEventListener('focusin', () => {
+        stopLoop();
+        activate(card);
+      });
+
+      card.addEventListener('focusout', () => {
+        if (!intervalId && cards.length > 1) {
+          intervalId = startLoop();
+        }
+      });
+    });
+  }
+</script>
