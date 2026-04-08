@@ -37,7 +37,7 @@ import { DemoTokenService } from './demo-token.service';
 
               <hlm-select id="globalToken" [(ngModel)]="globalToken">
                 <hlm-select-trigger class="w-56">
-                  <hlm-select-value placeholder="Select a fruit" />
+                  <hlm-select-value placeholder="Select a role" />
                 </hlm-select-trigger>
                 <hlm-select-content *hlmSelectPortal>
                   <hlm-select-group>

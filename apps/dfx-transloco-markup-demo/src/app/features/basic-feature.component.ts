@@ -26,7 +26,7 @@ export const BASIC_FEATURE_TRANSLATION_KEYS = defineTranslationKeys((t) => ({
       <div hlmCardContent>
         <div hlmField>
           <label hlmFieldLabel for="name-input">{{ TRANSLATIONS.NAME | transloco }}</label>
-          <input id="name" [formControl]="formControls.name" hlmInput placeholder="Johnny" />
+          <input id="name-input" [formControl]="formControls.name" hlmInput placeholder="Johnny" />
         </div>
 
         <div class="mt-4">

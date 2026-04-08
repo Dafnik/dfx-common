@@ -84,7 +84,7 @@ import { DemoTokenService } from './demo-token.service';
 
           <hlm-select id="testPath" [(ngModel)]="testPath">
             <hlm-select-trigger class="w-full">
-              <hlm-select-value placeholder="Select a fruit" />
+              <hlm-select-value placeholder="Select a path" />
             </hlm-select-trigger>
             <hlm-select-content *hlmSelectPortal>
               <hlm-select-group>
@@ -101,7 +101,7 @@ import { DemoTokenService } from './demo-token.service';
 
           <hlm-select id="testToken" [(ngModel)]="testToken">
             <hlm-select-trigger class="w-full">
-              <hlm-select-value placeholder="Select a fruit" />
+              <hlm-select-value placeholder="Select a role" />
             </hlm-select-trigger>
             <hlm-select-content *hlmSelectPortal>
               <hlm-select-group>
