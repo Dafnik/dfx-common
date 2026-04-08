@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
 
+import { HlmButton } from '@spartan-ng/helm/button';
+
 import { Layout } from './layout';
 
 @Component({
   template: `
     <a
-      class="btn-outline border-gray-900"
+      hlmBtn
+      variant="outline"
       href="https://npmjs.com/package/{{ project() }}"
       target="_blank"
       rel="noopener noreferrer"
@@ -25,6 +28,7 @@ import { Layout } from './layout';
     </a>
   `,
   selector: 'playground-npm-button',
+  imports: [HlmButton],
 })
 export class NpmButton {
   project = inject(Layout).project;

@@ -2,13 +2,13 @@ import { Component, input } from '@angular/core';
 
 @Component({
   template: `
-    <div class="theme-bg-primary flex min-h-screen flex-col">
+    <div class="flex min-h-screen flex-col">
       <!-- Header -->
-      <header class="theme-bg-primary sticky top-0 z-50" role="banner">
+      <header class="sticky top-0 z-50" role="banner">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex h-16 items-center justify-between">
             <div class="flex items-center space-x-3">
-              <h1 class="theme-text-primary text-lg font-semibold">{{ project() }}</h1>
+              <h1 class="text-lg font-semibold">{{ project() }}</h1>
             </div>
 
             <div role="navigation" aria-label="Main navigation">

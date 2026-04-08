@@ -5,47 +5,49 @@
     <playground-npm-button />
   </nav>
 
-  <h1 class="text-2xl">Global Config</h1>
-  <input
-    class="bg-neutral-secondary-medium border-default-medium text-heading rounded-base focus:ring-brand focus:border-brand placeholder:text-body mt-4 block w-full border px-3 py-2.5 text-sm shadow-xs"
-    id="globalToken"
-    [(ngModel)]="globalToken" />
-  <ng-container
-    *authz="'test/Organisationsverwaltung'; loading organisationsVerwaltungAccessLoading; else organisationsVerwaltungAccessDenied">
-    <p class="text-lg text-green-500">Organisationsverwaltung access allowed</p>
-  </ng-container>
-  <ng-template #organisationsVerwaltungAccessLoading>
-    <p>Organisations Loading</p>
-  </ng-template>
-  <ng-template #organisationsVerwaltungAccessDenied>
-    <p class="text-lg text-red-500">Organisationsverwaltung access denied</p>
-  </ng-template>
+  <section hlmCard>
+    <div hlmCardContent>
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <p class="text-muted-foreground text-start text-sm">
+            Switch the shared demo token and navigate through the guarded pages to see how the same OPA permissions drive both routed access
+            and in-page UI state.
+          </p>
+        </div>
 
-  <ng-container *authz="'test/Kundenverwaltung'; loading kundenVerwaltungAccessLoading; else kundenVerwaltungAccessDenied">
-    <p class="text-lg text-green-500">Kundenverwaltung access allowed</p>
-  </ng-container>
-  <ng-template #kundenVerwaltungAccessLoading>
-    <p>Kunden Loading</p>
-  </ng-template>
-  <ng-template #kundenVerwaltungAccessDenied>
-    <p class="text-lg text-red-500">Kundenverwaltung access denied</p>
-  </ng-template>
+        <div hlmField>
+          <label hlmFieldLabel for="globalToken">Global default role</label>
 
-  <div class="mt-20"></div>
-  <h2 class="text-xl">useAuthz Test</h2>
-  <select
-    class="bg-neutral-secondary-medium border-default-medium text-heading rounded-base focus:ring-brand focus:border-brand placeholder:text-body mt-4 block w-full border px-3 py-2.5 text-sm shadow-xs"
-    [(ngModel)]="testPath">
-    <option value="test/Organisationsverwaltung">test/Organisationsverwaltung</option>
-    <option value="test/Kundenverwaltung">test/Kundenverwaltung</option>
-  </select>
-  <input
-    class="bg-neutral-secondary-medium border-default-medium text-heading rounded-base focus:ring-brand focus:border-brand placeholder:text-body mt-4 block w-full border px-3 py-2.5 text-sm shadow-xs"
-    id="first_name"
-    [(ngModel)]="testToken" />
-  <p class="flex flex-col">
-    <b class="text-lg">Result: {{ useAuthzTest.value() }}</b>
-    <span>Error: {{ useAuthzTest.error() }}</span>
-    <span>Loading: {{ useAuthzTest.isLoading() }}</span>
-  </p>
+          <hlm-select id="globalToken" [(ngModel)]="globalToken">
+            <hlm-select-trigger class="w-56">
+              <hlm-select-value placeholder="Select a fruit" />
+            </hlm-select-trigger>
+            <hlm-select-content *hlmSelectPortal>
+              <hlm-select-group>
+                <hlm-select-label>Roles</hlm-select-label>
+                <hlm-select-item value="MODERATOR">MODERATOR</hlm-select-item>
+                <hlm-select-item value="ADMIN">ADMIN</hlm-select-item>
+                <hlm-select-item value="GUEST">GUEST</hlm-select-item>
+              </hlm-select-group>
+            </hlm-select-content>
+          </hlm-select>
+        </div>
+      </div>
+      <hlm-tabs class="mt-6" [tab]="url()">
+        <hlm-tabs-list
+          class="[&>a]:data-[state=active]:bg-primary [&>a]:dark:data-[state=active]:bg-primary [&>a]:data-[state=active]:text-primary-foreground [&>a]:dark:data-[state=active]:text-primary-foreground grid grid-cols-3 bg-transparent [&>a]:data-[state=active]:rounded-full [&>a]:data-[state=active]:shadow-none"
+          aria-label="tabs example">
+          <a class="font-normal" routerLink="/" hlmTabsTrigger="/">Home</a>
+          <a class="font-normal" routerLink="/kundenverwaltung" hlmTabsTrigger="/kundenverwaltung">Kundenverwaltung</a>
+          <a class="font-normal" routerLink="/organisationsverwaltung" hlmTabsTrigger="/organisationsverwaltung">Organisationsverwaltung</a>
+        </hlm-tabs-list>
+      </hlm-tabs>
+    </div>
+  </section>
+
+  <section class="mt-8" hlmCard>
+    <div hlmCardContent>
+      <router-outlet />
+    </div>
+  </section>
 </playground-layout>
