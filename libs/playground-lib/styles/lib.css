@@ -83,7 +83,7 @@
   body {
     @apply bg-background text-foreground;
   }
-  nav {
+  .playground-shell nav {
     @apply flex items-center justify-end gap-3;
   }
 }

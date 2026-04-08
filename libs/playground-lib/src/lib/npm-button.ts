@@ -7,6 +7,7 @@ import { Layout } from './layout';
 @Component({
   template: `
     <a
+      class="pt-1"
       hlmBtn
       variant="outline"
       href="https://npmjs.com/package/{{ project() }}"

@@ -2,7 +2,7 @@ import { Component, HostListener, input, signal } from '@angular/core';
 
 @Component({
   template: `
-    <div class="flex min-h-screen flex-col">
+    <div class="playground-shell flex min-h-screen flex-col">
       <!-- Header -->
       <header
         class="sticky top-0 z-50 transition-all duration-200 data-[scrolled=true]:border-b data-[scrolled=true]:border-black/10 data-[scrolled=true]:bg-white/55 data-[scrolled=true]:shadow-sm data-[scrolled=true]:backdrop-blur-xl dark:data-[scrolled=true]:border-white/10 dark:data-[scrolled=true]:bg-black/55"

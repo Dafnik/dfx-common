@@ -32,7 +32,7 @@ import { HlmCardImports } from '@spartan-ng/helm/card';
 
         <div class="mt-6 flex flex-wrap gap-3">
           <a class="rounded-full" hlmBtn routerLink="/">Back to home</a>
-          <a class="rounded-full" hlmBtn variant="secondary" [routerLink]="from()">Retry {{ from() }}</a>
+          <a class="rounded-full" [routerLink]="from()" hlmBtn variant="secondary">Retry {{ from() }}</a>
         </div>
       </div>
     </section>

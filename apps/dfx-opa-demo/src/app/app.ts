@@ -23,7 +23,7 @@ import { DemoTokenService } from './demo-token.service';
       </nav>
 
       <section hlmCard>
-        <div hlmCardContent>
+        <div class="grid gap-6" hlmCardContent>
           <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div class="max-w-2xl">
               <p class="text-muted-foreground text-start text-sm">
@@ -50,17 +50,19 @@ import { DemoTokenService } from './demo-token.service';
               </hlm-select>
             </div>
           </div>
-          <hlm-tabs class="mt-6" [tab]="url()">
-            <hlm-tabs-list
-              class="[&>a]:data-[state=active]:bg-primary [&>a]:dark:data-[state=active]:bg-primary [&>a]:data-[state=active]:text-primary-foreground [&>a]:dark:data-[state=active]:text-primary-foreground grid grid-cols-3 bg-transparent [&>a]:data-[state=active]:rounded-full [&>a]:data-[state=active]:shadow-none"
-              aria-label="tabs example">
-              <a class="font-normal" routerLink="/" hlmTabsTrigger="/">Home</a>
-              <a class="font-normal" routerLink="/kundenverwaltung" hlmTabsTrigger="/kundenverwaltung">Kundenverwaltung</a>
-              <a class="font-normal" routerLink="/organisationsverwaltung" hlmTabsTrigger="/organisationsverwaltung">
-                Organisationsverwaltung
-              </a>
-            </hlm-tabs-list>
-          </hlm-tabs>
+          <div class="overflow-x-auto overflow-y-hidden">
+            <hlm-tabs class="pb-2 md:pb-0" [tab]="url()">
+              <hlm-tabs-list
+                class="[&>a]:data-[state=active]:bg-primary [&>a]:dark:data-[state=active]:bg-primary [&>a]:data-[state=active]:text-primary-foreground [&>a]:dark:data-[state=active]:text-primary-foreground flex gap-x-3 bg-transparent [&>a]:data-[state=active]:rounded-full [&>a]:data-[state=active]:shadow-none"
+                aria-label="tabs example">
+                <a class="font-normal" routerLink="/" hlmTabsTrigger="/">Home</a>
+                <a class="font-normal" routerLink="/kundenverwaltung" hlmTabsTrigger="/kundenverwaltung">Kundenverwaltung</a>
+                <a class="font-normal" routerLink="/organisationsverwaltung" hlmTabsTrigger="/organisationsverwaltung">
+                  Organisationsverwaltung
+                </a>
+              </hlm-tabs-list>
+            </hlm-tabs>
+          </div>
         </div>
       </section>
 
