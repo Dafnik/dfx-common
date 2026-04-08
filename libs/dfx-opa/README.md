@@ -135,6 +135,61 @@ For example, to disable a button based on the outcome of a policy evaluation of 
 > - `path` and `fromResult` can fall back to `defaultPath` and `defaultFromResult` of `AUTHZ_OPTIONS` respectively, and
 > - `input` can be merged with the `defaultInput` of `AUTHZ_OPTIONS`.
 
+## Route guards
+
+`dfx-opa` also ships functional Angular router guards for `canActivate`, `canActivateChild`, and `canMatch`.
+
+For explicit guard configuration in your route definition:
+
+```ts
+import { RedirectCommand, Routes } from '@angular/router';
+
+import { authzCanActivate } from 'dfx-opa';
+
+export const routes: Routes = [
+  {
+    path: 'admin',
+    loadComponent: () => import('./admin/admin.component').then((m) => m.AdminComponent),
+    canActivate: [
+      authzCanActivate({
+        path: 'admin/allow',
+        input: ({ state }) => ({ targetUrl: state.url }),
+        fromResult: (result, { router }) => (result ? true : new RedirectCommand(router.parseUrl('/forbidden'))),
+        onError: (error, { router }) => new RedirectCommand(router.parseUrl('/sign-in')),
+      }),
+    ],
+  },
+];
+```
+
+For declarative route-data configuration with the bare guard function:
+
+```ts
+import { Routes } from '@angular/router';
+
+import { authzCanMatch } from 'dfx-opa';
+
+export const routes: Routes = [
+  {
+    path: 'reports',
+    canMatch: [authzCanMatch()],
+    data: {
+      authz: {
+        path: 'reports/allow',
+        input: { action: 'read' },
+      },
+    },
+    loadComponent: () => import('./reports/reports.component').then((m) => m.ReportsComponent),
+  },
+];
+```
+
+The guard inputs follow the same precedence as the rest of the package:
+
+- explicit guard options override `data.authz`
+- `data.authz` overrides `provideAuthz()` defaults
+- `onError` can return `false`, a `UrlTree`, or a `RedirectCommand`; without it, guard errors fail closed with `false`
+
 ## Full control: `useAuthz` hook
 
 `*authz` is a convenience-wrapper around the `useAuthz` function.

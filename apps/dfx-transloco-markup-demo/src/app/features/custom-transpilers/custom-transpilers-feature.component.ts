@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { TranslocoModule } from '@jsverse/transloco';
+import { HlmCardImports } from '@spartan-ng/helm/card';
 import { TranslocoMarkupComponent, inheritTranslationMarkupTranspilers, provideTranslationMarkupTranspiler } from 'dfx-transloco-markup';
 
 import { defineTranslationKeys } from '../../define-translation-keys';
@@ -17,29 +18,18 @@ export const CUSTOM_TRANSPILERS_TRANSLATION_KEYS = defineTranslationKeys((t) => 
 
 @Component({
   template: `
-    <div class="rounded-lg border border-gray-200 shadow-sm">
-      <!-- Card Header -->
-      <div class="border-b border-gray-200 px-6 py-4">
-        <h2 class="text-xl font-semibold">
-          {{ TRANSLATIONS.TITLE | transloco }}
-        </h2>
+    <section hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>{{ TRANSLATIONS.TITLE | transloco }}</h3>
       </div>
-
-      <!-- Card Content -->
-      <div class="px-6 py-4">
+      <div hlmCardContent>
         <transloco [key]="TRANSLATIONS.MESSAGE"></transloco>
       </div>
-    </div>
-  `,
-  styles: `
-    :host {
-      display: block;
-    }
+    </section>
   `,
   selector: 'custom-transpiler-feature',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [TranslocoModule, TranslocoMarkupComponent, FormsModule],
+  imports: [TranslocoModule, TranslocoMarkupComponent, FormsModule, HlmCardImports],
   providers: [
     provideTranslationMarkupTranspiler(EmoticonTranspiler),
     provideTranslationMarkupTranspiler(ColoredTextTranspiler),
