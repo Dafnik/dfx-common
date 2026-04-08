@@ -10,7 +10,7 @@ import { DemoTokenService } from './demo-token.service';
 
 @Component({
   template: `
-    <div class="grid gap-8 xl:grid-cols-[1.2fr_0.8fr]">
+    <div class="grid gap-20">
       <section>
         <p class="text-sm font-medium tracking-[0.24em] text-neutral-500 uppercase">Directive demo</p>
         <h2 class="mt-2 text-2xl font-semibold">Template access checks</h2>
@@ -75,7 +75,7 @@ import { DemoTokenService } from './demo-token.service';
         </div>
       </section>
 
-      <section class="mt-12">
+      <section>
         <p class="text-sm font-medium tracking-[0.24em] text-neutral-500 uppercase">Hook demo</p>
         <h2 class="mt-2 text-2xl font-semibold">Interactive useAuthz playground</h2>
 
