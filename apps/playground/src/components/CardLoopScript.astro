@@ -28,11 +28,13 @@ const {
       card.classList.add(activeClass);
     };
 
+    const safeInterval = Number.isFinite(interval) && interval > 0 ? interval : 2200;
+
     const startLoop = () =>
       window.setInterval(() => {
         activate(cards[index]);
         index = (index + 1) % cards.length;
-      }, interval);
+      }, safeInterval);
 
     const stopLoop = () => {
       if (intervalId) {
