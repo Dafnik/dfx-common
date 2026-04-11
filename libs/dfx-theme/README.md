@@ -32,6 +32,32 @@ Fork of [@slateui/theme](https://github.com/angularcafe/slateui-theme).
 
 ## Installation
 
+Use `ng add` to install `dfx-theme`, register the provider, and add the inline flash-prevention script to your app:
+
+```bash
+ng add dfx-theme
+```
+
+To enable localStorage persistence:
+
+```bash
+ng add dfx-theme --storage
+```
+
+To use a custom localStorage key:
+
+```bash
+ng add dfx-theme --storage-key app-theme
+```
+
+For workspaces with multiple applications, pass the target project:
+
+```bash
+ng add dfx-theme --project my-app --storage
+```
+
+Alternatively, install the package manually:
+
 - npm
   ```bash
   npm install dfx-theme
@@ -43,15 +69,15 @@ Fork of [@slateui/theme](https://github.com/angularcafe/slateui-theme).
 
 ## Usage
 
-Add the theme provider to your `app.config.ts`:
+If you installed manually, add the theme provider to your `app.config.ts`:
 
 ```typescript
 import { ApplicationConfig } from '@angular/core';
 
-import { provideTheme, withThemeStorage } from 'dfx-theme';
+import { provideTheme } from 'dfx-theme';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideTheme(withThemeStorage())],
+  providers: [provideTheme()],
 };
 ```
 
@@ -113,7 +139,7 @@ body {
 Add this **inline** script to your `index.html` `<head>`:
 
 ```html
-<!-- Flash Prevention - Prevents FOUC in all browsers -->
+<!-- dfx-theme Flash Prevention - Prevents FOUC in all browsers -->
 <script>
   (function () {
     'use strict';
@@ -158,9 +184,10 @@ Minified:
 
 <!-- prettier-ignore-start -->
 ```javascript
-<!-- Flash Prevention - Prevents FOUC in all browsers -->
+<!-- dfx-theme Flash Prevention - Prevents FOUC in all browsers -->
 <script>
-  !function(){"use strict";try{const t=localStorage.getItem("theme")||"system",e="system"===t?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":"light"===t||"dark"===t?t:"light",s=document.documentElement;s&&("dark"===e?(s.classList.remove("light"),s.classList.add("dark")):(s.classList.remove("dark"),s.classList.add("light")),s.setAttribute("data-theme",e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove("dark"),t.classList.add("light"),t.setAttribute("data-theme","light"),t.style.colorScheme="light")}catch(t){}}}();
+  // prettier-ignore
+  !function(){'use strict';try{const t=localStorage.getItem('theme')||'system',e='system'===t?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':'light'===t||'dark'===t?t:'light',s=document.documentElement;s&&('dark'===e?(s.classList.remove('light'),s.classList.add('dark')):(s.classList.remove('dark'),s.classList.add('light')),s.setAttribute('data-theme',e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove('dark'),t.classList.add('light'),t.setAttribute('data-theme','light'),t.style.colorScheme='light')}catch(t){}}}();
 </script>
 ```
 <!-- prettier-ignore-end -->

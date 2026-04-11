@@ -1,0 +1,23 @@
+{
+  "$id": "DfxThemeNgAdd",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "additionalProperties": false,
+  "properties": {
+    "project": {
+      "description": "The application project to set up.",
+      "type": "string"
+    },
+    "storage": {
+      "default": false,
+      "description": "Persist the selected theme in localStorage.",
+      "type": "boolean"
+    },
+    "storageKey": {
+      "alias": "storage-key",
+      "description": "The localStorage key used for the selected theme. Providing this option enables storage.",
+      "type": "string"
+    }
+  },
+  "title": "dfx-theme ng add options",
+  "type": "object"
+}

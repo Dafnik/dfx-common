@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "../../dist/dfx-theme/schematics",
+    "rootDir": "schematics",
+    "sourceMap": false,
+    "types": ["node"]
+  },
+  "exclude": ["schematics/**/*.spec.ts"],
+  "extends": "../../tsconfig.json",
+  "include": ["schematics/**/*.ts"]
+}

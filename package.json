@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "build": "ng build dfx-bootstrap-table && ng build dfx-bootstrap-table-demo && ng build dfx-helper && ng build dfx-openapi && ng build dfx-qrcode && ng build dfx-qrcode-demo && ng build dfx-transloco-markup && ng build dfx-transloco-markup-demo && ng build dfx-theme && ng build dfx-theme-demo && ng build dfx-opa && ng build dfx-opa-demo",
+    "build": "ng build dfx-bootstrap-table && ng build dfx-bootstrap-table-demo && ng build dfx-helper && ng build dfx-openapi && ng build dfx-qrcode && ng build dfx-qrcode-demo && ng build dfx-transloco-markup && ng build dfx-transloco-markup-demo && pnpm build:dfx-theme && ng build dfx-theme-demo && ng build dfx-opa && ng build dfx-opa-demo",
+    "build:dfx-theme": "ng build dfx-theme && tsc -p libs/dfx-theme/tsconfig.schematics.json",
     "test": "ng test dfx-bootstrap-table --watch false && ng test dfx-helper --watch false && ng test dfx-openapi --watch false && ng test dfx-qrcode --watch false && ng test dfx-transloco-markup --watch false && ng test dfx-theme --watch false && ng test dfx-opa --watch false",
     "build:playground": "pnpm -C apps/playground build",
     "preview:playground": "pnpm -C apps/playground preview",
@@ -52,11 +53,13 @@
   },
   "packageManager": "pnpm@10.33.0",
   "devDependencies": {
+    "@angular-devkit/schematics": "21.2.5",
     "@angular-eslint/builder": "21.3.1",
     "@angular/build": "21.2.5",
     "@angular/cli": "21.2.5",
     "@angular/compiler-cli": "21.2.6",
     "@eslint/js": "9.39.4",
+    "@schematics/angular": "21.2.5",
     "@spartan-ng/cli": "0.0.1-alpha.665",
     "@tailwindcss/postcss": "4.2.2",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",

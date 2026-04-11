@@ -3,6 +3,7 @@
   "version": "21.0.0",
   "description": "tiny and simple-to-use Angular theme management library",
   "private": false,
+  "schematics": "./schematics/collection.json",
   "license": "MIT",
   "homepage": "https://playground.dafnik.me/theme/",
   "sideEffects": false,
@@ -54,6 +55,8 @@
     "directory": "libs/dfx-theme"
   },
   "peerDependencies": {
+    "@angular-devkit/schematics": "21",
+    "@schematics/angular": "21",
     "@angular/common": "21",
     "@angular/core": "21"
   },

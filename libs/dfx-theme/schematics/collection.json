@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add dfx-theme to an Angular application.",
+      "factory": "./ng-add/index",
+      "schema": "./ng-add/schema.json"
+    }
+  }
+}
