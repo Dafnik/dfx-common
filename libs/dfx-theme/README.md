@@ -334,6 +334,8 @@ provideTheme(
 );
 ```
 
+Remember to also change the `key` in the FOUC Inline Script.
+
 ### Other
 
 #### Disable System Detection

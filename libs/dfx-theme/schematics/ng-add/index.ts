@@ -1,5 +1,7 @@
 import { Rule, SchematicsException, chain } from '@angular-devkit/schematics';
 import { ProjectDefinition, WorkspaceDefinition, addRootProvider, readWorkspace } from '@schematics/angular/utility';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 interface NgAddOptions {
   project?: string;
@@ -9,6 +11,7 @@ interface NgAddOptions {
 
 const DEFAULT_STORAGE_KEY = 'theme';
 const FLASH_PREVENTION_MARKER = 'dfx-theme Flash Prevention';
+const STORAGE_KEY_PLACEHOLDER = '__DFX_THEME_STORAGE_KEY__';
 
 export default function ngAdd(options: NgAddOptions = {}): Rule {
   return async (tree) => {
@@ -136,11 +139,27 @@ function isJsonObject(value: unknown): value is Record<string, unknown> {
 }
 
 function createFlashPreventionScript(storageKey: string): string {
+  const flashPreventionScript = readFlashPreventionAsset().replaceAll(STORAGE_KEY_PLACEHOLDER, JSON.stringify(storageKey));
+
   return `    <!-- ${FLASH_PREVENTION_MARKER} - Prevents FOUC in all browsers -->
     <script>
-      // prettier-ignore
-  !function(){'use strict';try{const t=localStorage.getItem('${storageKey}')||'system',e='system'===t?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':'light'===t||'dark'===t?t:'light',s=document.documentElement;s&&('dark'===e?(s.classList.remove('light'),s.classList.add('dark')):(s.classList.remove('dark'),s.classList.add('light')),s.setAttribute('data-theme',e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove('dark'),t.classList.add('light'),t.setAttribute('data-theme','light'),t.style.colorScheme='light')}catch(t){}}}();
+      ${flashPreventionScript.trim()}
     </script>`;
+}
+
+function readFlashPreventionAsset(): string {
+  const assetPaths = [
+    join(__dirname, 'files', 'fouc-prevention.js'),
+    join(process.cwd(), 'libs/dfx-theme/schematics/ng-add/files/fouc-prevention.js'),
+  ];
+
+  const assetPath = assetPaths.find((path) => existsSync(path));
+
+  if (!assetPath) {
+    throw new SchematicsException('Could not find the dfx-theme FOUC prevention script asset.');
+  }
+
+  return readFileSync(assetPath, 'utf8');
 }
 
 function toJavascriptStringLiteral(value: string): string {

@@ -8,6 +8,11 @@
       "glob": "**/*.json",
       "input": "./schematics",
       "output": "./schematics"
+    },
+    {
+      "glob": "**/*.js",
+      "input": "./schematics",
+      "output": "./schematics"
     }
   ],
   "dest": "../../dist/dfx-theme",
