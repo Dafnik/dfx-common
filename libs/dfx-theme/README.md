@@ -129,14 +129,14 @@ Add this **inline** script to your `index.html` `<head>`:
             : 'light';
       const n = document.documentElement;
       if (n) {
-        n.classList.remove('light', 'dark');
         if (e === 'dark') {
+          n.classList.remove('light');
           n.classList.add('dark');
-          n.setAttribute('data-theme', 'dark');
         } else {
+          n.classList.remove('dark');
           n.classList.add('light');
-          n.setAttribute('data-theme', 'light');
         }
+        n.setAttribute('data-theme', e);
         n.style.colorScheme = e;
       }
     } catch (e) {
@@ -144,6 +144,7 @@ Add this **inline** script to your `index.html` `<head>`:
         const n = document.documentElement;
         if (n) {
           n.classList.remove('dark');
+          n.classList.add('light');
           n.setAttribute('data-theme', 'light');
           n.style.colorScheme = 'light';
         }
@@ -152,6 +153,17 @@ Add this **inline** script to your `index.html` `<head>`:
   })();
 </script>
 ```
+
+Minified:
+
+<!-- prettier-ignore-start -->
+```javascript
+<!-- Flash Prevention - Prevents FOUC in all browsers -->
+<script>
+  !function(){"use strict";try{const t=localStorage.getItem("theme")||"system",e="system"===t?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":"light"===t||"dark"===t?t:"light",s=document.documentElement;s&&("dark"===e?(s.classList.remove("light"),s.classList.add("dark")):(s.classList.remove("dark"),s.classList.add("light")),s.setAttribute("data-theme",e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove("dark"),t.classList.add("light"),t.setAttribute("data-theme","light"),t.style.colorScheme="light")}catch(t){}}}();
+</script>
+```
+<!-- prettier-ignore-end -->
 
 **Why inline?** Angular does not provide a way to inject scripts into the HTML `<head>` at build time. For true FOUC prevention, the script must run immediately as the HTML is parsed—before any content is rendered. External scripts or Angular providers/services run too late to prevent a flash. This is why the script must be copied directly into your `index.html` head.
 
