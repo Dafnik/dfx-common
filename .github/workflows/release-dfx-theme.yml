@@ -32,7 +32,7 @@ jobs:
           install: true
 
       - name: build dfx-theme
-        run: pnpm ng build dfx-theme
+        run: pnpm build:dfx-theme
 
       - name: zip dfx-theme
         run: |

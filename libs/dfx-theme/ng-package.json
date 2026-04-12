@@ -1,6 +1,20 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "assets": ["./*.md", "./LICENSE"],
+  "allowedNonPeerDependencies": ["@angular-devkit/schematics", "@schematics/angular"],
+  "assets": [
+    "./*.md",
+    "./LICENSE",
+    {
+      "glob": "**/*.json",
+      "input": "./schematics",
+      "output": "./schematics"
+    },
+    {
+      "glob": "**/*.js",
+      "input": "./schematics",
+      "output": "./schematics"
+    }
+  ],
   "dest": "../../dist/dfx-theme",
   "lib": {
     "entryFile": "src/public-api.ts"

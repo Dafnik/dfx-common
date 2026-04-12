@@ -138,7 +138,13 @@ jobs:
           install-ignore-scripts: true
 
       - name: build ${{ matrix.lib }}
-        run: pnpm ng build ${{ matrix.lib }}
+        shell: bash
+        run: |
+          if node -e "process.exit(require('./package.json').scripts['build:${{ matrix.lib }}'] ? 0 : 1)"; then
+            pnpm build:${{ matrix.lib }}
+          else
+            pnpm ng build ${{ matrix.lib }}
+          fi
 
       - uses: actions/upload-artifact@v7
         name: create ${{ matrix.lib }} artifact

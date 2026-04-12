@@ -3,6 +3,7 @@
   "version": "21.0.0",
   "description": "tiny and simple-to-use Angular theme management library",
   "private": false,
+  "schematics": "./schematics/collection.json",
   "license": "MIT",
   "homepage": "https://playground.dafnik.me/theme/",
   "sideEffects": false,
@@ -58,6 +59,8 @@
     "@angular/core": "21"
   },
   "dependencies": {
+    "@angular-devkit/schematics": "21",
+    "@schematics/angular": "21",
     "tslib": "^2"
   },
   "publishConfig": {
