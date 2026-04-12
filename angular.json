@@ -71,6 +71,10 @@
               {
                 "glob": "**/*",
                 "input": "apps/dfx-bootstrap-table-demo/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/playground-lib/public"
               }
             ],
             "browser": "apps/dfx-bootstrap-table-demo/src/main.ts",
@@ -217,6 +221,10 @@
               {
                 "glob": "**/*",
                 "input": "apps/dfx-opa-demo/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/playground-lib/public"
               }
             ],
             "browser": "apps/dfx-opa-demo/src/main.ts",
@@ -357,6 +365,10 @@
               {
                 "glob": "**/*",
                 "input": "apps/dfx-qrcode-demo/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/playground-lib/public"
               }
             ],
             "browser": "apps/dfx-qrcode-demo/src/main.ts",
@@ -450,6 +462,10 @@
               {
                 "glob": "**/*",
                 "input": "apps/dfx-theme-demo/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/playground-lib/public"
               }
             ],
             "browser": "apps/dfx-theme-demo/src/main.ts",
@@ -547,6 +563,10 @@
               {
                 "glob": "**/*",
                 "input": "apps/dfx-transloco-markup-demo/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/playground-lib/public"
               }
             ],
             "browser": "apps/dfx-transloco-markup-demo/src/main.ts",
