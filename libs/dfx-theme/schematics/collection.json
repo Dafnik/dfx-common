@@ -3,7 +3,7 @@
   "schematics": {
     "ng-add": {
       "description": "Add dfx-theme to an Angular application.",
-      "factory": "./ng-add/index",
+      "factory": "./ng-add/index.cjs",
       "schema": "./ng-add/schema.json"
     }
   }

@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build dfx-bootstrap-table && ng build dfx-bootstrap-table-demo && ng build dfx-helper && ng build dfx-openapi && ng build dfx-qrcode && ng build dfx-qrcode-demo && ng build dfx-transloco-markup && ng build dfx-transloco-markup-demo && pnpm build:dfx-theme && ng build dfx-theme-demo && ng build dfx-opa && ng build dfx-opa-demo",
-    "build:dfx-theme": "ng build dfx-theme && tsc -p libs/dfx-theme/tsconfig.schematics.json",
+    "build:dfx-theme": "ng build dfx-theme && tsc -p libs/dfx-theme/tsconfig.schematics.json && node -e \"require('node:fs').renameSync('dist/dfx-theme/schematics/ng-add/index.js', 'dist/dfx-theme/schematics/ng-add/index.cjs')\"",
     "test": "ng test dfx-bootstrap-table --watch false && ng test dfx-helper --watch false && ng test dfx-openapi --watch false && ng test dfx-qrcode --watch false && ng test dfx-transloco-markup --watch false && ng test dfx-theme --watch false && ng test dfx-opa --watch false",
     "build:playground": "pnpm -C apps/playground build",
     "preview:playground": "pnpm -C apps/playground preview",
