@@ -4,7 +4,7 @@
 [![npm downloads per week](https://img.shields.io/npm/dw/dfx-opa?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-opa)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-opa?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-opa)
 
-This package contains helpers for using [@open-policy-agent/opa](https://www.npmjs.com/package/@open-policy-agent/opa) from Angular.
+Angular services, directives and guards for frontend authorization based on [@open-policy-agent/opa](https://www.npmjs.com/package/@open-policy-agent/opa).
 
 ## Features
 

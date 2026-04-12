@@ -36,7 +36,7 @@ Angular table CDK implementation for Bootstrap with filtering, sorting and pagin
 
 ### dfx-qrcode
 
-`dfx-qrcode` is a tiny and simple-to-use Angular QrCode generator library.
+`dfx-qrcode` is a tiny and simple-to-use Angular QR-Code generator library.
 
 [![npm version](https://img.shields.io/npm/v/dfx-qrcode?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
 [![npm downloads per week](https://img.shields.io/npm/dw/dfx-qrcode?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-qrcode)
@@ -46,7 +46,7 @@ Angular table CDK implementation for Bootstrap with filtering, sorting and pagin
 ### dfx-openapi
 
 `dfx-openapi` is a type-safe Angular HttpClient that pulls in your OpenAPI schema.
-It has virtually zero runtime and is fully compatible with Http Interceptors.
+It has virtually zero runtime and is fully compatible with Http interceptors.
 
 [![npm version](https://img.shields.io/npm/v/dfx-openapi?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
 [![npm downloads per week](https://img.shields.io/npm/dw/dfx-openapi?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-openapi)
@@ -73,7 +73,7 @@ A translation component to render translations with markup
 
 ### dfx-opa
 
-This package contains helpers for using [@open-policy-agent/opa](https://www.npmjs.com/package/@open-policy-agent/opa) from Angular.
+Angular services, directives and guards for frontend authorization based on [@open-policy-agent/opa](https://www.npmjs.com/package/@open-policy-agent/opa).
 
 [![npm version](https://img.shields.io/npm/v/dfx-opa?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-opa)
 [![npm downloads per week](https://img.shields.io/npm/dw/dfx-opa?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-opa)

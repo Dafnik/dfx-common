@@ -1,7 +1,7 @@
 {
   "name": "dfx-helper",
   "version": "21.0.0",
-  "description": "Web-development / Typescript / Angular Library with tons of utility tools helping in all projects",
+  "description": "Angular Library with tons of utility tools helping in all projects.",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/dafnik/dfx-common",
