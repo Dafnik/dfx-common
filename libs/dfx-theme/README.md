@@ -74,10 +74,10 @@ If you installed manually, add the theme provider to your `app.config.ts`:
 ```typescript
 import { ApplicationConfig } from '@angular/core';
 
-import { provideTheme } from 'dfx-theme';
+import { provideTheme, withThemeStorage } from 'dfx-theme';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideTheme()],
+  providers: [provideTheme(withThemeStorage())],
 };
 ```
 

@@ -39,7 +39,7 @@ describe('dfx-theme ng-add schematic', () => {
   });
 
   it('requires a project when multiple application projects exist', async () => {
-    expect(lastValueFrom(runner.callRule(ngAdd({}), createWorkspaceTree(['app', 'admin'])))).rejects.toThrow(
+    await expect(lastValueFrom(runner.callRule(ngAdd({}), createWorkspaceTree(['app', 'admin'])))).rejects.toThrow(
       'Multiple application projects found (app, admin). Run ng add dfx-theme --project <name>.',
     );
   });
