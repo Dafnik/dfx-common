@@ -3,8 +3,10 @@ import { RouterLink } from '@angular/router';
 
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
+import { PlaygroundCodeSnippet } from 'playground-lib';
 
 import { DemoTokenService } from './demo-token.service';
+import { routeGuardSnippetFunction } from './routeGuard.snippet';
 
 @Component({
   template: `
@@ -38,12 +40,27 @@ import { DemoTokenService } from './demo-token.service';
         <div class="mt-6">
           <a hlmBtn variant="link" routerLink="/organisationsverwaltung">Try the stricter Organisationsverwaltung page</a>
         </div>
+
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="routeGuardSnippet" label="Route guard" lang="typescript"></playground-code-snippet>
+        </div>
+
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="routeGuardSnippetFunction" label="Route guard function" lang="typescript" />
+        </div>
       </div>
     </section>
   `,
   selector: 'app-kundenverwaltung-page',
-  imports: [RouterLink, HlmCardImports, HlmButtonImports],
+  imports: [RouterLink, HlmCardImports, HlmButtonImports, PlaygroundCodeSnippet],
 })
 export class KundenverwaltungPage {
   protected readonly token = inject(DemoTokenService).token;
+  protected readonly routeGuardSnippetFunction = routeGuardSnippetFunction;
+
+  protected readonly routeGuardSnippet = `{
+  path: 'kundenverwaltung',
+  canActivate: [policyGuard('test/Kundenverwaltung')],
+  component: KundenverwaltungPage,
+}`;
 }

@@ -5,13 +5,14 @@ import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 import { HlmSelectImports } from '@spartan-ng/helm/select';
 import { AuthzDirective, useAuthz } from 'dfx-opa';
+import { PlaygroundCodeSnippet } from 'playground-lib';
 
 import { DemoTokenService } from './demo-token.service';
 
 @Component({
   template: `
-    <div class="grid gap-20">
-      <section>
+    <div class="grid min-w-px gap-20">
+      <section class="min-w-px">
         <p class="text-sm font-medium tracking-[0.24em] text-neutral-500 uppercase">Directive demo</p>
         <h2 class="mt-2 text-2xl font-semibold">Template access checks</h2>
         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-300">
@@ -22,7 +23,7 @@ import { DemoTokenService } from './demo-token.service';
           .
         </p>
 
-        <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="mt-6 grid min-w-px gap-4 md:grid-cols-2">
           <article hlmCard>
             <div hlmCardHeader>
               <h3 hlmCardTitle>Organisationsverwaltung</h3>
@@ -73,9 +74,13 @@ import { DemoTokenService } from './demo-token.service';
             </div>
           </article>
         </div>
+
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="directiveSnippet" label="Directive" lang="angular-html" />
+        </div>
       </section>
 
-      <section>
+      <section class="min-w-px">
         <p class="text-sm font-medium tracking-[0.24em] text-neutral-500 uppercase">Hook demo</p>
         <h2 class="mt-2 text-2xl font-semibold">Interactive useAuthz playground</h2>
 
@@ -134,15 +139,37 @@ import { DemoTokenService } from './demo-token.service';
             <dd>{{ globalToken() }}</dd>
           </div>
         </dl>
+
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="hookSnippet" label="Hook" lang="typescript" />
+        </div>
       </section>
     </div>
   `,
 
   selector: 'app-home-page',
-  imports: [AuthzDirective, FormsModule, HlmFieldImports, HlmSelectImports, HlmCardImports],
+  imports: [AuthzDirective, FormsModule, HlmFieldImports, HlmSelectImports, HlmCardImports, PlaygroundCodeSnippet],
 })
 export class HomePage {
   protected readonly globalToken = inject(DemoTokenService).token;
+
+  protected readonly directiveSnippet = `<ng-container *authz="'test/Organisationsverwaltung'; loading: organisationsLoading; else: organisationsDenied">
+  <p>Access allowed</p>
+</ng-container>
+<ng-template #organisationsLoading>
+  <p>Loading policy result...</p>
+</ng-template>
+<ng-template #organisationsDenied>
+  <p>Access denied</p>
+</ng-template>`;
+
+  protected readonly hookSnippet = `protected readonly testPath = signal('test/Organisationsverwaltung');
+protected readonly testToken = signal('ADMIN');
+
+protected readonly useAuthzTest = useAuthz<boolean>({
+  path: this.testPath,
+  input: computed(() => ({ token: this.testToken() })),
+});`;
 
   protected readonly testPath = signal('test/Organisationsverwaltung');
   protected readonly testToken = signal('ADMIN');
