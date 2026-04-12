@@ -4,14 +4,27 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { debounceTime } from 'rxjs';
 
+import { HlmButton } from '@spartan-ng/helm/button';
+import { HlmCardImports } from '@spartan-ng/helm/card';
 import { cl_copy } from 'dfts-helper';
 import { QRCodeComponent, QRCodeElementType, downloadQRCode } from 'dfx-qrcode';
+import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } from 'playground-lib';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [QRCodeComponent, ReactiveFormsModule],
+  imports: [
+    QRCodeComponent,
+    ReactiveFormsModule,
+    GithubButton,
+    Layout,
+    NpmButton,
+    ThemeSwitch,
+    HlmCardImports,
+    HlmButton,
+    PackageManagerInstall,
+  ],
 })
 export class App {
   form = inject(FormBuilder).nonNullable.group({

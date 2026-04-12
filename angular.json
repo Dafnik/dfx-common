@@ -360,7 +360,7 @@
               }
             ],
             "browser": "apps/dfx-qrcode-demo/src/main.ts",
-            "styles": ["apps/dfx-qrcode-demo/src/styles.css"],
+            "styles": ["apps/dfx-qrcode-demo/src/styles.css", "libs/playground-lib/styles/lib.css"],
             "tsConfig": "apps/dfx-qrcode-demo/tsconfig.app.json"
           }
         },
