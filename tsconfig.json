@@ -24,6 +24,7 @@
       "@spartan-ng/helm/label": ["./libs/ui/label/src/index.ts"],
       "@spartan-ng/helm/select": ["./libs/ui/select/src/index.ts"],
       "@spartan-ng/helm/separator": ["./libs/ui/separator/src/index.ts"],
+      "@spartan-ng/helm/switch": ["./libs/ui/switch/src/index.ts"],
       "@spartan-ng/helm/tabs": ["./libs/ui/tabs/src/index.ts"],
       "@spartan-ng/helm/toggle": ["./libs/ui/toggle/src/index.ts"],
       "@spartan-ng/helm/toggle-group": ["./libs/ui/toggle-group/src/index.ts"],

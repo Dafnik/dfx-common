@@ -12,7 +12,7 @@ export const projects: PlaygroundProject[] = [
   },
   {
     title: 'dfx-qrcode',
-    text: 'Tiny and simple-to-use Angular QR-Code generator library.',
+    text: 'dfx-qrcode is a tiny and simple-to-use Angular QR-Code generator library.',
     href: 'qrcode',
   },
   {
@@ -22,12 +22,12 @@ export const projects: PlaygroundProject[] = [
   },
   {
     title: 'dfx-theme',
-    text: 'Tiny and simple-to-use Angular Theme management library.',
+    text: 'dfx-theme is a tiny and simple-to-use Angular Theme management library.',
     href: 'theme',
   },
   {
     title: 'dfx-opa',
-    text: 'Angular services and directives for frontend authorization based on @open-policy-agent/opa',
+    text: 'Angular services, directives and guards for frontend authorization based on @open-policy-agent/opa.',
     href: 'opa',
   },
 ];

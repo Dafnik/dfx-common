@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "serve": "astro dev --port 4200",
-    "build": "astro build && cd ../../ && ng build dfx-bootstrap-table-demo && ng build dfx-qrcode-demo && ng build dfx-transloco-markup-demo && ng build dfx-theme-demo && ng build dfx-opa-demo && mkdir apps/playground/dist/bootstrap-table/ && mkdir apps/playground/dist/qrcode/ && mkdir apps/playground/dist/transloco-markup && mkdir apps/playground/dist/theme && mkdir apps/playground/dist/opa && cp -r dist/dfx-bootstrap-table-demo/browser/* apps/playground/dist/bootstrap-table/ && cp -r dist/dfx-qrcode-demo/browser/* apps/playground/dist/qrcode/ && cp -R dist/dfx-transloco-markup-demo/browser/* apps/playground/dist/transloco-markup && cp -R dist/dfx-theme-demo/browser/* apps/playground/dist/theme/ && cp -R dist/dfx-opa-demo/browser/* apps/playground/dist/opa/",
+    "build": "astro build && cd ../../ && ng build dfx-bootstrap-table-demo && ng build dfx-qrcode-demo && ng build dfx-transloco-markup-demo && ng build dfx-theme-demo && ng build dfx-opa-demo && mkdir -p apps/playground/dist/bootstrap-table/ && mkdir -p apps/playground/dist/qrcode/ && mkdir -p apps/playground/dist/transloco-markup && mkdir -p apps/playground/dist/theme && mkdir -p apps/playground/dist/opa && cp -r dist/dfx-bootstrap-table-demo/browser/* apps/playground/dist/bootstrap-table/ && cp -r dist/dfx-qrcode-demo/browser/* apps/playground/dist/qrcode/ && cp -R dist/dfx-transloco-markup-demo/browser/* apps/playground/dist/transloco-markup && cp -R dist/dfx-theme-demo/browser/* apps/playground/dist/theme/ && cp -R dist/dfx-opa-demo/browser/* apps/playground/dist/opa/",
     "preview": "astro preview",
     "astro": "astro"
   },

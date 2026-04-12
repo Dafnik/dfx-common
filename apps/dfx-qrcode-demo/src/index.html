@@ -2,10 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Angular QR-Code Demo</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <title>dfx-qrcode demo</title>
+    <meta name="description" content="dfx-qrcode is a tiny and simple-to-use Angular QR-Code generator library." />
+
+    <meta property="og:title" content="dfx-qrcode demo" />
+    <meta property="og:description" content="dfx-qrcode is a tiny and simple-to-use Angular QR-Code generator library." />
+    <meta property="og:url" content="https://playground.dafnik.me/qrcode/" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- dfx-theme Flash Prevention - Prevents FOUC in all browsers -->
+    <script>
+      // prettier-ignore
+      !function(){'use strict';try{const t=localStorage.getItem('theme')||'system',e='system'===t?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':'light'===t||'dark'===t?t:'light',s=document.documentElement;s&&('dark'===e?s.classList.remove('light'):s.classList.remove('dark'),s.classList.add(e),s.setAttribute('data-theme',e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove('dark'),t.classList.add('light'),t.setAttribute('data-theme','light'),t.style.colorScheme='light')}catch(t){}}}();
+    </script>
   </head>
   <body>
     <app-root></app-root>

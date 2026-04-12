@@ -1,7 +1,7 @@
 {
   "name": "dfx-opa",
   "version": "0.0.1",
-  "description": "Angular services and directives for frontend authorization based on @open-policy-agent/opa",
+  "description": "Angular services, directives and guards for frontend authorization based on @open-policy-agent/opa.",
   "private": false,
   "license": "MIT",
   "homepage": "https://playground.dafnik.me/opa/",
