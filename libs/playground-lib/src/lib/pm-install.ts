@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, booleanAttribute, computed, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, booleanAttribute, computed, effect, inject, input, linkedSignal, signal } from '@angular/core';
 
 import { provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy, lucideTerminal } from '@ng-icons/lucide';
@@ -14,7 +14,7 @@ import { Layout } from './layout';
     @let packageManagers = this.packageManagers();
     <section class="py-2" hlmCard>
       <div class="px-2" hlmCardContent>
-        <hlm-tabs [tab]="packageManagers[0].id">
+        <hlm-tabs [tab]="selectedPackageManger()" (tabActivated)="selectedPackageManger.set($event)">
           <div class="flex items-center justify-between">
             <div class="overflow-x-auto overflow-y-hidden">
               <hlm-tabs-list class="h-auto rounded-none bg-transparent px-0 py-1" aria-label="tabs example">
@@ -64,6 +64,17 @@ export class PackageManagerInstall {
   readonly project = inject(Layout).project;
   readonly hasGenerator = input(false, { transform: booleanAttribute });
 
+  readonly selectedPackageManger = linkedSignal(() => {
+    const storagePm = localStorage.getItem('selected_pm');
+    const pms = this.packageManagers();
+
+    if (!storagePm || pms.find((it) => it.id === storagePm) === undefined) {
+      return pms[0].id;
+    }
+
+    return storagePm;
+  });
+
   protected readonly packageManagers = computed(() => {
     const pkg = this.project();
 
@@ -109,6 +120,12 @@ export class PackageManagerInstall {
   });
 
   protected readonly _isCopied = signal(false);
+
+  constructor() {
+    effect(() => {
+      localStorage.setItem('selected_pm', this.selectedPackageManger());
+    });
+  }
 
   protected _copy(text: string) {
     void navigator.clipboard.writeText(text);

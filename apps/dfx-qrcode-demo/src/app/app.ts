@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { debounceTime } from 'rxjs';
 
+import { provideIcons } from '@ng-icons/core';
+import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
+import { HlmFieldImports } from '@spartan-ng/helm/field';
+import { HlmIconImports } from '@spartan-ng/helm/icon';
+import { HlmInputImports } from '@spartan-ng/helm/input';
+import { HlmLabel } from '@spartan-ng/helm/label';
+import { HlmSelectImports } from '@spartan-ng/helm/select';
+import { HlmSwitch } from '@spartan-ng/helm/switch';
 import { cl_copy } from 'dfts-helper';
 import { QRCodeComponent, QRCodeElementType, downloadQRCode } from 'dfx-qrcode';
 import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } from 'playground-lib';
@@ -14,6 +22,7 @@ import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } f
   selector: 'app-root',
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideIcons({ lucideCheck, lucideCopy })],
   imports: [
     QRCodeComponent,
     ReactiveFormsModule,
@@ -22,11 +31,19 @@ import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } f
     NpmButton,
     ThemeSwitch,
     HlmCardImports,
+    HlmFieldImports,
+    HlmIconImports,
+    HlmInputImports,
+    HlmSelectImports,
     HlmButton,
     PackageManagerInstall,
+    HlmSwitch,
+    HlmLabel,
   ],
 })
 export class App {
+  protected readonly copiedExample = signal<'config' | 'html' | undefined>(undefined);
+
   form = inject(FormBuilder).nonNullable.group({
     data: ['https://github.com/Dafnik/dfts-common', [Validators.required]],
     allowEmptyString: [true, [Validators.required]],
@@ -141,5 +158,16 @@ export class App {
 
   copy(it: string): void {
     cl_copy(it);
+  }
+
+  copyExample(kind: 'config' | 'html', text: string): void {
+    this.copy(text);
+    this.copiedExample.set(kind);
+
+    setTimeout(() => {
+      if (this.copiedExample() === kind) {
+        this.copiedExample.set(undefined);
+      }
+    }, 2000);
   }
 }
