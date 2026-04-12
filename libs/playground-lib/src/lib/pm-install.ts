@@ -1,4 +1,16 @@
-import { ChangeDetectionStrategy, Component, booleanAttribute, computed, effect, inject, input, linkedSignal, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  PLATFORM_ID,
+  booleanAttribute,
+  computed,
+  effect,
+  inject,
+  input,
+  linkedSignal,
+  signal,
+} from '@angular/core';
 
 import { provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy, lucideTerminal } from '@ng-icons/lucide';
@@ -61,11 +73,13 @@ import { Layout } from './layout';
   imports: [HlmCard, HlmCardContent, HlmTabsImports, HlmIconImports, HlmButton],
 })
 export class PackageManagerInstall {
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
   readonly project = inject(Layout).project;
   readonly hasGenerator = input(false, { transform: booleanAttribute });
 
   readonly selectedPackageManger = linkedSignal(() => {
-    const storagePm = localStorage.getItem('selected_pm');
+    const storagePm = this.isBrowser ? localStorage.getItem('selected_pm') : null;
     const pms = this.packageManagers();
 
     if (!storagePm || pms.find((it) => it.id === storagePm) === undefined) {
@@ -123,7 +137,9 @@ export class PackageManagerInstall {
 
   constructor() {
     effect(() => {
-      localStorage.setItem('selected_pm', this.selectedPackageManger());
+      if (this.isBrowser) {
+        localStorage.setItem('selected_pm', this.selectedPackageManger());
+      }
     });
   }
 
