@@ -157,11 +157,10 @@ Add this **inline** script to your `index.html` `<head>`:
       if (n) {
         if (e === 'dark') {
           n.classList.remove('light');
-          n.classList.add('dark');
         } else {
           n.classList.remove('dark');
-          n.classList.add('light');
         }
+        n.classList.add(e);
         n.setAttribute('data-theme', e);
         n.style.colorScheme = e;
       }
@@ -187,7 +186,7 @@ Minified:
 <!-- dfx-theme Flash Prevention - Prevents FOUC in all browsers -->
 <script>
   // prettier-ignore
-  !function(){'use strict';try{const t=localStorage.getItem('theme')||'system',e='system'===t?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':'light'===t||'dark'===t?t:'light',s=document.documentElement;s&&('dark'===e?(s.classList.remove('light'),s.classList.add('dark')):(s.classList.remove('dark'),s.classList.add('light')),s.setAttribute('data-theme',e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove('dark'),t.classList.add('light'),t.setAttribute('data-theme','light'),t.style.colorScheme='light')}catch(t){}}}();
+  !function(){'use strict';try{const t=localStorage.getItem('theme')||'system',e='system'===t?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':'light'===t||'dark'===t?t:'light',s=document.documentElement;s&&('dark'===e?s.classList.remove('light'):s.classList.remove('dark'),s.classList.add(e),s.setAttribute('data-theme',e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove('dark'),t.classList.add('light'),t.setAttribute('data-theme','light'),t.style.colorScheme='light')}catch(t){}}}();
 </script>
 ```
 <!-- prettier-ignore-end -->
