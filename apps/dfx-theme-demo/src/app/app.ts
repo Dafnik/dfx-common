@@ -6,7 +6,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { ThemeService } from 'dfx-theme';
-import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
+import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } from 'playground-lib';
 
 @Component({
   template: `
@@ -17,7 +17,7 @@ import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
         <playground-npm-button />
       </nav>
 
-      <section hlmCard>
+      <section class="mb-8" hlmCard>
         <div class="text-center" hlmCardContent>
           <h3 class="mb-6 text-xl font-semibold">Try Theme Switching</h3>
 
@@ -63,12 +63,14 @@ import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
           </div>
         </div>
       </section>
+
+      <playground-pm-install hasGenerator />
     </playground-layout>
   `,
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideIcons({ lucideSun, lucideMoon, lucideSunMoon })],
-  imports: [GithubButton, Layout, NpmButton, ThemeSwitch, HlmCardImports, HlmButtonImports, HlmIconImports],
+  imports: [GithubButton, Layout, NpmButton, ThemeSwitch, HlmCardImports, HlmButtonImports, HlmIconImports, PackageManagerInstall],
 })
 export class App {
   private themeService = inject(ThemeService);

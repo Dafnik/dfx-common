@@ -9,7 +9,7 @@ import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 import { HlmSelectImports } from '@spartan-ng/helm/select';
 import { HlmTabsImports } from '@spartan-ng/helm/tabs';
-import { GithubButton, Layout, NpmButton, ThemeSwitch } from 'playground-lib';
+import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } from 'playground-lib';
 
 import { DemoTokenService } from './demo-token.service';
 
@@ -66,11 +66,13 @@ import { DemoTokenService } from './demo-token.service';
         </div>
       </section>
 
-      <section class="mt-8 text-center" hlmCard>
+      <section class="my-8 text-center" hlmCard>
         <div hlmCardContent>
           <router-outlet />
         </div>
       </section>
+
+      <playground-pm-install />
     </playground-layout>
   `,
   selector: 'app-root',
@@ -86,6 +88,7 @@ import { DemoTokenService } from './demo-token.service';
     HlmSelectImports,
     HlmFieldImports,
     HlmTabsImports,
+    PackageManagerInstall,
   ],
 })
 export class App {

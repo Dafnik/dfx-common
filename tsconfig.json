@@ -27,6 +27,7 @@
       "@spartan-ng/helm/tabs": ["./libs/ui/tabs/src/index.ts"],
       "@spartan-ng/helm/toggle": ["./libs/ui/toggle/src/index.ts"],
       "@spartan-ng/helm/toggle-group": ["./libs/ui/toggle-group/src/index.ts"],
+      "@spartan-ng/helm/tooltip": ["./libs/ui/tooltip/src/index.ts"],
       "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"],
       "dfx-bootstrap-table": ["./libs/dfx-bootstrap-table/src/public-api.ts"],
       "dfx-helper": ["./libs/dfx-helper/src/public-api.ts"],
