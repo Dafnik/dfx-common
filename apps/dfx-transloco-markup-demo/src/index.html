@@ -7,43 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-    <!-- Flash Prevention - Prevents FOUC in all browsers -->
+    <!-- dfx-theme Flash Prevention - Prevents FOUC in all browsers -->
     <script>
-      (function () {
-        'use strict';
-        try {
-          const t = localStorage.getItem('theme') || 'system';
-          const e =
-            t === 'system'
-              ? window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light'
-              : t === 'light' || t === 'dark'
-                ? t
-                : 'light';
-          const n = document.documentElement;
-          if (n) {
-            n.classList.remove('light', 'dark');
-            if (e === 'dark') {
-              n.classList.add('dark');
-              n.setAttribute('data-theme', 'dark');
-            } else {
-              n.classList.add('light');
-              n.setAttribute('data-theme', 'light');
-            }
-            n.style.colorScheme = e;
-          }
-        } catch (e) {
-          try {
-            const n = document.documentElement;
-            if (n) {
-              n.classList.remove('dark');
-              n.setAttribute('data-theme', 'light');
-              n.style.colorScheme = 'light';
-            }
-          } catch (e) {}
-        }
-      })();
+      // prettier-ignore
+      !function(){'use strict';try{const t=localStorage.getItem('theme')||'system',e='system'===t?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':'light'===t||'dark'===t?t:'light',s=document.documentElement;s&&('dark'===e?(s.classList.remove('light'),s.classList.add('dark')):(s.classList.remove('dark'),s.classList.add('light')),s.setAttribute('data-theme',e),s.style.colorScheme=e)}catch(t){try{const t=document.documentElement;t&&(t.classList.remove('dark'),t.classList.add('light'),t.setAttribute('data-theme','light'),t.style.colorScheme='light')}catch(t){}}}();
     </script>
   </head>
   <body>
