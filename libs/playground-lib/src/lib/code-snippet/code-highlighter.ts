@@ -37,6 +37,7 @@ async function createCodeHighlighter() {
     { createHighlighterCore },
     { createJavaScriptRegexEngine },
     { default: angularHtml },
+    { default: angularTs },
     { default: json },
     { default: typescript },
     { default: githubLight },
@@ -45,6 +46,7 @@ async function createCodeHighlighter() {
     import('shiki/core'),
     import('shiki/engine/javascript'),
     import('@shikijs/langs/angular-html'),
+    import('@shikijs/langs/angular-ts'),
     import('@shikijs/langs/json'),
     import('@shikijs/langs/typescript'),
     import('@shikijs/themes/github-light'),
@@ -52,7 +54,7 @@ async function createCodeHighlighter() {
   ]);
 
   return createHighlighterCore({
-    langs: [angularHtml, json, typescript],
+    langs: [angularHtml, angularTs, json, typescript],
     themes: [githubLight, githubDark],
     engine: createJavaScriptRegexEngine(),
   });

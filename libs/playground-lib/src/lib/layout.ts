@@ -23,7 +23,7 @@ import { Component, HostListener, input, signal } from '@angular/core';
 
       <!-- Main Content -->
       <main
-        class="mx-auto mt-4 w-full flex-1 px-4 pb-8 2xl:px-0"
+        class="mx-auto mt-4 w-full min-w-0 flex-1 px-4 pb-8 2xl:px-0"
         [class.max-w-2xl]="size() === 'sm'"
         [class.max-w-4xl]="size() === 'lg'"
         role="main">

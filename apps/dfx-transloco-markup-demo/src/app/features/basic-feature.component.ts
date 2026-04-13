@@ -62,7 +62,6 @@ export class BasicFeatureComponent {
   protected readonly codeSnippets: PlaygroundCodeSnippetFile[] = [
     {
       id: 'app-config',
-      label: 'Config',
       filename: 'app.config.ts',
       lang: 'typescript',
       code: String.raw`import { ApplicationConfig } from '@angular/core';
@@ -86,9 +85,8 @@ export const appConfig: ApplicationConfig = {
     },
     {
       id: 'component',
-      label: 'Component',
       filename: 'basic-feature.component.ts',
-      lang: 'typescript',
+      lang: 'angular-ts',
       code: String.raw`import { Component } from '@angular/core';
 
 import { TranslocoMarkupComponent } from 'dfx-transloco-markup';
@@ -96,9 +94,7 @@ import { TranslocoMarkupComponent } from 'dfx-transloco-markup';
 @Component({
   selector: 'basic-feature',
   imports: [TranslocoMarkupComponent],
-  template: \`
-    <transloco [key]="TRANSLATIONS.GREETING" [params]="{ name: formControls.name.value }"></transloco>
-  \`,
+  template: '<transloco [key]="TRANSLATIONS.GREETING" [params]="{ name: formControls.name.value }"/>',
 })
 export class BasicFeatureComponent {
   protected readonly formControls = {
@@ -110,7 +106,6 @@ export class BasicFeatureComponent {
     },
     {
       id: 'translations',
-      label: 'Translation',
       filename: 'en.json',
       lang: 'json',
       code: String.raw`{

@@ -11,7 +11,7 @@ import { DemoTokenService } from './demo-token.service';
 
 @Component({
   template: `
-    <div class="grid min-w-px gap-20">
+    <div class="grid gap-20">
       <section class="min-w-px">
         <p class="text-sm font-medium tracking-[0.24em] text-neutral-500 uppercase">Directive demo</p>
         <h2 class="mt-2 text-2xl font-semibold">Template access checks</h2>
@@ -23,7 +23,7 @@ import { DemoTokenService } from './demo-token.service';
           .
         </p>
 
-        <div class="mt-6 grid min-w-px gap-4 md:grid-cols-2">
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
           <article hlmCard>
             <div hlmCardHeader>
               <h3 hlmCardTitle>Organisationsverwaltung</h3>
@@ -75,7 +75,7 @@ import { DemoTokenService } from './demo-token.service';
           </article>
         </div>
 
-        <div class="mt-6 min-w-px text-left">
+        <div class="mt-6 text-left">
           <playground-code-snippet [code]="directiveSnippet" label="Directive" lang="angular-html" />
         </div>
       </section>
@@ -140,7 +140,7 @@ import { DemoTokenService } from './demo-token.service';
           </div>
         </dl>
 
-        <div class="mt-6 min-w-px text-left">
+        <div class="mt-6 text-left">
           <playground-code-snippet [code]="hookSnippet" label="Hook" lang="typescript" />
         </div>
       </section>

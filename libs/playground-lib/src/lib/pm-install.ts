@@ -28,7 +28,7 @@ import { Layout } from './layout';
       <div class="px-2" hlmCardContent>
         <hlm-tabs [tab]="selectedPackageManger()" (tabActivated)="selectedPackageManger.set($event)">
           <div class="flex items-center justify-between">
-            <div class="overflow-x-auto overflow-y-hidden">
+            <div class="overflow-x-auto overflow-y-hidden p-1">
               <hlm-tabs-list class="h-auto rounded-none bg-transparent px-0 py-1" aria-label="tabs example">
                 @for (pm of packageManagers; track pm.id) {
                   <button
