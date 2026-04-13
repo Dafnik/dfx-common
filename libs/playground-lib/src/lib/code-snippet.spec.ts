@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { PlaygroundCodeSnippet } from './code-snippet';
+import { PlaygroundCodeSnippetLanguage } from './code-snippet.model';
 
 describe('PlaygroundCodeSnippet', () => {
   let fixture: ComponentFixture<PlaygroundCodeSnippet>;
@@ -25,7 +26,7 @@ describe('PlaygroundCodeSnippet', () => {
     vi.restoreAllMocks();
   });
 
-  function createSnippet(code = '<qrcode [data]="data" />', lang: 'angular-html' | 'typescript' = 'angular-html') {
+  function createSnippet(code = '<qrcode [data]="data" />', lang: PlaygroundCodeSnippetLanguage = 'angular-html') {
     fixture = TestBed.createComponent(PlaygroundCodeSnippet);
     fixture.componentRef.setInput('label', 'HTML');
     fixture.componentRef.setInput('code', code);

@@ -1,45 +1,14 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, Injectable, computed, inject, input, resource, signal } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, input, signal } from '@angular/core';
 
 import { provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
 
-export type PlaygroundCodeSnippetLanguage = 'angular-html' | 'typescript';
+import { CodeHighlighterService } from './code-highlighter';
+import { PlaygroundCodeSnippetLanguage } from './code-snippet.model';
 
-@Injectable({
-  providedIn: 'root',
-})
-class CodeHighlighterService {
-  codeHighLighter = resource({
-    loader: createCodeHighlighter,
-  });
-}
-
-async function createCodeHighlighter() {
-  const [
-    { createHighlighterCore },
-    { createJavaScriptRegexEngine },
-    { default: angularHtml },
-    { default: typescript },
-    { default: githubLight },
-    { default: githubDark },
-  ] = await Promise.all([
-    import('shiki/core'),
-    import('shiki/engine/javascript'),
-    import('@shikijs/langs/angular-html'),
-    import('@shikijs/langs/typescript'),
-    import('@shikijs/themes/github-light'),
-    import('@shikijs/themes/github-dark'),
-  ]);
-
-  return createHighlighterCore({
-    langs: [angularHtml, typescript],
-    themes: [githubLight, githubDark],
-    engine: createJavaScriptRegexEngine(),
-  });
-}
+export type { PlaygroundCodeSnippetLanguage } from './code-snippet.model';
 
 @Component({
   selector: 'playground-code-snippet',
@@ -75,7 +44,6 @@ async function createCodeHighlighter() {
   imports: [HlmButton, HlmIconImports],
 })
 export class PlaygroundCodeSnippet {
-  private readonly sanitizer = inject(DomSanitizer);
   private readonly destroyRef = inject(DestroyRef);
   private readonly codeHighlighterService = inject(CodeHighlighterService);
 
@@ -84,25 +52,7 @@ export class PlaygroundCodeSnippet {
   readonly lang = input.required<PlaygroundCodeSnippetLanguage>();
 
   protected readonly copied = signal(false);
-  protected readonly highlightedCode = computed(() => {
-    const code = this.code();
-    const lang = this.lang();
-    const codeHighlighter = this.codeHighlighterService.codeHighLighter.value();
-
-    if (!codeHighlighter) {
-      return undefined;
-    }
-
-    const highlighted = codeHighlighter.codeToHtml(code, {
-      lang,
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
-    });
-
-    return this.sanitizer.bypassSecurityTrustHtml(highlighted);
-  });
+  protected readonly highlightedCode = computed(() => this.codeHighlighterService.highlight(this.code(), this.lang()));
 
   private copyResetTimeout: ReturnType<typeof setTimeout> | undefined;
 
