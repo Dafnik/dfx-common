@@ -119,8 +119,8 @@ export class PlaygroundCodeSnippets {
     });
   }
 
-  protected copyCode(file: PlaygroundCodeSnippetFile): void {
-    void navigator.clipboard?.writeText(file.code);
+  protected async copyCode(file: PlaygroundCodeSnippetFile): Promise<void> {
+    await navigator.clipboard?.writeText(file.code);
     this.copiedFileId.set(file.id);
 
     if (this.copyResetTimeout) {

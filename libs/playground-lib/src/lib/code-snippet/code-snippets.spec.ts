@@ -12,14 +12,12 @@ describe('PlaygroundCodeSnippets', () => {
   const files: PlaygroundCodeSnippetFile[] = [
     {
       id: 'component',
-      label: 'Component',
       filename: 'example.component.ts',
       lang: 'typescript',
       code: 'const component = true;',
     },
     {
       id: 'translation',
-      label: 'Translation',
       filename: 'en.json',
       lang: 'json',
       code: '{\n  "GREETING": "Hello"\n}',

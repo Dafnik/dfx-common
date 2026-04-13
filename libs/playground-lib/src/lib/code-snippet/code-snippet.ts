@@ -64,8 +64,8 @@ export class PlaygroundCodeSnippet {
     });
   }
 
-  protected copyCode(): void {
-    void navigator.clipboard?.writeText(this.code());
+  protected async copyCode(): Promise<void> {
+    await navigator.clipboard?.writeText(this.code());
     this.copied.set(true);
 
     if (this.copyResetTimeout) {
