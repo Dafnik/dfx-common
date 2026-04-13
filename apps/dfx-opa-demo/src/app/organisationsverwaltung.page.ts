@@ -3,8 +3,10 @@ import { RouterLink } from '@angular/router';
 
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
+import { PlaygroundCodeSnippet } from 'playground-lib';
 
 import { DemoTokenService } from './demo-token.service';
+import { routeGuardSnippetFunction } from './routeGuard.snippet';
 
 @Component({
   template: `
@@ -36,12 +38,26 @@ import { DemoTokenService } from './demo-token.service';
         <div class="mt-6">
           <a variant="link" hlmBtn routerLink="/kundenverwaltung">Compare with the broader Kundenverwaltung rule</a>
         </div>
+
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="routeGuardSnippet" label="Route guard" lang="typescript"></playground-code-snippet>
+        </div>
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="routeGuardSnippetFunction" label="Route guard function" lang="typescript" />
+        </div>
       </div>
     </section>
   `,
   selector: 'app-organisationsverwaltung-page',
-  imports: [RouterLink, HlmCardImports, HlmButton],
+  imports: [RouterLink, HlmCardImports, HlmButton, PlaygroundCodeSnippet],
 })
 export class OrganisationsverwaltungPage {
   protected readonly token = inject(DemoTokenService).token;
+  protected readonly routeGuardSnippetFunction = routeGuardSnippetFunction;
+
+  protected readonly routeGuardSnippet = `{
+  path: 'organisationsverwaltung',
+  canActivate: [policyGuard('test/Organisationsverwaltung')],
+  component: OrganisationsverwaltungPage,
+}`;
 }

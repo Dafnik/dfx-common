@@ -18,9 +18,9 @@ import { NavigationBarComponent } from './navigation-bar.component';
       <div class="mb-8 grid gap-4">
         <language-switcher />
 
-        <basic-feature />
+        <basic-feature class="min-w-px" />
 
-        <custom-transpiler-feature />
+        <custom-transpiler-feature class="min-w-px" />
       </div>
 
       <playground-pm-install />

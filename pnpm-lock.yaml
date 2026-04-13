@@ -47,6 +47,12 @@ importers:
       '@open-policy-agent/opa':
         specifier: 2.0.0
         version: 2.0.0(zod@4.3.6)
+      '@shikijs/langs':
+        specifier: 4.0.2
+        version: 4.0.2
+      '@shikijs/themes':
+        specifier: 4.0.2
+        version: 4.0.2
       '@spartan-ng/brain':
         specifier: 0.0.1-alpha.665
         version: 0.0.1-alpha.665(@angular/cdk@21.2.4(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/forms@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(@angular/platform-browser@21.2.6(@angular/common@21.2.6(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.6(@angular/compiler@21.2.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.2.2)
@@ -74,6 +80,9 @@ importers:
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
+      shiki:
+        specifier: 4.0.2
+        version: 4.0.2
       tailwind-merge:
         specifier: 3.5.0
         version: 3.5.0

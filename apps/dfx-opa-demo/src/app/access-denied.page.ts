@@ -4,6 +4,9 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
+import { PlaygroundCodeSnippet } from 'playground-lib';
+
+import { routeGuardSnippetFunction } from './routeGuard.snippet';
 
 @Component({
   template: `
@@ -34,14 +37,20 @@ import { HlmCardImports } from '@spartan-ng/helm/card';
           <a class="rounded-full" hlmBtn routerLink="/">Back to home</a>
           <a class="rounded-full" [routerLink]="from()" hlmBtn variant="secondary">Retry {{ from() }}</a>
         </div>
+
+        <div class="mt-6 min-w-px text-left">
+          <playground-code-snippet [code]="routeGuardSnippetFunction" label="Route guard function" lang="typescript" />
+        </div>
       </div>
     </section>
   `,
   selector: 'app-access-denied-page',
-  imports: [RouterLink, HlmCardImports, HlmButton],
+  imports: [RouterLink, HlmCardImports, HlmButton, PlaygroundCodeSnippet],
 })
 export class AccessDeniedPage {
   private readonly route = inject(ActivatedRoute);
+
+  protected readonly routeGuardSnippetFunction = routeGuardSnippetFunction;
 
   private readonly queryParamMap = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
