@@ -67,7 +67,7 @@ export type { PlaygroundCodeSnippetFile } from './code-snippet.model';
                         <div [innerHTML]="highlighted"></div>
                       } @else {
                         <pre
-                          class="bg-muted/20 text-foreground m-0 max-h-96 max-w-full overflow-auto p-0 p-4 text-sm leading-relaxed"><code>{{ file.code }}</code></pre>
+                          class="bg-muted/20 text-foreground m-0 max-h-96 max-w-full overflow-auto p-4 text-sm leading-relaxed"><code>{{ file.code }}</code></pre>
                       }
                     </div>
                   </div>
