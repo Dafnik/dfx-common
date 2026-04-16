@@ -168,7 +168,7 @@ jobs:
         run: pnpm build:playground
 
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./apps/playground/dist/
           retention-days: 1
