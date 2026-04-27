@@ -97,8 +97,8 @@ export class OpaIf<T = unknown> {
   public static opaIfUseIfTypeGuard: void;
   static ngTemplateGuard_opaIf: 'binding';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  static ngTemplateContextGuard<T>(dir: OpaIf<T>, ctx: any): ctx is OpaIfContext<Exclude<T, false | 0 | '' | null | undefined>> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  static ngTemplateContextGuard<T>(dir: OpaIf<T>, ctx: unknown): ctx is OpaIfContext<Exclude<T, false | 0 | '' | null | undefined>> {
     return true;
   }
 }

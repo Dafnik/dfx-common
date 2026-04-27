@@ -32,6 +32,7 @@ export class NgbCellDef<T> extends CdkCellDef {
   @Input() ngbCellDefTable?: CdkTable<T>;
 
   // ngTemplateContextGuard flag to help with the Language Service
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static ngTemplateContextGuard<T>(dir: NgbCellDef<T>, ctx: unknown): ctx is { $implicit: T; index: number } {
     return true;
   }
