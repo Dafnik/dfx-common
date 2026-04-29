@@ -18,18 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: setup node and pnpm
-        uses: dafnik/setup-node-pnpm@v5
+      - name: test
+        uses: ./.github/actions/test
         with:
-          install: true
-
-      - name: test ${{ inputs.lib }}
-        run: pnpm exec nx test ${{ inputs.lib }} --configuration=ci --coverageReporters=cobertura
-
-      - name: setup coverage report
-        uses: ./.github/actions/setup-coverage-report
-        with:
-          path: coverage/libs/${{ inputs.lib }}/cobertura-coverage.xml
+          library: ${{ inputs.lib }}
 
   build:
     name: Build
@@ -43,11 +35,11 @@ jobs:
           install: true
 
       - name: build ${{ inputs.lib }}
-        run: pnpm exec nx build ${{ inputs.lib }}
+        run: pnpm ng build ${{ inputs.lib }}
 
       - name: zip ${{ inputs.lib }}
         run: |
-          cd ./dist/libs/
+          cd ./dist/
           zip -r "${{ inputs.lib }}.zip" ./${{ inputs.lib }}
           cd -
 
@@ -55,7 +47,7 @@ jobs:
         name: create ${{ inputs.lib }} artifact
         with:
           name: ${{ inputs.lib }}
-          path: ./dist/libs/${{ inputs.lib }}.zip
+          path: ./dist/${{ inputs.lib }}.zip
           retention-days: 1
 
   release-github:
@@ -92,11 +84,11 @@ jobs:
 
       - name: get only latest changelog
         run: |
-          ./tools/scripts/extractLatestVersionChangelog.sh ./libs/${{ inputs.lib }}/CHANGELOG.md
+          ./tools/extractLatestVersionChangelog.sh ./libs/${{ inputs.lib }}/CHANGELOG.md
           cat RELEASE_CHANGELOG.md
 
       - name: create ${{ inputs.lib }}-v${{ steps.get-version.outputs.VERSION }} release
-        uses: softprops/action-gh-release@3
+        uses: softprops/action-gh-release@v3
         with:
           body_path: ./RELEASE_CHANGELOG.md
           files: ./releases/${{ inputs.lib }}-v${{ steps.get-version.outputs.VERSION }}.zip
