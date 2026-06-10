@@ -75,7 +75,7 @@ export class NgbRowDef<T> extends CdkRowDef<T> {}
     role: 'row',
   },
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbHeaderRow',
   providers: [{ provide: CdkHeaderRow, useExisting: NgbHeaderRow }],
@@ -91,7 +91,7 @@ export class NgbHeaderRow extends CdkHeaderRow {}
     role: 'row',
   },
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbFooterRow',
   providers: [{ provide: CdkFooterRow, useExisting: NgbFooterRow }],
@@ -107,7 +107,7 @@ export class NgbFooterRow extends CdkFooterRow {}
     role: 'row',
   },
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbRow',
   providers: [{ provide: CdkRow, useExisting: NgbRow }],

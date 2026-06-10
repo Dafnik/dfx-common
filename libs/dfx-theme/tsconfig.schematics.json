@@ -2,8 +2,8 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": false,
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node16",
+    "moduleResolution": "node16",
     "outDir": "../../dist/dfx-theme/schematics",
     "rootDir": "schematics",
     "sourceMap": false,

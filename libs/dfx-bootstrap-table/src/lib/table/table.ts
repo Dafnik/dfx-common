@@ -64,7 +64,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
   ],
   encapsulation: ViewEncapsulation.None,
   // See note on CdkTable for explanation on why this uses the default change detection strategy.
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [HeaderRowOutlet, DataRowOutlet, NoDataRowOutlet, FooterRowOutlet],
 })
 export class NgbTable<T> extends CdkTable<T> {
