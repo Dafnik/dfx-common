@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Theme, ThemeStorageManager } from './theme.types';
+import { Theme, ThemeStorageManager } from '../theme.types';
 
 @Injectable()
 export class ThemeLocalStorageManager implements ThemeStorageManager {

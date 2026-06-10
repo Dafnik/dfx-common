@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
-import { themeClassStrategy, themeColorSchemeStrategy } from './theme-strategies';
-import { ThemeConfig, ThemeStorageManager, ThemeStrategy } from './theme.types';
+import { themeClassStrategy, themeColorSchemeStrategy } from '../theme-strategies';
+import { ThemeConfig, ThemeStorageManager, ThemeStrategy } from '../theme.types';
 
 export const DEFAULT_THEME_CONFIG: ThemeConfig = {
   defaultTheme: 'system',

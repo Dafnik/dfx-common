@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { themeAttributeStrategy, themeClassStrategy, themeColorSchemeStrategy } from '../theme-strategies/theme-strategies';
 import { applyTheme } from './theme-dom';
-import { themeAttributeStrategy, themeClassStrategy, themeColorSchemeStrategy } from './theme-strategies';
 
 describe('Theme Strategies & DOM', () => {
   let element: HTMLElement;

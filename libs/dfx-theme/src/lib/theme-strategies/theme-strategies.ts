@@ -1,4 +1,4 @@
-import { ResolvedTheme, ThemeStrategy } from './theme.types';
+import { ResolvedTheme, ThemeStrategy } from '../theme.types';
 
 export const themeClassStrategy: ThemeStrategy = (element: HTMLElement, theme: ResolvedTheme) => {
   try {

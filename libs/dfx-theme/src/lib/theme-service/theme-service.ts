@@ -1,10 +1,10 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Injectable, Injector, OnDestroy, PLATFORM_ID, computed, effect, inject, signal } from '@angular/core';
 
-import { SystemThemeManager } from './system-theme-manager';
-import { applyTheme } from './theme-dom';
-import { THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from './theme.config';
-import { Theme } from './theme.types';
+import { SystemThemeManager } from '../system-theme-manager';
+import { THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from '../theme-config';
+import { applyTheme } from '../theme-dom';
+import { Theme } from '../theme.types';
 
 @Injectable({
   providedIn: 'root',

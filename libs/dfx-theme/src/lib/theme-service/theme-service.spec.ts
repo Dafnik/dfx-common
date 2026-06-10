@@ -3,10 +3,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { SystemThemeManager } from './system-theme-manager';
-import { THEME_CONFIG, THEME_STRATEGIES } from './theme.config';
-import { ThemeService } from './theme.service';
-import { ThemeConfig } from './theme.types';
+import { SystemThemeManager } from '../system-theme-manager';
+import { THEME_CONFIG, THEME_STRATEGIES } from '../theme-config/theme-config';
+import { ThemeConfig } from '../theme.types';
+import { ThemeService } from './theme-service';
 
 describe('ThemeService', () => {
   const baseConfig: ThemeConfig = {

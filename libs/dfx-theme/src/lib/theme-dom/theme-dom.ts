@@ -1,4 +1,4 @@
-import { ResolvedTheme, ThemeStrategy } from './theme.types';
+import { ResolvedTheme, ThemeStrategy } from '../theme.types';
 
 export function applyTheme(theme: ResolvedTheme, strategies: ThemeStrategy[]): void {
   try {

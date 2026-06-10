@@ -1,4 +1,4 @@
-import { ThemeConfig } from './theme.types';
+import { ThemeConfig } from '../theme.types';
 
 export class SystemThemeManager {
   mediaQuery: MediaQueryList | null = null;

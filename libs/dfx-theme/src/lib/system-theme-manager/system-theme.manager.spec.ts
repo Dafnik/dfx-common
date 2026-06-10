@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { ThemeLocalStorageManager } from '../theme-storage/theme.storage';
 import { SystemThemeManager } from './system-theme-manager';
-import { ThemeLocalStorageManager } from './theme.storage';
 
 describe('SystemThemeManager', () => {
   let manager: SystemThemeManager;

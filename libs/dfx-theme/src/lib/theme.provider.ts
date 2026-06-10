@@ -1,10 +1,10 @@
 import { isPlatformBrowser } from '@angular/common';
 import { EnvironmentProviders, PLATFORM_ID, inject, makeEnvironmentProviders, provideAppInitializer } from '@angular/core';
 
-import { DEFAULT_THEME_CONFIG, THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from './theme.config';
+import { DEFAULT_THEME_CONFIG, THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from './theme-config';
+import { ThemeService } from './theme-service';
+import { ThemeLocalStorageManager } from './theme-storage/theme.storage';
 import { ThemeConfigFeature, ThemeFeatureKind, ThemeFeatures, ThemeStorageFeature, ThemeStrategiesFeature } from './theme.feature';
-import { ThemeService } from './theme.service';
-import { ThemeLocalStorageManager } from './theme.storage';
 import { Theme, ThemeConfig, ThemeStorageManager, ThemeStrategy } from './theme.types';
 
 export function provideTheme(...features: ThemeFeatures[]): EnvironmentProviders {
