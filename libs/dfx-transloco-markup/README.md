@@ -59,6 +59,7 @@ Use the compatibility matrix below to determine which version of this module wor
 
 | Library version                     | Angular version | Transloco version                |
 | ----------------------------------- | --------------- | -------------------------------- |
+| `dfx-transloco-markup` - **22.x.x** | \>= **22.0.0**  | `@jsverse/transloco` - **8.x.x** |
 | `dfx-transloco-markup` - **21.x.x** | \>= **21.0.0**  | `@jsverse/transloco` - **8.x.x** |
 
 ## Getting started

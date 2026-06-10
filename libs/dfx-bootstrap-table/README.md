@@ -30,6 +30,7 @@ For more information on the interface and a detailed look at how the table is im
 
 | Angular & CDK | dfx-bootstrap-table | Bootstrap |
 | ------------- | ------------------- | --------- |
+| 22.x.x        | 22.x.x              | 5.x.x     |
 | 21.x.x        | 21.x.x              | 5.x.x     |
 | \>= 20.2.5    | 20.1.x              | 5.x.x     |
 | 20.x.x        | 20.x.x              | 5.x.x     |

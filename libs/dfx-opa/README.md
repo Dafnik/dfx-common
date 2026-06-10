@@ -15,7 +15,8 @@ Angular services, directives and guards for frontend authorization based on [@op
 
 | Angular | dfx-opa | @open-policy-agent/opa |
 | ------- | ------- | ---------------------- |
-| 21.x.x  | 21.x.x  | 2.x.x                  |
+| 22.x.x  | 22.x.x  | 2.x.x                  |
+| 21.x.x  | 0.0.x   | 2.x.x                  |
 
 ## Installation
 

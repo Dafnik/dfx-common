@@ -28,6 +28,7 @@ Fork of [@slateui/theme](https://github.com/angularcafe/slateui-theme).
 
 | Angular | dfx-theme |
 | ------- | --------- |
+| 22.x.x  | 22.x.x    |
 | 21.x.x  | 21.x.x    |
 
 ## Installation
