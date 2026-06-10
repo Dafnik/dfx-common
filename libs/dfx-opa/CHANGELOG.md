@@ -1,5 +1,12 @@
 # Changelog
 
+## dfx-opa-22.0.0 - 2026-06-10
+
+* Angular 22 update
+
+
+[**Full Changelog**](https://github.com/Dafnik/dfx-common/compare/dfx-opa-0.0.2...dfx-opa-22.0.0)
+
 ## dfx-opa-0.0.2 - 2026-04-13
 
 ### <!-- 0 -->🚀 Features
