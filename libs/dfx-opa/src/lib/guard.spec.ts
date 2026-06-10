@@ -1,22 +1,13 @@
 import { ResourceRef, ResourceStatus, Signal, computed, isSignal, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import {
-  ActivatedRouteSnapshot,
-  RedirectCommand,
-  Route,
-  Router,
-  RouterStateSnapshot,
-  UrlSegment,
-  UrlTree,
-  provideRouter,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RedirectCommand, Route, Router, RouterStateSnapshot, UrlTree, provideRouter } from '@angular/router';
 
 import { Input, OPAClient, Result } from '@open-policy-agent/opa';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { Authz } from './authz';
 import { AuthzOptions, provideAuthz } from './config';
-import { authzCanActivate, authzCanActivateChild, authzCanMatch } from './guard';
+import { authzCanActivate, authzCanActivateChild } from './guard';
 
 interface FakeResource<T> {
   resourceRef: ResourceRef<T | undefined>;
