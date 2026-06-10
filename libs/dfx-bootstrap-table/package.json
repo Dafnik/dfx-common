@@ -50,9 +50,9 @@
     "directory": "libs/dfx-boostrap-table"
   },
   "peerDependencies": {
-    "@angular/core": "21",
-    "@angular/cdk": "21",
-    "@angular/forms": "21",
+    "@angular/core": "22",
+    "@angular/cdk": "22",
+    "@angular/forms": "22",
     "bootstrap": "5",
     "rxjs": "7"
   },
