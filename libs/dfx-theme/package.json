@@ -1,6 +1,6 @@
 {
   "name": "dfx-theme",
-  "version": "22.0.0",
+  "version": "22.0.1",
   "description": "dfx-theme is a tiny and simple-to-use Angular Theme management library.",
   "private": false,
   "schematics": "./schematics/collection.json",
