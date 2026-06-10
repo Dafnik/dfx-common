@@ -309,16 +309,23 @@ function commitChanges(message, files) {
   console.log(`Committed changes: ${message}`);
 }
 
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function generateChangelog(pkg, tagName, isProd) {
   const changelogPath = path.join(pkg.path, 'CHANGELOG.md');
   const packageRelativePath = path.relative(process.cwd(), pkg.path);
+  const tagPattern = `^${escapeRegex(pkg.name)}-\\d+\\.\\d+\\.\\d+(?:-beta\\.\\d+)?$`;
 
-  // Filter git-cliff to only include changes in the package directory
+  // Filter commits and release tags to the selected package.
   const cliffArgs = [
     'git-cliff',
     '--unreleased',
     '--include-path',
     `${packageRelativePath}/**/*`,
+    '--tag-pattern',
+    `'${tagPattern}'`,
     '--prepend',
     changelogPath,
     '--tag',
