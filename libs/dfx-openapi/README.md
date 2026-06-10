@@ -1,8 +1,8 @@
 # dfx-openapi
 
-[![npm version](https://img.shields.io/npm/v/dfx-openapi?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-openapi?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-openapi)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-openapi?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-openapi)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-openapi?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-openapi)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-openapi?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-openapi)
 
 `dfx-openapi` is a type-safe Angular HttpClient that pulls in your OpenAPI schema.
 It has virtually zero runtime and is fully compatible with Http interceptors.

@@ -20,62 +20,55 @@ The collection of collections.
 
 Angular Library with tons of utility tools helping in all projects.
 
-[![npm version](https://img.shields.io/npm/v/dfx-helper?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-helper)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-helper?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-helper)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-helper?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-helper)
-[![npm license](https://img.shields.io/npm/l/dfx-helper?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-helper?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-helper)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-helper?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-helper)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-helper?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-helper)
 
 ### dfx-bootstrap-table
 
 Angular table CDK implementation for Bootstrap with filtering, sorting and pagination.
 
-[![npm version](https://img.shields.io/npm/v/dfx-bootstrap-table?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-bootstrap-table)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-bootstrap-table?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-bootstrap-table)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-bootstrap-table?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-bootstrap-table)
-[![npm license](https://img.shields.io/npm/l/dfx-bootstrap-table?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-bootstrap-table?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-bootstrap-table)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-bootstrap-table?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-bootstrap-table)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-bootstrap-table?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-bootstrap-table)
 
 ### dfx-qrcode
 
 `dfx-qrcode` is a tiny and simple-to-use Angular QR-Code generator library.
 
-[![npm version](https://img.shields.io/npm/v/dfx-qrcode?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-qrcode?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-qrcode)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-qrcode?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
-[![npm license](https://img.shields.io/npm/l/dfx-qrcode?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-qrcode?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-qrcode)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-qrcode?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-qrcode)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-qrcode?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-qrcode)
 
 ### dfx-openapi
 
 `dfx-openapi` is a type-safe Angular HttpClient that pulls in your OpenAPI schema.
 It has virtually zero runtime and is fully compatible with Http interceptors.
 
-[![npm version](https://img.shields.io/npm/v/dfx-openapi?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-openapi?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-openapi)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-openapi)
-[![npm license](https://img.shields.io/npm/l/dfx-openapi?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-openapi?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-openapi)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-openapi?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-openapi)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-openapi?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-openapi)
 
 ### dfx-transloco-markup
 
 A translation component to render translations with markup
 
-[![npm version](https://img.shields.io/npm/v/dfx-transloco-markup?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-transloco-markup?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-transloco-markup)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-transloco-markup?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
-[![npm license](https://img.shields.io/npm/l/dfx-transloco-markup?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-transloco-markup?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-transloco-markup)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-transloco-markup?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-transloco-markup)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-transloco-markup?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-transloco-markup)
 
 ### dfx-theme
 
 `dfx-theme` is a tiny and simple-to-use Angular Theme management library.
 
-[![npm version](https://img.shields.io/npm/v/dfx-theme?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-theme)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-theme?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-theme)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-theme?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-theme)
-[![npm license](https://img.shields.io/npm/l/dfx-theme?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-theme?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-theme)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-theme?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-theme)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-theme?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-theme)
 
 ### dfx-opa
 
-Angular services, directives and guards for frontend authorization based on [@open-policy-agent/opa](https://www.npmjs.com/package/@open-policy-agent/opa).
+Angular services, directives and guards for frontend authorization based on [@open-policy-agent/opa](https://npmx.dev/package/%40open-policy-agent%2Fopa).
 
-[![npm version](https://img.shields.io/npm/v/dfx-opa?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-opa)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-opa?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-opa)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-opa?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-opa)
-[![npm license](https://img.shields.io/npm/l/dfx-opa?color=%237469B6&cacheSeconds=86400)](https://github.com/Dafnik/dfx-common)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-opa?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-opa)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-opa?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-opa)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-opa?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-opa)

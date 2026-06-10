@@ -1,10 +1,10 @@
 # dfx-opa
 
-[![npm version](https://img.shields.io/npm/v/dfx-opa?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-opa)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-opa?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-opa)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-opa?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-opa)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-opa?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-opa)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-opa?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-opa)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-opa?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-opa)
 
-Angular services, directives and guards for frontend authorization based on [@open-policy-agent/opa](https://www.npmjs.com/package/@open-policy-agent/opa).
+Angular services, directives and guards for frontend authorization based on [@open-policy-agent/opa](https://npmx.dev/package/%40open-policy-agent%2Fopa).
 
 ## Features
 

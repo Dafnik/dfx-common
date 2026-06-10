@@ -2,9 +2,9 @@
 
 A translation component to render translations with markup
 
-[![npm version](https://img.shields.io/npm/v/dfx-transloco-markup?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-transloco-markup?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-transloco-markup)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-transloco-markup?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-transloco-markup)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-transloco-markup?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-transloco-markup)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-transloco-markup?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-transloco-markup)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-transloco-markup?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-transloco-markup)
 
 **[Live Demo](https://playground.dafnik.me/transloco-markup/)**
 
@@ -210,13 +210,11 @@ If you do not wish for a transpiler to be available everywhere, but only for a p
 
   ```typescript
   @Component({
-    selector: 'app-fancy-something'
+    selector: 'app-fancy-something',
     template: 'A very [rainbow]colorful[/rainbow] text!',
-    providers: [
-      provideTranslationMarkupTranspiler(RainbowTextTranspiler)
-    ]
+    providers: [provideTranslationMarkupTranspiler(RainbowTextTranspiler)],
   })
-  export class FancyComponent { }
+  export class FancyComponent {}
   ```
 
   When a transpiler is defined in this way, all usages of the `<transloco>` component will support the

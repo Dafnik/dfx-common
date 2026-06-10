@@ -2,9 +2,9 @@
 
 `dfx-qrcode` is a tiny and simple-to-use Angular QR-Code generator library.
 
-[![npm version](https://img.shields.io/npm/v/dfx-qrcode?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-qrcode?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-qrcode)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-qrcode?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-qrcode)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-qrcode?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-qrcode)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-qrcode?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-qrcode)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-qrcode?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-qrcode)
 
 **[Live Demo](https://playground.dafnik.me/qrcode/)**
 

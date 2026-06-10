@@ -2,9 +2,9 @@
 
 `dfx-theme` is a tiny and simple-to-use Angular Theme management library.
 
-[![npm version](https://img.shields.io/npm/v/dfx-theme?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-theme)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-theme?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-theme)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-theme?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-theme)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-theme?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-theme)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-theme?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-theme)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-theme?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-theme)
 
 **[Live Demo](https://playground.dafnik.me/theme/)**
 

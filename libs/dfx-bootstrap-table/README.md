@@ -2,12 +2,12 @@
 
 Angular table CDK implementation for Bootstrap with filtering, sorting and pagination.
 
-Working with [@ng-bootstrap/ng-bootstrap](https://npmjs.org/package/@ng-bootstrap/ng-bootstrap) and
-[@ngx-bootstrap](https://npmjs.org/package/ngx-bootstrap).
+Working with [@ng-bootstrap/ng-bootstrap](https://npmx.dev/package/%40ng-bootstrap%2Fng-bootstrap) and
+[@ngx-bootstrap](https://npmx.dev/package/%40ngx-bootstrap).
 
-[![npm version](https://img.shields.io/npm/v/dfx-bootstrap-table?label=version&color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-bootstrap-table)
-[![npm downloads per week](https://img.shields.io/npm/dw/dfx-bootstrap-table?logo=npm&color=%237469B6)](https://npmjs.org/package/dfx-bootstrap-table)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/dfx-bootstrap-table?color=%237469B6&cacheSeconds=86400)](https://npmjs.org/package/dfx-bootstrap-table)
+[![npm version](https://npmx.dev/api/registry/badge/version/dfx-bootstrap-table?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-bootstrap-table)
+[![npm bundle size](https://npmx.dev/api/registry/badge/size/dfx-bootstrap-table?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-bootstrap-table)
+[![npm download per month](https://npmx.dev/api/registry/badge/downloads-month/dfx-bootstrap-table?color=7469B6&style=shieldsio)](https://npmx.dev/package/dfx-bootstrap-table)
 
 ### Demo
 

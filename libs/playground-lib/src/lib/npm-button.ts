@@ -10,10 +10,10 @@ import { Layout } from './layout';
       class="pt-1"
       hlmBtn
       variant="outline"
-      href="https://npmjs.com/package/{{ project() }}"
+      href="https://npmx.dev/package/{{ project() }}"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="View {{ project() }} on npm">
+      aria-label="View {{ project() }} on npmx">
       <svg class="h-3" id="npm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 250">
         <style type="text/css">
           .st0 {
