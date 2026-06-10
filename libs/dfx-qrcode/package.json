@@ -1,6 +1,6 @@
 {
   "name": "dfx-qrcode",
-  "version": "21.0.0",
+  "version": "22.0.0",
   "description": "dfx-qrcode is a tiny and simple-to-use Angular QR-Code generator library.",
   "private": false,
   "license": "MIT",
