@@ -63,7 +63,8 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
     { provide: STICKY_POSITIONING_LISTENER, useValue: null },
   ],
   encapsulation: ViewEncapsulation.None,
-  // See note on CdkTable for explanation on why this uses the default change detection strategy.
+  // See note on CdkTable for explanation on why this uses the eager change detection strategy.
+  // eslint-disable-next-line
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [HeaderRowOutlet, DataRowOutlet, NoDataRowOutlet, FooterRowOutlet],
 })

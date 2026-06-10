@@ -74,7 +74,8 @@ export class NgbRowDef<T> extends CdkRowDef<T> {}
   host: {
     role: 'row',
   },
-  // See note on CdkTable for explanation on why this uses the default change detection strategy.
+  // See note on CdkTable for explanation on why this uses the eager change detection strategy.
+  // eslint-disable-next-line
   changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbHeaderRow',
@@ -90,7 +91,8 @@ export class NgbHeaderRow extends CdkHeaderRow {}
   host: {
     role: 'row',
   },
-  // See note on CdkTable for explanation on why this uses the default change detection strategy.
+  // See note on CdkTable for explanation on why this uses the eager change detection strategy.
+  // eslint-disable-next-line
   changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbFooterRow',
@@ -106,7 +108,8 @@ export class NgbFooterRow extends CdkFooterRow {}
   host: {
     role: 'row',
   },
-  // See note on CdkTable for explanation on why this uses the default change detection strategy.
+  // See note on CdkTable for explanation on why this uses the eager change detection strategy.
+  // eslint-disable-next-line
   changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   exportAs: 'ngbRow',
