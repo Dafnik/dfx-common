@@ -3,6 +3,7 @@
 /node_modules
 /dist
 /coverage
+apps/playground/dist
 .angular
 package.json
 pnpm-lock.yaml

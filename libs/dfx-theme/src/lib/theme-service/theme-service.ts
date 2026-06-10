@@ -5,11 +5,12 @@ import { SystemThemeManager } from '../system-theme-manager';
 import { THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from '../theme-config';
 import { applyTheme } from '../theme-dom';
 import { Theme } from '../theme.types';
+import type { ThemeServiceContract } from './theme-service.contract';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ThemeService implements OnDestroy {
+export class ThemeService implements ThemeServiceContract, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly injector = inject(Injector);
   private readonly config = inject(THEME_CONFIG);

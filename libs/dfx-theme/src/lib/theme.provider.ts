@@ -1,10 +1,19 @@
 import { isPlatformBrowser } from '@angular/common';
 import { EnvironmentProviders, PLATFORM_ID, inject, makeEnvironmentProviders, provideAppInitializer } from '@angular/core';
+import type { Type } from '@angular/core';
 
 import { DEFAULT_THEME_CONFIG, THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MANAGER, THEME_STRATEGIES } from './theme-config';
 import { ThemeService } from './theme-service';
+import type { ThemeServiceContract } from './theme-service';
 import { ThemeLocalStorageManager } from './theme-storage/theme.storage';
-import { ThemeConfigFeature, ThemeFeatureKind, ThemeFeatures, ThemeStorageFeature, ThemeStrategiesFeature } from './theme.feature';
+import {
+  ThemeConfigFeature,
+  ThemeFeatureKind,
+  ThemeFeatures,
+  ThemeServiceFeature,
+  ThemeStorageFeature,
+  ThemeStrategiesFeature,
+} from './theme.feature';
 import { Theme, ThemeConfig, ThemeStorageManager, ThemeStrategy } from './theme.types';
 
 export function provideTheme(...features: ThemeFeatures[]): EnvironmentProviders {
@@ -53,5 +62,12 @@ export function withThemeStrategies(themeStrategies: ThemeStrategy[]): ThemeStra
   return {
     kind: ThemeFeatureKind.STRATEGIES,
     providers: [{ provide: THEME_STRATEGIES, useValue: themeStrategies }],
+  };
+}
+
+export function withThemeService(themeService: Type<ThemeServiceContract>): ThemeServiceFeature {
+  return {
+    kind: ThemeFeatureKind.SERVICE,
+    providers: [{ provide: ThemeService, useClass: themeService }],
   };
 }

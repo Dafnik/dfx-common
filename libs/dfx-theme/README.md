@@ -109,6 +109,50 @@ export class HeaderComponent {
 }
 ```
 
+### Use a Custom Theme Service
+
+Provide an injectable class that implements `ThemeServiceContract` to replace the built-in service. Consumers can continue to inject the existing `ThemeService` token.
+
+```typescript
+import { Injectable, signal } from '@angular/core';
+
+import { Theme, ThemeServiceContract, provideTheme, withThemeService } from 'dfx-theme';
+
+@Injectable()
+export class CustomThemeService implements ThemeServiceContract {
+  private readonly themeSignal = signal<Theme>('light');
+
+  readonly theme = this.themeSignal.asReadonly();
+  readonly systemTheme = signal<'light' | 'dark'>('light').asReadonly();
+  readonly resolvedTheme = signal<'light' | 'dark'>('light').asReadonly();
+  readonly initialized = false;
+  readonly isForced = false;
+
+  initialize(): void {}
+  setTheme(theme: Theme): void {
+    this.themeSignal.set(theme);
+  }
+  toggle(): void {}
+  isDark(): boolean {
+    return this.resolvedTheme() === 'dark';
+  }
+  isLight(): boolean {
+    return this.resolvedTheme() === 'light';
+  }
+  isSystem(): boolean {
+    return this.theme() === 'system';
+  }
+  cleanup(): void {}
+  ngOnDestroy(): void {
+    this.cleanup();
+  }
+}
+
+export const appConfig = {
+  providers: [provideTheme(withThemeService(CustomThemeService))],
+};
+```
+
 ### Add CSS for Theming
 
 ```css

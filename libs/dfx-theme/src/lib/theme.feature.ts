@@ -4,6 +4,7 @@ export enum ThemeFeatureKind {
   CONFIG,
   STORAGE,
   STRATEGIES,
+  SERVICE,
 }
 
 declare interface ThemeFeature<KindT extends ThemeFeatureKind> {
@@ -14,5 +15,6 @@ declare interface ThemeFeature<KindT extends ThemeFeatureKind> {
 export declare type ThemeConfigFeature = ThemeFeature<ThemeFeatureKind.CONFIG>;
 export declare type ThemeStorageFeature = ThemeFeature<ThemeFeatureKind.STORAGE>;
 export declare type ThemeStrategiesFeature = ThemeFeature<ThemeFeatureKind.STRATEGIES>;
+export declare type ThemeServiceFeature = ThemeFeature<ThemeFeatureKind.SERVICE>;
 
-export declare type ThemeFeatures = ThemeConfigFeature | ThemeStorageFeature | ThemeStrategiesFeature;
+export declare type ThemeFeatures = ThemeConfigFeature | ThemeStorageFeature | ThemeStrategiesFeature | ThemeServiceFeature;

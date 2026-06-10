@@ -5,8 +5,9 @@ export { DEFAULT_THEME_CONFIG, THEME_CONFIG, THEME_STORAGE_KEY, THEME_STORAGE_MA
 export { applyTheme } from './theme-dom';
 
 export { ThemeService } from './theme-service';
+export type { ThemeServiceContract } from './theme-service';
 
-export { provideTheme, withThemeConfig, withThemeStorage, withThemeStrategies } from './theme.provider';
+export { provideTheme, withThemeConfig, withThemeService, withThemeStorage, withThemeStrategies } from './theme.provider';
 
 export { ThemeLocalStorageManager } from './theme-storage/theme.storage';
 
