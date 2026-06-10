@@ -45,8 +45,8 @@
     "tslib": "2"
   },
   "peerDependencies": {
-    "@angular/common": "21",
-    "@angular/core": "21",
+    "@angular/common": "22",
+    "@angular/core": "22",
     "@jsverse/transloco": "8",
     "rxjs": "7"
   },
