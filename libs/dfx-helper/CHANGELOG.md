@@ -1,5 +1,12 @@
 # Changelog
 
+## dfx-helper-22.0.0 - 2026-06-10
+
+* Angular 22
+
+
+[**Full Changelog**](https://github.com/Dafnik/dfx-common/compare/dfx-helper-21.0.0...dfx-helper-22.0.0)
+
 ## dfx-helper-21.0.0 - 2025-12-12
 
 * Angular 21
