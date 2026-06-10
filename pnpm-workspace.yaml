@@ -1,3 +1,11 @@
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  less: false
+  lmdb: false
+  msgpackr-extract: false
+  nx: false
+  sharp: true
 ignoredBuiltDependencies:
   - '@parcel/watcher'
   - lmdb
