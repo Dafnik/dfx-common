@@ -1,5 +1,12 @@
 # Changelog
 
+## dfx-transloco-markup-22.0.0 - 2026-06-10
+
+* Angular 22 update
+
+
+[**Full Changelog**](https://github.com/Dafnik/dfx-common/compare/dfx-transloco-markup-21.0.0...dfx-transloco-markup-22.0.0)
+
 ## dfx-transloco-markup-21.0.0 - 2026-04-07
 
 Prod release

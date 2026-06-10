@@ -1,6 +1,6 @@
 {
   "name": "dfx-transloco-markup",
-  "version": "21.0.0",
+  "version": "22.0.0",
   "description": "A translation component to render translations with markup",
   "private": false,
   "license": "MIT",
