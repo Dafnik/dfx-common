@@ -6,6 +6,10 @@ on:
       lib:
         required: true
         type: string
+      build_script:
+        default: ''
+        required: false
+        type: string
 
 permissions:
   id-token: write # Required for OIDC
@@ -35,7 +39,12 @@ jobs:
           install: true
 
       - name: build ${{ inputs.lib }}
+        if: inputs.build_script == ''
         run: pnpm ng build ${{ inputs.lib }}
+
+      - name: build ${{ inputs.lib }} with custom script
+        if: inputs.build_script != ''
+        run: pnpm run ${{ inputs.build_script }}
 
       - name: zip ${{ inputs.lib }}
         run: |

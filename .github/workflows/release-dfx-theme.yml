@@ -14,3 +14,4 @@ jobs:
     uses: ./.github/workflows/release.yml
     with:
       lib: dfx-theme
+      build_script: build:dfx-theme
