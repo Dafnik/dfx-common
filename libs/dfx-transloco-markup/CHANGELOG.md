@@ -1,5 +1,11 @@
 # Changelog
 
+## dfx-transloco-markup-22.0.1 - 2026-06-10
+
+* Fix Angular 22 peer dependencies
+
+[**Full Changelog**](https://github.com/Dafnik/dfx-common/compare/dfx-transloco-markup-22.0.0...dfx-transloco-markup-22.0.1)
+
 ## dfx-transloco-markup-22.0.0 - 2026-06-10
 
 * Angular 22 update
