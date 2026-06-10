@@ -1,5 +1,11 @@
 # Changelog
 
+## dfx-bootstrap-table-22.0.0 - 2026-06-10
+
+* Angular 21
+
+[**Full Changelog**](https://github.com/Dafnik/dfx-common/compare/dfx-bootstrap-table-21.0.0...dfx-bootstrap-table-22.0.0)
+
 ## dfx-bootstrap-table-21.0.0 - 2025-12-12
 
 * Angular 21
