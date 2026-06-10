@@ -15,7 +15,7 @@ Fork of [@slateui/theme](https://github.com/angularcafe/slateui-theme).
 - Automatic Theme Detection - Supports light, dark, and system themes with OS preference detection
 - SSR-safe - No hydration mismatch, works with Angular SSR out of the box
 - Flexible Strategies - Choose between class, attribute, color-scheme-based theming
-- Tiny (~13kB minified + gzipped)
+- Tiny (>10kB minified)
 
 #### Table of Contents
 
