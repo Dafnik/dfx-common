@@ -40,7 +40,7 @@ import { routeGuardSnippetFunction } from './routeGuard.snippet';
         </div>
 
         <div class="mt-6 min-w-px text-left">
-          <playground-code-snippet [code]="routeGuardSnippet" label="Route guard" lang="typescript"></playground-code-snippet>
+          <playground-code-snippet [code]="routeGuardSnippet" label="Route guard" lang="typescript" />
         </div>
         <div class="mt-6 min-w-px text-left">
           <playground-code-snippet [code]="routeGuardSnippetFunction" label="Route guard function" lang="typescript" />

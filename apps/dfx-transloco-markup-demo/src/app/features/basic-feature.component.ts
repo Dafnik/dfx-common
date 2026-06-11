@@ -31,7 +31,7 @@ export const BASIC_FEATURE_TRANSLATION_KEYS = defineTranslationKeys((t) => ({
         </div>
 
         <div class="mt-4">
-          <transloco [key]="TRANSLATIONS.GREETING" [params]="{ name: formControls.name.value }"></transloco>
+          <transloco [key]="TRANSLATIONS.GREETING" [params]="{ name: formControls.name.value }" />
         </div>
 
         <div class="mt-6 min-w-px text-left">

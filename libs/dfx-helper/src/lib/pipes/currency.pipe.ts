@@ -7,11 +7,14 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID, Pipe, PipeTransform, inject } from '@
   pure: true,
 })
 export class DfxCurrencyCentPipe extends CurrencyPipe implements PipeTransform {
-  private readonly __defaultCurrencyCode = inject(DEFAULT_CURRENCY_CODE) ?? 'USD';
+  private readonly __defaultCurrencyCode: string;
 
   constructor() {
+    const defaultCurrencyCode = inject(DEFAULT_CURRENCY_CODE) ?? 'USD';
     const _locale = inject(LOCALE_ID);
-    super(_locale, this.__defaultCurrencyCode);
+    super(_locale, defaultCurrencyCode);
+
+    this.__defaultCurrencyCode = defaultCurrencyCode;
   }
 
   override transform(

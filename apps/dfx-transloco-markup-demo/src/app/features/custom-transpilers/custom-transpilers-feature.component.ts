@@ -24,7 +24,7 @@ export const CUSTOM_TRANSPILERS_TRANSLATION_KEYS = defineTranslationKeys((t) => 
         <h3 hlmCardTitle>{{ TRANSLATIONS.TITLE | transloco }}</h3>
       </div>
       <div hlmCardContent>
-        <transloco [key]="TRANSLATIONS.MESSAGE"></transloco>
+        <transloco [key]="TRANSLATIONS.MESSAGE" />
 
         <div class="mt-6 min-w-px text-left">
           <playground-code-snippets [files]="codeSnippets" />
