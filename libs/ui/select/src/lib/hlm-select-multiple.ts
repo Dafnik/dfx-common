@@ -28,9 +28,7 @@ import { classes } from '@spartan-ng/helm/utils';
       outputs: ['stateChanged', 'closed'],
     },
   ],
-  host: {
-    'data-slot': 'select',
-  },
+  host: { 'data-slot': 'select' },
 })
 export class HlmSelectMultiple {
   constructor() {

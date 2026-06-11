@@ -10,6 +10,9 @@ ignoredBuiltDependencies:
   - '@parcel/watcher'
   - lmdb
   - msgpackr-extract
+minimumReleaseAgeExclude:
+  - '@spartan-ng/brain@0.0.1-alpha.710'
+  - '@spartan-ng/cli@0.0.1-alpha.710'
 onlyBuiltDependencies:
   - esbuild
 packages:
