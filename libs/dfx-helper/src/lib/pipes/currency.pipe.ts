@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { DEFAULT_CURRENCY_CODE, Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, Pipe, PipeTransform, inject } from '@angular/core';
 
 @Pipe({
   name: 'currency',
@@ -7,13 +7,11 @@ import { DEFAULT_CURRENCY_CODE, Inject, LOCALE_ID, Pipe, PipeTransform } from '@
   pure: true,
 })
 export class DfxCurrencyCentPipe extends CurrencyPipe implements PipeTransform {
-  constructor(
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    @Inject(LOCALE_ID) _locale: string,
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    @Inject(DEFAULT_CURRENCY_CODE) private __defaultCurrencyCode = 'USD',
-  ) {
-    super(_locale, __defaultCurrencyCode);
+  private readonly __defaultCurrencyCode = inject(DEFAULT_CURRENCY_CODE) ?? 'USD';
+
+  constructor() {
+    const _locale = inject(LOCALE_ID);
+    super(_locale, this.__defaultCurrencyCode);
   }
 
   override transform(

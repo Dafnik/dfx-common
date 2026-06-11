@@ -4,12 +4,10 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Inject,
   InjectionToken,
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   Output,
   ViewEncapsulation,
   booleanAttribute,
@@ -78,6 +76,9 @@ export const NGB_PAGINATOR_DEFAULT_OPTIONS = new InjectionToken<NgbPaginatorDefa
   imports: [FormsModule],
 })
 export class NgbPaginator implements OnInit, OnDestroy {
+  readonly _intl = inject(NgbPaginatorIntl);
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+
   /** ID for the DOM node containing the paginator's items per page label. */
   readonly _pageSizeLabelId = inject(_IdGenerator).getId('ngb-paginator-page-size-label-');
 
@@ -154,15 +155,10 @@ export class NgbPaginator implements OnInit, OnDestroy {
   /** Emits when the paginator is initialized. */
   initialized: Observable<void> = this._initializedStream;
 
-  constructor(
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    public _intl: NgbPaginatorIntl,
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    private _changeDetectorRef: ChangeDetectorRef,
-    // eslint-disable-next-line @angular-eslint/prefer-inject
-    @Optional() @Inject(NGB_PAGINATOR_DEFAULT_OPTIONS) defaults?: NgbPaginatorDefaultOptions,
-  ) {
-    this._intlChanges = _intl.changes.subscribe(() => this._changeDetectorRef.markForCheck());
+  constructor() {
+    const defaults = inject<NgbPaginatorDefaultOptions>(NGB_PAGINATOR_DEFAULT_OPTIONS, { optional: true });
+
+    this._intlChanges = this._intl.changes.subscribe(() => this._changeDetectorRef.markForCheck());
 
     if (defaults) {
       const { pageSize, pageSizeOptions, hidePageSize, showFirstLastButtons } = defaults;
