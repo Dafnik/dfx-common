@@ -1,19 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewEncapsulation, inject, input } from '@angular/core';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 
-import {
-  EMPTY,
-  Observable,
-  Subscription,
-  combineLatest,
-  concat,
-  distinctUntilChanged,
-  first,
-  map,
-  of,
-  shareReplay,
-  skip,
-  switchMap,
-} from 'rxjs';
+import { EMPTY, Observable, combineLatest, concat, distinctUntilChanged, first, map, of, shareReplay, skip, switchMap } from 'rxjs';
 
 import {
   InlineLoader,
@@ -33,7 +21,6 @@ import { TRANSLATION_MARKUP_TRANSPILER } from './translation-markup-transpiler.t
 import { StringLiteralTranspiler } from './transpilers/string-literal-transpiler';
 import { ScalarOrArray, asArray, asFlatArray } from './utils/array';
 import { selectFirstWhere } from './utils/iterable';
-import { observeProperty } from './utils/observe-property';
 import { getPipeValue } from './utils/pipe.utils';
 import { notUndefined } from './utils/predicates';
 import { HashMap } from './utils/type.utils';
@@ -49,73 +36,61 @@ import { HashMap } from './utils/type.utils';
   encapsulation: ViewEncapsulation.None,
   standalone: true,
 })
-export class TranslocoMarkupComponent implements OnInit, OnDestroy {
-  /**
-   * Key of the translation text that needs to be displayed. If no value is specified, then the value of the `content` property will be
-   * used as the translation value. When that property is also unspecified, this component will render an empty element. */
-  @Input('key') public translationKey?: string;
-
-  /** Translated text to display. Note that this property will be ignored if a `translationKey` is specified. */
-  @Input() public content?: string;
-
-  /** Optional object that contains the values to be used for parameterized translation texts. */
-  @Input('params') public translationParameters?: HashMap;
-
-  /** Language in which the text is the displayed. Overrides the provided language and language set using the translation service. */
-  @Input('lang') public inlineLanguage?: string;
-
-  /** Optional translation scope. */
-  @Input('scope') public inlineScope?: string;
-
-  /** Transpilers used to parse and render translation texts with markup. Merged with the provided transpilers. */
-  @Input('transpilers') public inlineTranspilers?: ScalarOrArray<TranslationMarkupTranspiler>;
-
-  /** Whether the inline transpilers should be merged with the provided ones. If set to `false` only the inline transpilers are used. */
-  @Input() public mergeTranspilers?: boolean;
-
-  /** Root subscription to which all subscriptions are added that depend on the life cycle of the component instance. */
-  private readonly subscriptions = new Subscription();
-
+export class TranslocoMarkupComponent {
   /** Reference to the element which serves as the host for the component instance. */
   private readonly hostElement = inject(ElementRef<HTMLElement>);
-
   /** `TranslocoService` instance that is to be used for loading translations and obtaining the Transloco configuration. */
   private readonly translocoService = inject(TranslocoService);
-
   /** Handler used for translation keys for which no translation value is defined in the active language. */
   private readonly missingHandler = inject<TranslocoMissingHandler>(TRANSLOCO_MISSING_HANDLER);
-
   /** Translation scope that is provided via the module/component injectors. */
   private readonly providedScope = inject<ScalarOrArray<TranslocoScope>>(TRANSLOCO_SCOPE, { optional: true });
-
   /** Language that is provided via the module/component injectors. */
   private readonly providedLanguage = inject(TRANSLOCO_LANG, { optional: true });
-
   /** Markup transpilers provided via the module/component injectors. */
   private readonly providedTranspilers = inject(TRANSLATION_MARKUP_TRANSPILER, { optional: true });
-
   /** Transpiler that is used for expanding string interpolation expressions. */
   private readonly stringInterpolationTranspiler = inject(STRING_INTERPOLATION_TRANSPILER);
-
   /** Transpiler used for rendering all unprocessed tokens in the translation values as literal text. */
   private readonly stringLiteralTranspiler = inject(StringLiteralTranspiler);
 
   /**
-   * Initializes the component. When this method is called it starts listening for input property changes on the component and language
+   * Key of the translation text that needs to be displayed. If no value is specified, then the value of the `content` property will be
+   * used as the translation value. When that property is also unspecified, this component will render an empty element. */
+  public readonly key = input<string | undefined>(undefined);
+
+  /** Translated text to display. Note that this property will be ignored if a `translationKey` is specified. */
+  public readonly content = input<string>();
+
+  /** Optional object that contains the values to be used for parameterized translation texts. */
+  public readonly params = input<HashMap | undefined>(undefined);
+
+  /** Language in which the text is the displayed. Overrides the provided language and language set using the translation service. */
+  public readonly lang = input<string | undefined>(undefined);
+
+  /** Optional translation scope. */
+  public readonly scope = input<string | undefined>(undefined);
+
+  /** Transpilers used to parse and render translation texts with markup. Merged with the provided transpilers. */
+  public readonly transpilers = input<ScalarOrArray<TranslationMarkupTranspiler> | undefined>(undefined);
+
+  /** Whether the inline transpilers should be merged with the provided ones. If set to `false` only the inline transpilers are used. */
+  public readonly mergeTranspilers = input<boolean>();
+
+  private readonly translationKey$ = toObservable(this.key);
+  private readonly content$ = toObservable(this.content);
+  private readonly translationParameters$ = toObservable(this.params);
+  private readonly inlineLanguage$ = toObservable(this.lang);
+  private readonly inlineScope$ = toObservable(this.scope);
+  private readonly inlineTranspilers$ = toObservable(this.transpilers);
+  private readonly mergeTranspilers$ = toObservable(this.mergeTranspilers).pipe(map((mergeTranspilers) => mergeTranspilers !== false));
+
+  /**
+   * Initializes the component. Start listening for input property changes on the component and language
    * changes from the `TranslocoService`. This results in a stream containing the rendering function, which is executed for every change
    * to render the translation text including markup to the host element of the component instance.
    */
-  public ngOnInit(): void {
-    const translationKey$ = observeProperty(this as TranslocoMarkupComponent, 'translationKey');
-    const content$ = observeProperty(this as TranslocoMarkupComponent, 'content');
-    const translationParameters$ = observeProperty(this as TranslocoMarkupComponent, 'translationParameters');
-    const inlineLanguage$ = observeProperty(this as TranslocoMarkupComponent, 'inlineLanguage');
-    const inlineScope$ = observeProperty(this as TranslocoMarkupComponent, 'inlineScope');
-    const inlineTranspilers$ = observeProperty(this as TranslocoMarkupComponent, 'inlineTranspilers');
-    const mergeTranspilers$ = observeProperty(this as TranslocoMarkupComponent, 'mergeTranspilers').pipe(
-      map((mergeTranspilers) => mergeTranspilers !== false),
-    );
-
+  constructor() {
     // Create the language$ stream that defines which in what language the translation text should be displayed.
     const langChanges$ = this.translocoService.langChanges$;
 
@@ -123,10 +98,10 @@ export class TranslocoMarkupComponent implements OnInit, OnDestroy {
       ? langChanges$
       : langChanges$.pipe(first(), shareReplay({ bufferSize: 1, refCount: true }));
 
-    const language$ = resolveLanguage(inlineLanguage$, of(this.providedLanguage ?? undefined), activeLanguage$);
+    const language$ = resolveLanguage(this.inlineLanguage$, of(this.providedLanguage ?? undefined), activeLanguage$);
 
     // Create the scope$ stream that emits an array of scopes to be used for resolving the translation text.
-    const scopes$ = inlineScope$.pipe(
+    const scopes$ = this.inlineScope$.pipe(
       map((inlineScope) => (inlineScope ? inlineScope : this.providedScope)),
       distinctUntilChanged(),
       map((scope) => (Array.isArray(scope) ? scope : [scope ? scope : undefined])),
@@ -148,7 +123,7 @@ export class TranslocoMarkupComponent implements OnInit, OnDestroy {
     );
 
     // Define the translationValue$ stream that emits the (unparsed) translation text that is to be displayed.
-    const translationValue$ = combineLatest([translationKey$, content$, translation$]).pipe(
+    const translationValue$ = combineLatest([this.translationKey$, this.content$, translation$]).pipe(
       map(([key, content, translation]) => {
         if (key === undefined) {
           return { value: content ?? '', translation };
@@ -164,7 +139,7 @@ export class TranslocoMarkupComponent implements OnInit, OnDestroy {
     );
 
     // Create the transpilers$ stream based on the inline providers, the provided providers and the merge transpilers setting.
-    const transpilers$ = combineLatest([inlineTranspilers$, mergeTranspilers$]).pipe(
+    const transpilers$ = combineLatest([this.inlineTranspilers$, this.mergeTranspilers$]).pipe(
       map(([inlineTranspilers, mergeTranspilers]) => [
         ...(inlineTranspilers ? asArray(inlineTranspilers) : []),
         ...(this.providedTranspilers && (!inlineTranspilers || mergeTranspilers) ? asFlatArray(this.providedTranspilers) : []),
@@ -179,18 +154,9 @@ export class TranslocoMarkupComponent implements OnInit, OnDestroy {
     );
 
     // By combining the render$ and translationParameters$ stream the component can render the translation whenever something changes.
-    this.subscriptions.add(
-      combineLatest([render$, translationParameters$]).subscribe(([render, translationParameters]) =>
-        render(this.hostElement.nativeElement, translationParameters ?? {}),
-      ),
-    );
-  }
-
-  /**
-   * Called when the component is destroyed. Will cleanup any active subscriptions.
-   */
-  public ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    combineLatest([render$, this.translationParameters$])
+      .pipe(takeUntilDestroyed())
+      .subscribe(([render, translationParameters]) => render(this.hostElement.nativeElement, translationParameters ?? {}));
   }
 
   /**

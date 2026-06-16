@@ -79,7 +79,7 @@ describe('Transloco markup component', () => {
   });
 
   it('can render translations with markup', () => {
-    component.translationKey = 'TITLE';
+    fixture.componentRef.setInput('key', 'TITLE');
     fixture.detectChanges();
 
     expect(component).toBeDefined();
@@ -91,7 +91,7 @@ describe('Transloco markup component', () => {
   });
 
   it('can render a pre translated text with markup', () => {
-    component.content = 'Styled [i]text[/i]';
+    fixture.componentRef.setInput('content', 'Styled [i]text[/i]');
     fixture.detectChanges();
 
     expect(component).toBeDefined();
@@ -101,8 +101,8 @@ describe('Transloco markup component', () => {
   });
 
   it('ignores the `content` property if a translation key is specified', () => {
-    component.translationKey = 'TITLE';
-    component.content = 'Something else';
+    fixture.componentRef.setInput('key', 'TITLE');
+    fixture.componentRef.setInput('content', 'Something else');
     fixture.detectChanges();
 
     expect(component).toBeDefined();
@@ -116,8 +116,8 @@ describe('Transloco markup component', () => {
   });
 
   it('supports inline language specification', () => {
-    component.translationKey = 'TITLE';
-    component.inlineLanguage = 'nl';
+    fixture.componentRef.setInput('key', 'TITLE');
+    fixture.componentRef.setInput('lang', 'nl');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Welkom bij Transloco Markup');
@@ -126,21 +126,21 @@ describe('Transloco markup component', () => {
   });
 
   it('renders the translation when the inline language specification changes', () => {
-    component.translationKey = 'TITLE';
+    fixture.componentRef.setInput('key', 'TITLE');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Welcome to Transloco Markup');
     expect(element.querySelector('b')).toBeDefined();
     expect(element.querySelector('i')).toBeDefined();
 
-    component.inlineLanguage = 'nl';
+    fixture.componentRef.setInput('lang', 'nl');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Welkom bij Transloco Markup');
     expect(element.querySelector('b')).toBeDefined();
     expect(element.querySelector('i')).toBeDefined();
 
-    component.inlineLanguage = 'l33t';
+    fixture.componentRef.setInput('lang', 'l33t');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('W31c0m3 70 7r4n5l0c0 M4rkup');
@@ -167,7 +167,7 @@ describe('Transloco markup component', () => {
     component = fixture.componentInstance;
     element = fixture.nativeElement;
 
-    component.translationKey = 'TITLE';
+    fixture.componentRef.setInput('key', 'TITLE');
     fixture.detectChanges();
 
     const translocoService = TestBed.inject(TranslocoService);
@@ -181,7 +181,7 @@ describe('Transloco markup component', () => {
   });
 
   it('will not rerender when the language is changed via the `TranslocoService` and the reRenderOnLangChange option is disabled', () => {
-    component.translationKey = 'TITLE';
+    fixture.componentRef.setInput('key', 'TITLE');
     fixture.detectChanges();
 
     const translocoService = TestBed.inject(TranslocoService);
@@ -213,8 +213,8 @@ describe('Transloco markup component', () => {
     component = fixture.componentInstance;
     element = fixture.nativeElement;
 
-    component.translationKey = 'TITLE';
-    component.inlineLanguage = 'l33t|static';
+    fixture.componentRef.setInput('key', 'TITLE');
+    fixture.componentRef.setInput('lang', 'l33t|static');
     fixture.detectChanges();
 
     const translocoService = TestBed.inject(TranslocoService);
@@ -228,11 +228,11 @@ describe('Transloco markup component', () => {
   });
 
   it('uses the provided translation parameters to render the translation text with markup', () => {
-    component.translationKey = 'CALL_TO_ACTION';
-    component.translationParameters = {
+    fixture.componentRef.setInput('key', 'CALL_TO_ACTION');
+    fixture.componentRef.setInput('params', {
       presents: 'https://tooth-fairy.webshops.com/',
       name: 'the Tooth Fairy',
-    };
+    });
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Click here for some awesome presents provided by the Tooth Fairy');
@@ -243,10 +243,10 @@ describe('Transloco markup component', () => {
     expect(element.querySelector('i')).toBeDefined();
     expect(element.querySelector('i')!.textContent).toBe('the Tooth Fairy');
 
-    component.translationParameters = {
+    fixture.componentRef.setInput('params', {
       presents: { url: 'https://easter-eggies.com/', target: '_self' },
       name: 'de Paashaas',
-    };
+    });
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Click here for some awesome presents provided by de Paashaas');
@@ -257,7 +257,7 @@ describe('Transloco markup component', () => {
     expect(element.querySelector('i')).toBeDefined();
     expect(element.querySelector('i')!.textContent).toBe('de Paashaas');
 
-    component.inlineLanguage = 'nl';
+    fixture.componentRef.setInput('lang', 'nl');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Klik hier voor geweldige cadeautjes geleverd door de Paashaas');
@@ -270,7 +270,7 @@ describe('Transloco markup component', () => {
   });
 
   it('uses the `TranslocoMissingHandler` to resolve translation texts for translations not available in the active language', () => {
-    component.translationKey = 'TITLE';
+    fixture.componentRef.setInput('key', 'TITLE');
     fixture.detectChanges();
 
     const missingHandler = TestBed.inject<TranslocoMissingHandler>(TRANSLOCO_MISSING_HANDLER);
@@ -278,7 +278,7 @@ describe('Transloco markup component', () => {
 
     expect(handleMissingTranslationSpy).not.toHaveBeenCalled();
 
-    component.translationKey = 'UNKNOWN';
+    fixture.componentRef.setInput('key', 'UNKNOWN');
     fixture.detectChanges();
 
     expect(handleMissingTranslationSpy).toHaveBeenCalled();
@@ -287,7 +287,7 @@ describe('Transloco markup component', () => {
     expect(element.textContent).toBe('UNKNOWN');
 
     handleMissingTranslationSpy.mockClear();
-    component.translationKey = 'EMPTY';
+    fixture.componentRef.setInput('key', 'EMPTY');
     fixture.detectChanges();
 
     expect(handleMissingTranslationSpy).toHaveBeenCalled();
@@ -315,7 +315,7 @@ describe('Transloco markup component', () => {
     component = fixture.componentInstance;
     element = fixture.nativeElement;
 
-    component.translationKey = 'TITLE';
+    fixture.componentRef.setInput('key', 'TITLE');
     fixture.detectChanges();
 
     const missingHandler = TestBed.inject<TranslocoMissingHandler>(TRANSLOCO_MISSING_HANDLER);
@@ -323,7 +323,7 @@ describe('Transloco markup component', () => {
 
     expect(handleMissingTranslationSpy).not.toHaveBeenCalled();
 
-    component.translationKey = 'EMPTY';
+    fixture.componentRef.setInput('key', 'EMPTY');
     fixture.detectChanges();
 
     expect(handleMissingTranslationSpy).not.toHaveBeenCalled();
@@ -353,7 +353,7 @@ describe('Transloco markup component', () => {
     component = fixture.componentInstance;
     element = fixture.nativeElement;
 
-    component.translationKey = 'SECRET';
+    fixture.componentRef.setInput('key', 'SECRET');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('b335 m4k3 h0n3y');
@@ -367,8 +367,8 @@ describe('Transloco markup component', () => {
       ]),
     );
 
-    component.translationKey = 'TITLE';
-    component.inlineTranspilers = convertBoldTagsToMarkdown;
+    fixture.componentRef.setInput('key', 'TITLE');
+    fixture.componentRef.setInput('transpilers', convertBoldTagsToMarkdown);
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Welcome to **Transloco Markup**');
@@ -384,9 +384,9 @@ describe('Transloco markup component', () => {
       ]),
     );
 
-    component.translationKey = 'TITLE';
-    component.inlineTranspilers = convertBoldTagsToMarkdown;
-    component.mergeTranspilers = false;
+    fixture.componentRef.setInput('key', 'TITLE');
+    fixture.componentRef.setInput('transpilers', convertBoldTagsToMarkdown);
+    fixture.componentRef.setInput('mergeTranspilers', false);
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Welcome to **Transloco [i]Markup[/i]**');
@@ -431,7 +431,7 @@ describe('Transloco markup component', () => {
     component = fixture.componentInstance;
     element = fixture.nativeElement;
 
-    component.translationKey = 'alt.TITLE';
+    fixture.componentRef.setInput('key', 'alt.TITLE');
     fixture.detectChanges();
 
     await fixture.whenStable();
@@ -444,8 +444,8 @@ describe('Transloco markup component', () => {
     expect(element.querySelector('b')).toBeDefined();
     expect(element.querySelector('b')!.textContent).toBe('Markup');
 
-    component.inlineLanguage = 'nl';
-    component.translationKey = 'alt.SECRET';
+    fixture.componentRef.setInput('lang', 'nl');
+    fixture.componentRef.setInput('key', 'alt.SECRET');
     fixture.detectChanges();
 
     await fixture.whenStable();
@@ -475,8 +475,8 @@ describe('Transloco markup component', () => {
     component = fixture.componentInstance;
     element = fixture.nativeElement;
 
-    component.translationKey = 'alt.SECRET';
-    component.inlineScope = 'alt';
+    fixture.componentRef.setInput('key', 'alt.SECRET');
+    fixture.componentRef.setInput('scope', 'alt');
 
     const testingLoader: TestingLoader = TestBed.inject<TestingLoader>(TRANSLOCO_LOADER);
 
@@ -506,8 +506,8 @@ describe('Transloco markup component', () => {
     expect(element.querySelector('b')).toBeDefined();
     expect(element.querySelector('b')!.textContent).toBe('treasure');
 
-    component.inlineScope = 'clue';
-    component.translationKey = 'clue.SECRET';
+    fixture.componentRef.setInput('scope', 'clue');
+    fixture.componentRef.setInput('key', 'clue.SECRET');
     fixture.detectChanges();
 
     expect(element.textContent).toBe('Dig deeper!');

@@ -7,7 +7,6 @@ module.exports = defineConfig([
   {
     files: ['**/*.ts'],
     rules: {
-      '@angular-eslint/no-input-rename': 'warn',
       '@angular-eslint/component-selector': 'off',
     },
   },
