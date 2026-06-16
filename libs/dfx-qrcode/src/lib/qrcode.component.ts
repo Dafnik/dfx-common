@@ -2,8 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  EventEmitter,
-  Output,
   Renderer2,
   ViewChild,
   booleanAttribute,
@@ -11,6 +9,7 @@ import {
   inject,
   input,
   numberAttribute,
+  output,
   signal,
 } from '@angular/core';
 
@@ -68,7 +67,7 @@ export class QRCodeComponent {
 
   data = input<null | undefined | string>('');
 
-  @Output() qrCodeDataUrl = new EventEmitter<string>();
+  readonly qrCodeDataUrl = output<string>();
 
   #viewChild = signal<ElementRef | undefined>(undefined);
 
