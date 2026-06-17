@@ -44,7 +44,6 @@
     {
       "excludePackageNames": ["typescript", "tslib", "eslint", "/^@typescript-eslint\\//", "/^@types\\//"],
       "groupName": "minor-updates",
-      "matchPackageNames": ["*"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
     },
     {
