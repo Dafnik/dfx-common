@@ -1,10 +1,9 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMoon, lucideSun, lucideSunMoon } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
 import { ThemeService } from 'dfx-theme';
 
@@ -13,13 +12,13 @@ import { ThemeService } from 'dfx-theme';
     <button [hlmTooltip]="tooltip" (click)="themeService.toggle()" position="bottom" variant="outline" hlmBtn aria-label="Toggle theme">
       @switch (themeService.theme()) {
         @case ('dark') {
-          <ng-icon hlm size="sm" name="lucideMoon" />
+          <ng-icon name="lucideMoon" />
         }
         @case ('light') {
-          <ng-icon hlm size="sm" name="lucideSun" />
+          <ng-icon name="lucideSun" />
         }
         @case ('system') {
-          <ng-icon hlm size="sm" name="lucideSunMoon" />
+          <ng-icon name="lucideSunMoon" />
         }
       }
       <ng-template #tooltip>
@@ -29,7 +28,7 @@ import { ThemeService } from 'dfx-theme';
   `,
   providers: [provideIcons({ lucideMoon, lucideSun, lucideSunMoon })],
   selector: 'playground-theme-switch',
-  imports: [TitleCasePipe, HlmButton, HlmIconImports, HlmTooltipImports],
+  imports: [TitleCasePipe, HlmButton, HlmTooltipImports, NgIcon],
 })
 export class ThemeSwitch {
   protected readonly themeService = inject(ThemeService);

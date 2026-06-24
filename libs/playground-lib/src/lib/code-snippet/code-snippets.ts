@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, input, linkedSignal, signal } from '@angular/core';
 
-import { provideIcons } from '@ng-icons/core';
-import { lucideCheck, lucideCopy, lucideFileCode } from '@ng-icons/lucide';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmCard, HlmCardContent } from '@spartan-ng/helm/card';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmTabsImports } from '@spartan-ng/helm/tabs';
 
 import { CodeHighlighterService } from './code-highlighter';
@@ -59,7 +58,7 @@ export type { PlaygroundCodeSnippetFile } from './code-snippet.model';
                             variant="outline"
                             size="icon-sm"
                             type="button">
-                            <ng-icon [name]="copiedFileId() === file.id ? 'lucideCheck' : 'lucideCopy'" hlm size="sm" />
+                            <ng-icon [name]="copiedFileId() === file.id ? 'lucideCheck' : 'lucideCopy'" />
                           </button>
                         </div>
                       </div>
@@ -82,10 +81,10 @@ export type { PlaygroundCodeSnippetFile } from './code-snippet.model';
   host: {
     class: 'playground-code-snippet playground-code-snippets block',
   },
-  providers: [provideIcons({ lucideCheck, lucideCopy, lucideFileCode })],
+  providers: [provideIcons({ lucideCheck, lucideCopy })],
   selector: 'playground-code-snippets',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [HlmCard, HlmCardContent, HlmTabsImports, HlmIconImports, HlmButton],
+  imports: [HlmCard, HlmCardContent, HlmTabsImports, HlmButton, NgIcon],
 })
 export class PlaygroundCodeSnippets {
   private readonly destroyRef = inject(DestroyRef);

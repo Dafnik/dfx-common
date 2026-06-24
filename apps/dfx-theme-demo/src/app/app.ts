@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMoon, lucideSun, lucideSunMoon } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { ThemeService } from 'dfx-theme';
 import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } from 'playground-lib';
 
@@ -26,15 +25,15 @@ import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } f
 
             <div class="flex flex-wrap justify-center gap-3" role="group" aria-label="Theme selection buttons">
               <button (click)="setTheme('light')" hlmBtn variant="secondary" aria-label="Switch to light theme">
-                <ng-icon hlm size="sm" name="lucideSun" />
+                <ng-icon name="lucideSun" />
                 Light
               </button>
               <button (click)="setTheme('dark')" hlmBtn variant="secondary" aria-label="Switch to dark theme">
-                <ng-icon hlm size="sm" name="lucideMoon" />
+                <ng-icon name="lucideMoon" />
                 Dark
               </button>
               <button (click)="setTheme('system')" hlmBtn variant="secondary" aria-label="Use system theme preference">
-                <ng-icon hlm size="sm" name="lucideSunMoon" />
+                <ng-icon name="lucideSunMoon" />
                 System
               </button>
             </div>
@@ -70,7 +69,7 @@ import { GithubButton, Layout, NpmButton, PackageManagerInstall, ThemeSwitch } f
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideIcons({ lucideSun, lucideMoon, lucideSunMoon })],
-  imports: [GithubButton, Layout, NpmButton, ThemeSwitch, HlmCardImports, HlmButtonImports, HlmIconImports, PackageManagerInstall],
+  imports: [GithubButton, Layout, NpmButton, ThemeSwitch, HlmCardImports, HlmButtonImports, PackageManagerInstall, NgIcon],
 })
 export class App {
   private themeService = inject(ThemeService);

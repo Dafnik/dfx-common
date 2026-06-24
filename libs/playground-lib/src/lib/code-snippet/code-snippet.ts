@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, input, signal } from '@angular/core';
 
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
 
 import { CodeHighlighterService } from './code-highlighter';
 import { PlaygroundCodeSnippetLanguage } from './code-snippet.model';
@@ -29,7 +28,7 @@ export type { PlaygroundCodeSnippetLanguage } from './code-snippet.model';
           variant="outline"
           size="icon-sm"
           type="button">
-          <ng-icon [name]="copied() ? 'lucideCheck' : 'lucideCopy'" hlm size="sm" />
+          <ng-icon [name]="copied() ? 'lucideCheck' : 'lucideCopy'" />
         </button>
       </div>
 
@@ -41,7 +40,7 @@ export type { PlaygroundCodeSnippetLanguage } from './code-snippet.model';
     </div>
   `,
   providers: [provideIcons({ lucideCheck, lucideCopy })],
-  imports: [HlmButton, HlmIconImports],
+  imports: [HlmButton, NgIcon],
 })
 export class PlaygroundCodeSnippet {
   private readonly destroyRef = inject(DestroyRef);

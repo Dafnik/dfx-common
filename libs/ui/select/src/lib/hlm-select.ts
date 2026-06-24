@@ -1,7 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { provideBrnDialogDefaultOptions } from '@spartan-ng/brain/dialog';
-import { BrnPopover, provideBrnPopoverConfig } from '@spartan-ng/brain/popover';
+import { BrnPopover, provideBrnPopoverConfig, provideBrnPopoverDefaultOptions } from '@spartan-ng/brain/popover';
 import { BrnSelect } from '@spartan-ng/brain/select';
 import { classes } from '@spartan-ng/helm/utils';
 
@@ -12,9 +11,7 @@ import { classes } from '@spartan-ng/helm/utils';
       align: 'start',
       sideOffset: 6,
     }),
-    provideBrnDialogDefaultOptions({
-      autoFocus: 'first-heading',
-    }),
+    provideBrnPopoverDefaultOptions({ role: null }),
   ],
   hostDirectives: [
     {
@@ -24,7 +21,7 @@ import { classes } from '@spartan-ng/helm/utils';
     },
     {
       directive: BrnPopover,
-      inputs: ['align', 'autoFocus', 'closeDelay', 'closeOnOutsidePointerEvents', 'sideOffset', 'state', 'offsetX', 'restoreFocus'],
+      inputs: ['align', 'closeOnOutsidePointerEvents', 'sideOffset', 'state', 'offsetX'],
       outputs: ['stateChanged', 'closed'],
     },
   ],

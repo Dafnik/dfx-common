@@ -4,6 +4,7 @@ import { classes } from '@spartan-ng/helm/utils';
 
 @Directive({
   selector: 'brn-switch-thumb[hlm],[hlmSwitchThumb]',
+  host: { 'data-slot': 'switch-thumb' },
 })
 export class HlmSwitchThumb {
   constructor() {

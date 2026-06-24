@@ -8,7 +8,6 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideChevronLeft, lucideChevronRight } from '@ng-icons/lucide';
 import { type BrnPaginatedTabHeaderItem, BrnTabsPaginatedList, BrnTabsTrigger } from '@spartan-ng/brain/tabs';
 import { buttonVariants } from '@spartan-ng/helm/button';
-import { HlmIcon } from '@spartan-ng/helm/icon';
 import { classes, hlm } from '@spartan-ng/helm/utils';
 import type { ClassValue } from 'clsx';
 
@@ -16,7 +15,7 @@ import { listVariants } from './hlm-tabs-list';
 
 @Component({
   selector: 'hlm-paginated-tabs-list',
-  imports: [CdkObserveContent, NgIcon, HlmIcon],
+  imports: [CdkObserveContent, NgIcon],
   providers: [provideIcons({ lucideChevronRight, lucideChevronLeft })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -36,7 +35,7 @@ import { listVariants } from './hlm-tabs-list';
       type="button"
       aria-hidden="true"
       tabindex="-1">
-      <ng-icon hlm size="base" name="lucideChevronLeft" />
+      <ng-icon name="lucideChevronLeft" />
     </button>
 
     <div class="z-[1] flex grow overflow-hidden" #tabListContainer (keydown)="_handleKeydown($event)">
@@ -60,14 +59,14 @@ import { listVariants } from './hlm-tabs-list';
       type="button"
       aria-hidden="true"
       tabindex="-1">
-      <ng-icon hlm size="base" name="lucideChevronRight" />
+      <ng-icon name="lucideChevronRight" />
     </button>
   `,
 })
 export class HlmTabsPaginatedList extends BrnTabsPaginatedList {
   constructor() {
     super();
-    classes(() => 'relative flex flex-shrink-0 gap-1 overflow-hidden');
+    classes(() => 'relative flex flex-shrink-0 items-center gap-1 overflow-hidden');
   }
 
   public readonly items = contentChildren(BrnTabsTrigger, { descendants: false });
@@ -83,11 +82,11 @@ export class HlmTabsPaginatedList extends BrnTabsPaginatedList {
   public readonly tabListClass = input<ClassValue>('', { alias: 'tabListClass' });
   protected readonly _tabListClass = computed(() => hlm(listVariants(), this.tabListClass()));
 
-  public readonly paginationButtonClass = input<ClassValue>('', { alias: 'paginationButtonClass' });
+  public readonly paginationButtonClass = input<ClassValue>('');
   protected readonly _paginationButtonClass = computed(() =>
     hlm(
       'relative z-[2] select-none disabled:cursor-default',
-      buttonVariants({ variant: 'ghost', size: 'icon' }),
+      buttonVariants({ variant: 'ghost', size: 'icon-sm' }),
       this.paginationButtonClass(),
     ),
   );

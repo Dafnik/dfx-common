@@ -12,11 +12,10 @@ import {
   signal,
 } from '@angular/core';
 
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy, lucideTerminal } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmCard, HlmCardContent } from '@spartan-ng/helm/card';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmTabsImports } from '@spartan-ng/helm/tabs';
 
 import { Layout } from './layout';
@@ -58,7 +57,7 @@ import { Layout } from './layout';
                 </code>
 
                 <button (click)="_copy(pm.install)" hlmBtn variant="outline" size="icon-sm" aria-label="Copy" title="Copy">
-                  <ng-icon [name]="_isCopied() ? 'lucideCheck' : 'lucideCopy'" hlm size="sm" />
+                  <ng-icon [name]="_isCopied() ? 'lucideCheck' : 'lucideCopy'" />
                 </button>
               </div>
             </div>
@@ -70,7 +69,7 @@ import { Layout } from './layout';
   providers: [provideIcons({ lucideTerminal, lucideCopy, lucideCheck })],
   selector: 'playground-pm-install',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [HlmCard, HlmCardContent, HlmTabsImports, HlmIconImports, HlmButton],
+  imports: [HlmCard, HlmCardContent, HlmTabsImports, HlmButton, NgIcon],
 })
 export class PackageManagerInstall {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));

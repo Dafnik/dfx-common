@@ -23,7 +23,7 @@ import type { ClassValue } from 'clsx';
       brnFieldControlDescribedBy
       data-slot="select-trigger">
       <ng-content />
-      <ng-icon class="text-muted-foreground ms-auto text-[calc(var(--spacing)*4)]" name="lucideChevronDown" />
+      <ng-icon class="text-muted-foreground ms-auto text-[length:--spacing(4)]" name="lucideChevronDown" />
     </button>
   `,
 })
