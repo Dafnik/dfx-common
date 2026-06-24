@@ -7,6 +7,9 @@
   "license": "MIT",
   "homepage": "https://playground.dafnik.me/theme/",
   "sideEffects": false,
+  "ng-add": {
+    "save": true
+  },
   "keywords": [
     "ng",
     "ngx",
@@ -59,8 +62,8 @@
     "@angular/core": "22"
   },
   "dependencies": {
+    "@angular-devkit/core": "22",
     "@angular-devkit/schematics": "22",
-    "@schematics/angular": "22",
     "tslib": "^2"
   },
   "publishConfig": {

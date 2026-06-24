@@ -3,7 +3,7 @@ import { lastValueFrom } from 'rxjs';
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 
-import ngAdd from '../../schematics/ng-add';
+import { ngAdd } from '../../schematics/ng-add';
 
 describe('dfx-theme ng-add schematic', () => {
   const runner = new SchematicTestRunner('dfx-theme', 'libs/dfx-theme/schematics/collection.json');
@@ -47,9 +47,28 @@ describe('dfx-theme ng-add schematic', () => {
   it('does not duplicate the flash prevention script when run again', async () => {
     const tree = await runNgAdd({}, createWorkspaceTree());
     const updatedTree = await runNgAdd({}, tree);
+    const appConfig = updatedTree.readText('/src/app/app.config.ts');
     const indexHtml = updatedTree.readText('/src/index.html');
 
     expect(indexHtml.match(/dfx-theme Flash Prevention/g)).toHaveLength(1);
+    expect(appConfig.match(/provideTheme\(\)/g)).toHaveLength(1);
+  });
+
+  it('prepends the theme provider to existing providers', async () => {
+    const initialTree = createWorkspaceTree();
+    initialTree.overwrite(
+      '/src/app/app.config.ts',
+      `import { ApplicationConfig } from '@angular/core';
+
+export const appConfig: ApplicationConfig = {
+  providers: [existingProvider],
+};
+`,
+    );
+
+    const tree = await runNgAdd({}, initialTree);
+
+    expect(tree.readText('/src/app/app.config.ts')).toContain('providers: [provideTheme(), existingProvider]');
   });
 
   async function runNgAdd(options: Parameters<typeof ngAdd>[0], tree: Tree): Promise<Tree> {
