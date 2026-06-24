@@ -7,7 +7,6 @@ module.exports = defineConfig([
   {
     files: ['**/*.ts'],
     rules: {
-      '@typescript-eslint/consistent-indexed-object-style': 'warn',
       '@angular-eslint/directive-selector': [
         'error',
         {
