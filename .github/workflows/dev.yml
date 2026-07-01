@@ -19,7 +19,7 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: dafnik/setup-node-pnpm@v5
         with:
@@ -31,7 +31,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: dafnik/setup-node-pnpm@v5
         with:
@@ -46,7 +46,7 @@ jobs:
     steps:
       # Needed to get the commitlint config
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -63,7 +63,7 @@ jobs:
       # Expose matched filters as job 'packages' output variable
       libs: ${{ steps.filter.outputs.changes }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: dorny/paths-filter@v4
         id: filter
@@ -115,7 +115,7 @@ jobs:
       matrix:
         lib: ${{ fromJSON(needs.changes.outputs.libs) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: test
         uses: ./.github/actions/test
         with:
@@ -130,7 +130,7 @@ jobs:
       matrix:
         lib: ${{ fromJSON(needs.changes.outputs.libs) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: setup node and pnpm
         uses: dafnik/setup-node-pnpm@v5
@@ -157,7 +157,7 @@ jobs:
     name: Build playground
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: setup node and pnpm
         uses: dafnik/setup-node-pnpm@v5
