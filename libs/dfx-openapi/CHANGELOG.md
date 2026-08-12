@@ -1,5 +1,15 @@
 # Changelog
 
+## dfx-openapi-22.1.0 - 2026-08-12
+
+* feat(dfx-openapi): add readOnly/writeOnly support via markers
+
+* fix(dfx-openapi): allow string for enum and string union types
+
+* fix(dfx-openapi): FormData not supported
+
+[**Full Changelog**](https://github.com/Dafnik/dfx-common/compare/dfx-openapi-22.0.0...dfx-openapi-22.1.0)
+
 ## dfx-openapi-22.0.0 - 2026-06-10
 
 * Angular 22
