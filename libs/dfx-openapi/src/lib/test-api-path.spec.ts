@@ -6,6 +6,11 @@ describe('test-api-path placeholder', () => {
   });
 });
 
+export enum AgreementCloseReason {
+  UserRequest = 'USER_REQUEST',
+  ProviderDecision = 'PROVIDER_DECISION',
+}
+
 export interface paths {
   '/v1/team': {
     parameters: {
@@ -59,6 +64,70 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/v1/session/{sessionId}/document': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['uploadDocument'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/v1/task/{taskId}/agreement/{agreementId}/close': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['closeAgreement'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/v1/message': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['createPlainTextMessage'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/v1/task/{taskId}/agreement/{agreementId}/close-with-string-reason': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations['closeAgreementWithStringReason'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 type webhooks = Record<string, never>;
 interface components {
@@ -86,9 +155,23 @@ interface components {
       numberOfPages: number;
       data: components['schemas']['TeamResponse'][];
     };
+    UploadDocumentBody: {
+      /**
+       * Format: binary
+       * @description Document file
+       */
+      file: string;
+    };
+    /** @description Reason for closing an agreement */
+    AgreementCloseReason: AgreementCloseReason;
+    /** @description Reason for closing an agreement */
+    AgreementCloseStringReason: 'USER_REQUEST' | 'PROVIDER_DECISION';
   };
   responses: never;
-  parameters: never;
+  parameters: {
+    /** @description Session ID */
+    SessionId: string;
+  };
   requestBodies: never;
   headers: never;
   pathItems: never;
@@ -205,6 +288,107 @@ interface operations {
     responses: {
       /** @description OK */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  uploadDocument: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Session ID */
+        sessionId: components['parameters']['SessionId'];
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        'multipart/form-data': components['schemas']['UploadDocumentBody'];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  closeAgreement: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Task ID */
+        taskId: string;
+        /** @description Agreement ID */
+        agreementId: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AgreementCloseReason'];
+      };
+    };
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  createPlainTextMessage: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'text/plain': string;
+      };
+    };
+    responses: {
+      /** @description No Content */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  closeAgreementWithStringReason: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Task ID */
+        taskId: string;
+        /** @description Agreement ID */
+        agreementId: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AgreementCloseStringReason'];
+      };
+    };
+    responses: {
+      /** @description No Content */
+      204: {
         headers: {
           [name: string]: unknown;
         };
