@@ -67,7 +67,7 @@
     "@tailwindcss/postcss": "4.3.3",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/express": "5.0.6",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "@vitest/coverage-v8": "5.0.0",
     "angular-eslint": "22.5.0",
     "angular-http-server": "1.12.0",
