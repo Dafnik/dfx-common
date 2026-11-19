@@ -35,7 +35,7 @@ import { DemoTokenService } from './demo-token.service';
                 .
               </p>
               <div class="mt-4">
-                <ng-container *authz="'test/Organisationsverwaltung'; loading: organisationsLoading; else: organisationsDenied">
+                <ng-container *authz="'test/Organisationsverwaltung'; loading: organisationsLoading; else organisationsDenied">
                   <p class="text-sm font-medium text-green-600">Access allowed</p>
                 </ng-container>
                 <ng-template #organisationsLoading>
@@ -61,7 +61,7 @@ import { DemoTokenService } from './demo-token.service';
                 .
               </p>
               <div class="mt-4">
-                <ng-container *authz="'test/Kundenverwaltung'; loading: kundenLoading; else: kundenDenied">
+                <ng-container *authz="'test/Kundenverwaltung'; loading: kundenLoading; else kundenDenied">
                   <p class="text-sm font-medium text-green-600">Access allowed</p>
                 </ng-container>
                 <ng-template #kundenLoading>
